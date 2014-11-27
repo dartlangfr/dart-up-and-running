@@ -14,20 +14,19 @@ next-chapter-title: "Library Tour"
 
 # {{ page.title }}
 
-This chapter shows you how to use each major Dart feature, from
-variables and operators to classes and libraries, with the assumption
-that you already know how to program in another language.
+Ce chapitre montre utiliser les fonctionnalités majeures de Dart, des variables
+et opérateurs jusqu'aux classes et bibliothèques, en supposant que vous savez
+déjà programmer dans une autre langage.
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
-To play with each feature, create a command-line application project
-in Dart Editor, as described in
+Pour essayer les fonctionnalités, créez un projet en ligne de commande
+avec le Dart Editor comme décrit ci dessous:
 [Up and running](ch01.html#up-and-running).
 </aside>
 
-Consult the [Dart Language
-Specification](/docs/spec/) whenever you want
-more details about a language feature.
+Consultez les [spécifications Dart](/docs/spec/) lorsque vous souhaitez en
+savoir plus sur une des fonctionnalités du langages.
 
 
 ## Un programme Dart simple {#a-basic-dart-program}
