@@ -97,65 +97,71 @@ use two-space indentation.
 </aside>
 
 
-## Important concepts {#important-concepts}
+## Concepts important {#important-concepts}
 
-As you learn about the Dart language, keep these facts and concepts in
-mind:
+Pendant que vous apprenez le langage Dart, gardez ces faits et concepts 
+en mémoire :
 
--   Everything you can place in a variable is an *object*, and every
-    object is an instance of a *class*. Even numbers, functions, and
-    `null` are objects. All objects inherit from the
-    [Object](http://api.dartlang.org/dart_core/Object.html) class.
+-   Tout ce que vous pouvez placer dans une variable est un *objet*,
+    et tout objet est une instance d'une *classe*. Y compris les nombres,
+    les fonctions et `null` sont des objets. Tous les objets héritent
+    de la classe [Object](http://api.dartlang.org/dart_core/Object.html).
 
--   Specifying static types (such as `num` in the preceding example)
-    clarifies your intent and enables static checking by tools, but it’s
-    optional. (You might notice when you’re debugging your code that
-    variables with no specified type get a special type: `dynamic`.)
+-   Le typage statique (comme `num` dans l'exemple précédent) clarifie 
+    votre intention et active la vérification des types par les outils, 
+    mais cela reste optionnel. (Pendant que vous debuggez votre code, 
+    vous pourrez remarquer que les variables dont le type n'a pas
+    été spécifié ont un type spécial : `dynamic`.)
+    
+-   Dart analyse tout votre code avant de le lancer. Vous pouvez fournir
+    des indications à Dart, par exemple, en précisant les types ou les 
+    constantes à la compilation, pour détecter les erreurs ou encore pour
+    accélérer l'exécution de votre code.
 
--   Dart parses all your code before running it. You can provide tips to
-    Dart—for example, by using types or compile-time constants—to catch
-    errors or help your code run faster.
+-   Dart supporte les fonctions de premier niveau (tel que `main()`),
+    tout comme elles peuvent être attachées à une classe ou un objet
+    (respectivement, *fonctions statiques* et *méthodes d'instance*). 
+    Vous pouvez aussi créer des fonctions à l'intérieur d'une fonction
+    (*fonctions imbriquées* ou *fonctions internes*).
 
--   Dart supports top-level functions (such as `main()`), as well as
-    functions tied to a class or object (*static* and *instance
-    methods*, respectively). You can also create functions within
-    functions (*nested* or *local functions*).
+-   De la même façon, Dart supporte les *variables* de premier niveau,
+    tout comme elles peuvent être attachées à une classe ou un objet 
+    (variables statiques et variables d'instance). Les variables 
+    d'instance sont aussi nommées champs ou propriétés.
 
--   Similarly, Dart supports top-level *variables*, as well as variables
-    tied to a class or object (static and instance variables). Instance
-    variables are sometimes known as fields or properties.
+-   Contrairement à Java, Dart n'a pas les mots-clés `public`, 
+    `protected` et `private`. Si un identifiant commence avec un 
+    souligner (\_), il est privé à sa librairie. Pour plus de détails,
+    voir [Librairies et visibilité](#libraries-and-visibility).
 
--   Unlike Java, Dart doesn’t have the keywords `public`, `protected`,
-    and `private`. If an identifier starts with an underscore (\_), it’s
-    private to its library. For details, see
-    [Libraries and visibility](#libraries-and-visibility).
+-   Les *identifiants* peuvent commencer par une lettre ou \_, suivi de
+    n'importe quelle combinaison de ces caractères ou chiffres.
 
--   *Identifiers* can start with a letter or \_, followed by any
-    combination of those characters plus digits.
+-   Il est parfois important de distinguer *expression* et 
+    *instruction*, nous allons préciser la différence entre ces deux 
+    mots.
 
--   Sometimes it matters whether something is an *expression* or a
-    *statement*, so we’ll be precise about those two words.
-
--   Dart tools can report two kinds of problems: warnings and errors.
-    Warnings are just indications that your code might not work, but
-    they don’t prevent your program from executing. Errors can be either
-    compile-time or run-time. A compile-time error prevents the code
-    from executing at all; a run-time error results in an
-    [exception](#exceptions) being raised while the code executes.
+-   Les outils Dart peuvent rapporter deux types de problèmes : des
+    alertes et des erreurs. Les alertes indiquent juste que votre code
+    peut ne pas fonctionner, mais n'empêche pas l'exécution de votre 
+    programme. Une erreur de compilation empêche totalement l'exécution 
+    de votre programme; une erreur à l'exécution résulte d'une 
+    [exception](#exceptions) qui est remontée lorsque le code s'exécute.
 
 <ul>
   <li id="runtime-modes" class="no_toc" markdown="1">
-  Dart has two <em id="runtime-modes">runtime modes</em>:
-  production and checked. We recommend that
-  you develop and debug in checked mode, and deploy to production mode.
+  Dart a deux <em id="runtime-modes">modes d'exécution</em> :
+  production et checked. Nous recommandons de développer et debugger
+  en mode checked, et déployer en mode production.
 
-  *Production mode* is the default runtime mode of a Dart program,
-  optimized for speed. Production mode ignores [assert
-  statements](#assert) and static types.
+  *Le mode production* est le mode d'exécution par défaut d'un 
+  programme Dart, optimisé pour la vitesse. Le mode production ignore
+  les [instructions d'assertion](#assert) et le typage statique.
 
-  *Checked mode* is a developer-friendly mode that helps you catch some
-  type errors during runtime. For example, if you assign a non-number to a
-  variable declared as a `num`, then checked mode throws an exception.
+  *Le mode checked* est un mode pour les développeurs, qui aide à 
+  détecter certaines erreurs de type à l'exécution. Par exemple, si on 
+  affecte une chaîne de caractères à une variable déclarée comme `num`,
+  alors le mode checked lance une exception.
   </li>
 </ul>
 
