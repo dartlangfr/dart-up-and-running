@@ -164,9 +164,9 @@ en mémoire :
   </li>
 </ul>
 
-## Keywords {#keywords}
+## Mots clés {#mots-clés}
 
-The following table lists the words that the Dart language treats specially.
+Le tableau suivant liste les mots clés du language Dart.
 
 {% assign bii = '&nbsp;<sup title="built-in-identifier" alt="built-in-identifier">1</sup>' %}
 {% assign lrw = '&nbsp;<sup title="limited reserved word" alt="limited reserved word">2</sup>' %}
@@ -184,25 +184,24 @@ The following table lists the words that the Dart language treats specially.
 | const             | factory{{bii}}    | library{{bii}}    | sync*{{lrw}}      | yield*{{lrw}}     |
 {:.table .table-striped .nowrap}
 
-<sup>1</sup> Words with the superscript **1**
-are *built-in identifiers*. Avoid using
-built-in identifiers as identifiers, and never use
-them for class or type names. Built-in identifiers exist to ease
-porting from JavaScript to Dart. For example,
-if some JavaScript code has a variable named `factory`, you don't have
-to rename it when you port the code to Dart.
+<sup>1</sup>  Les mots annotés **1** sont des *identifiants inclus*. 
+Evitez d’utiliser les identifants inclus en tant qu’identifiant, 
+et ne les utilisez jamais en nom de classe ou de type. 
+Les identifiants inclus existent pour faciliter le portage de JavaScript à Dart. 
+Par exemple, si du code JavaScrpt a une variable nommée `factory`, 
+il n’est pas nécéssaire de la renommer lorsque vous pmorter le code en Dart.
 
-<sup>2</sup> Words with the superscript **2**
-are newer, limited reserved words related to asynchrony support
-that's being added after Dart's 1.0 release.
-You can't use `async`, `await`, or `yield` as
-an identifier in any function body marked with `async`, `async*`, or `sync*`.
-For more information, see
+<sup>2</sup> Les mots annotés **2** sont nouveaux, 
+ces mots réservés sont liés au support de l’asynchronisme 
+qui a été ajouté après la  sortie de la version 1.0 de Dart. 
+Vous ne pouvez pas utiliser async,await, ou yield en tant 
+qu’identifiant dans le corps d’une fonction marquée avec `async`, `async*`, or `sync*`. 
+Pour plus d’information, regardez 
 [Dart Language Asynchrony Support: Phase 1](/articles/await-async/)
 and the [Dart Language Specification](/docs/spec/).
 
-All other words in the keyword table are <em>reserved words</em>.
-You can't use reserved words as identifiers.
+Tous les autres mots de ce tableau sont des <em>mots réservés</em>. 
+Vous ne pouvez pas utiliser les mots réservés en tant qu’identifiant.
 
 
 ## Variables {#variables}
