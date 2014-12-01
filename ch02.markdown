@@ -30,70 +30,69 @@ Specification](/docs/spec/) whenever you want
 more details about a language feature.
 
 
-## A basic Dart program {#a-basic-dart-program}
+## Un programme Dart basique {#un-programme-dart-basique}
 
-The following code uses many of Dart’s most basic features:
+Le programme suivant utilise quelques unes des fonctionnalités de base de Dart :
 
 <!-- ch02/basic_dart_program.dart -->
 {% prettify dart %}
-// Define a function.
-printNumber(num aNumber) {
-  print('The number is $aNumber.'); // Print to console.
+// Définition d'une fonction.
+afficheNombre(num unNombre) {
+  print('Le nombre est $unNombre.'); // Affiche dans la console
 }
 
-// This is where the app starts executing.
+// C’est ici que l’application commence son exécution.
 main() {
-  var number = 42; // Declare and initialize a variable.
-  printNumber(number); // Call a function.
+  var nombre = 42; // Déclare et initialise une variable.
+  afficheNombre(nombre); // Appel d'une fonction.
 }
 {% endprettify %}
 
-Here’s what this program uses that applies to all (or almost all) Dart
-apps:
+Voici ce qu’utilise ce programme et qu’utilisent toutes (ou presque toutes) les applications Dart :
 
-<code>// <em>This is a comment.</em> </code>
+<code>// <em>Ceci est un commentaire.</em> </code>
 
-:   Use // to indicate that the rest of the line is a comment.
-    Alternatively, use /\* ... \*/. For details, see
-    [Comments](#comments).
+:   Utilisez // pour indiquer que le reste de la ligne est un commentaire. 
+    Vous pouvez également utiliser /\* ... \*/. Pour plus de détails, regardez
+    [Commentaires](#commentaires).
 
 `num`
 
-:   A type. Some of the other built-in types are String, int, and bool.
+:   Un type. Quelques un des autres types sont String, int, and bool.
 
 `42`
 
-:   A number literal. Literals are a kind of compile-time constant.
+:   Un nombre littéral. Les littéraux sont une sorte de constante à la compilation.
 
 `print()`
 
-:   A handy way to display output.
+:   Un moyen pratique d’afficher dans la sortie.
 
 `'...'` (or `"..."`)
 
-:   A string literal.
+:   Une chaine de caratère.
 
-<code>$<em>variableName</em></code> (or <code>${<em>expression</em>}</code>)
+<code>$<em>nomDeVariable</em></code> (ou <code>${<em>expression</em>}</code>)
 
-:   String interpolation: including a variable or expression’s string
-    equivalent inside of a string literal. For more information, see
+:   L’interpolation de chaine: L’inclusion d’une variable ou d’une expression à l’intérieur d’une chaine de caractère. 
+    Pour plus d’informations, Regardez 
     [Strings](#strings).
 
 `main()`
 
-:   The special, *required*, top-level function where app execution
-    starts. For more information, see
+:   La fonction spéciale, requise et depremier niveau où l’application s’éxécute. 
+    Pour plus d’information, Regardez 
     [The main() function](#the-main-function).
 
 `var`
 
-:   A way to declare a variable without specifying its type.
+:   Une façon de déclarer une variable sans avoir à spécifier son type.
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
-Our code follows the conventions in the [Dart Style
-Guide.](/articles/style-guide/) For example, we
-use two-space indentation.
+Notre code suite la convention décrite dans le [Dart Style
+Guide.](/articles/style-guide/). 
+Par exemple, nous utilisons des indentations à deux espaces.
 </aside>
 
 
