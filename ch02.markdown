@@ -98,8 +98,8 @@ Par exemple, nous utilisons des indentations à deux espaces.
 
 ## Concepts important {#important-concepts}
 
-Pendant que vous apprenez le langage Dart, gardez ces faits et concepts 
-en mémoire :
+Pendant que vous apprenez le langage Dart, gardez ces principes et 
+concepts en mémoire :
 
 -   Tout ce que vous pouvez placer dans une variable est un *objet*,
     et tout objet est une instance d'une *classe*. Y compris les nombres,
@@ -107,14 +107,14 @@ en mémoire :
     de la classe [Object](http://api.dartlang.org/dart_core/Object.html).
 
 -   Le typage statique (comme `num` dans l'exemple précédent) clarifie 
-    votre intention et active la vérification des types par les outils, 
-    mais cela reste optionnel. (Pendant que vous debuggez votre code, 
-    vous pourrez remarquer que les variables dont le type n'a pas
+    votre intention et permet aux outils de détecter les erreurs de 
+    types, mais il reste optionnel. (Pendant que vous debuggez votre 
+    code, vous pourrez remarquer que les variables dont le type n'a pas
     été spécifié ont un type spécial : `dynamic`.)
     
 -   Dart analyse tout votre code avant de le lancer. Vous pouvez fournir
     des indications à Dart, par exemple, en précisant les types ou les 
-    constantes à la compilation, pour détecter les erreurs ou encore pour
+    constantes de compilation, pour détecter les erreurs ou encore pour
     accélérer l'exécution de votre code.
 
 -   Dart supporte les fonctions de premier niveau (tel que `main()`),
