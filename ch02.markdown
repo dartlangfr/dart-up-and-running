@@ -325,81 +325,83 @@ propres constructeurs. Par exemple, vous pouvez utiliser le constructeur
 `new Map()`.
 
 
-### Numbers {#numbers}
+### Nombres {#numbers}
 {:.no_toc}
 
-Dart numbers come in two flavors:
+Il existe deux types de nombre en Dart :
 
 [`int`](http://api.dartlang.org/dart_core/int.html)
 
-:   Integer values, which generally should be in the range
-    -2<sup>53</sup> to 2<sup>53</sup>
+:   Les valeurs entières, qui doivent être généralement comprise entre
+    -2<sup>53</sup> et 2<sup>53</sup>
 
 [`double`](http://api.dartlang.org/dart_core/double.html)
 
-:   64-bit (double-precision) floating-point numbers, as specified by
-    the IEEE 754 standard
+:   Les nombres à virgule flottante 64-bit (double précision), tel que
+    spécifié dans le standart IEEE 754
 
-Both `int` and `double` are subtypes of
-[`num`.](http://api.dartlang.org/dart_core/num.html) The num type
-includes basic operators such as +, -, /, and \*, as well as bitwise
-operators such as \>\>. The num type is also where you’ll find
-`abs()`,` ceil()`, and `floor()`, among other methods. If num and its
-subtypes don’t have what you’re looking for, the
-[Math](http://api.dartlang.org/dart_math.html) library might.
+Les deux types `int` et `double` sont des sous-types de 
+[`num`.](http://api.dartlang.org/dart_core/num.html) Le type num 
+inclut des opérateurs de base tel que +, -, /, et \*, mais aussi les 
+opérateurs bit à bit tel que \>\>. Vous trouverez aussi dans le type 
+num, `abs()`,` ceil()`, et `floor()`, parmi d'autres méthodes. Si num 
+et ses sous-types n'ont pas ce que vous recherchez, la librairie
+[Math](http://api.dartlang.org/dart_math.html) peut vous aider.
 
 <aside class="alert alert-warning" markdown="1">
-**Warning:**
-Integers outside of the
--2<sup>53</sup> to 2<sup>53</sup> range currently behave
-differently in JavaScript produced from Dart code than they do when
-the same Dart code runs in the Dart VM. The reason is that Dart is
-specified to have arbitrary-precision integers, but JavaScript isn't.
-See [issue 1533](http://dartbug.com/1533) for details.
+**Attention :**
+Actuellement, les nombres entiers en dehors de l'intervalle
+-2<sup>53</sup> et 2<sup>53</sup> se comporte différement dans le 
+JavaScript généré à partir du code Dart comparé au même code Dart 
+tournant sous la machine virtuelle Dart. La raison est que Dart a été 
+spécifié pour avoir des entiers multiprécisions, ce qui n'est pas le 
+cas de JavaScript.
+Voir [issue 1533](http://dartbug.com/1533) pour plus de détails.
 </aside>
 
-Integers are numbers without a decimal point. Here are some examples of
-defining integer literals:
+Les entiers sont des nombres sans décimale. Voici quelques exemples 
+de nombres entiers littéraux :
 
 <!-- ch02/integer_literals.dart -->
 {% prettify dart %}
 var x = 1;
 var hex = 0xDEADBEEF;
-var bigInt = 346534658346524376592384765923749587398457294759347029438709349347;
+var grosEntier = 346534658346524376592384765923749587398457294759347029438709349347;
 {% endprettify %}
 
-If a number includes a decimal, it is a double. Here are some examples
-of defining double literals:
+Si un nombre inclut une décimale, c'est un double. Voici quelques exemples 
+de nombres réels littéraux :
 
 <!-- ch02/double_literals.dart -->
 {% prettify dart %}
 var y = 1.1;
-var exponents = 1.42e5;
+var dixPuissance = 1.42e5;
 {% endprettify %}
 
-Here’s how you turn a string into a number, or vice versa:
+Voici comment transformer une chaîne de caractères en nombre, ou vice 
+versa :
 
 <!-- ch02/number_conversion.dart -->
 {% prettify dart %}
 // String -> int
-var one = int.parse('1');
-assert(one == 1);
+var un = int.parse('1');
+assert(un == 1);
 
 // String -> double
-var onePointOne = double.parse('1.1');
-assert(onePointOne == 1.1);
+var unVirguleUn = double.parse('1.1');
+assert(unVirguleUn == 1.1);
 
 // int -> String
-String oneAsString = 1.toString();
-assert(oneAsString == '1');
+String unEnString = 1.toString();
+assert(unEnString == '1');
 
 // double -> String
-String piAsString = 3.14159.toStringAsFixed(2);
-assert(piAsString == '3.14');
+String piEnString = 3.14159.toStringAsFixed(2);
+assert(piEnString == '3.14');
 {% endprettify %}
 
-The int type specifies the traditional bitwise shift (\<\<, \>\>), AND
-(&), and OR (|) operators. For example:
+Le type int définit le traditionnel décalage de bit (\<\<, \>\>), les 
+opérateurs ET (&), et OU (|). Par exemple :
 
 <!-- ch02/bit_shifting.dart -->
 {% prettify dart %}
