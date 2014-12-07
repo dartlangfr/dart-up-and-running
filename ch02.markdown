@@ -30,7 +30,7 @@ Specification](/docs/spec/) whenever you want
 more details about a language feature.
 
 
-## Un programme Dart basique {#un-programme-dart-basique}
+## Un programme Dart simple {#a-basic-dart-program}
 
 Le programme suivant utilise quelques unes des fonctionnalités de base de Dart :
 
@@ -52,13 +52,13 @@ Voici ce qu’utilise ce programme et qu’utilisent toutes (ou presque toutes) 
 
 <code>// <em>Ceci est un commentaire.</em> </code>
 
-:   Utilisez // pour indiquer que le reste de la ligne est un commentaire. 
-    Vous pouvez également utiliser /\* ... \*/. Pour plus de détails, regardez
-    [Commentaires](#commentaires).
+:   Utilisez // pour indiquer que le reste de la ligne est un commentaire.
+    Vous pouvez également utiliser /\* ... \*/. Pour plus de détails, voir
+    [Commentaires](#comments).
 
 `num`
 
-:   Un type. Quelques un des autres types sont String, int, and bool.
+:   Un type. Quelques un des autres types natifs sont String, int, and bool.
 
 `42`
 
@@ -74,31 +74,31 @@ Voici ce qu’utilise ce programme et qu’utilisent toutes (ou presque toutes) 
 
 <code>$<em>nomDeVariable</em></code> (ou <code>${<em>expression</em>}</code>)
 
-:   L’interpolation de chaine: L’inclusion d’une variable ou d’une expression à l’intérieur d’une chaine de caractère. 
-    Pour plus d’informations, Regardez 
+:   L’interpolation: permet l'évaluation de variables ou d'expressions à l'intérieur d'une chaîne de caractères littérale.
+    Pour plus d’informations, Voir
     [Strings](#strings).
 
 `main()`
 
-:   La fonction spéciale, requise et depremier niveau où l’application s’éxécute. 
-    Pour plus d’information, Regardez 
+:   La fonction spéciale, nécessaire et de premier niveau où l’application démarre.
+    Pour plus d’information, Voir
     [The main() function](#the-main-function).
 
 `var`
 
-:   Une façon de déclarer une variable sans avoir à spécifier son type.
+:   Une façon de déclarer une variable sans avoir à préciser son type.
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
 Notre code suite la convention décrite dans le [Dart Style
-Guide.](/articles/style-guide/). 
-Par exemple, nous utilisons des indentations à deux espaces.
+Guide.](/articles/style-guide/).
+Par exemple, nous utilisons une indentation à deux espaces.
 </aside>
 
 
 ## Concepts important {#important-concepts}
 
-Pendant que vous apprenez le langage Dart, gardez ces principes et 
+Pendant que vous apprenez le langage Dart, gardez ces principes et
 concepts en mémoire :
 
 -   Tout ce que vous pouvez placer dans une variable est un *objet*,
@@ -106,45 +106,45 @@ concepts en mémoire :
     les fonctions et `null` sont des objets. Tous les objets héritent
     de la classe [Object](http://api.dartlang.org/dart_core/Object.html).
 
--   Le typage statique (comme `num` dans l'exemple précédent) clarifie 
-    votre intention et permet aux outils de détecter les erreurs de 
-    types, mais il reste optionnel. (Pendant que vous debuggez votre 
+-   Le typage statique (comme `num` dans l'exemple précédent) clarifie
+    votre intention et permet aux outils de détecter les erreurs de
+    types, mais il reste optionnel. (Pendant que vous debuggez votre
     code, vous pourrez remarquer que les variables dont le type n'a pas
     été spécifié ont un type spécial : `dynamic`.)
-    
+
 -   Dart analyse tout votre code avant de le lancer. Vous pouvez fournir
-    des indications à Dart, par exemple, en précisant les types ou les 
+    des indications à Dart, par exemple, en précisant les types ou les
     constantes de compilation, pour détecter les erreurs ou encore pour
     accélérer l'exécution de votre code.
 
 -   Dart supporte les fonctions de premier niveau (tel que `main()`),
     tout comme elles peuvent être attachées à une classe ou un objet
-    (respectivement, *fonctions statiques* et *méthodes d'instance*). 
+    (respectivement, *fonctions statiques* et *méthodes d'instance*).
     Vous pouvez aussi créer des fonctions à l'intérieur d'une fonction
     (*fonctions imbriquées* ou *fonctions internes*).
 
 -   De la même façon, Dart supporte les *variables* de premier niveau,
-    tout comme elles peuvent être attachées à une classe ou un objet 
-    (variables statiques et variables d'instance). Les variables 
+    tout comme elles peuvent être attachées à une classe ou un objet
+    (variables statiques et variables d'instance). Les variables
     d'instance sont aussi nommées champs ou propriétés.
 
--   Contrairement à Java, Dart n'a pas les mots-clés `public`, 
-    `protected` et `private`. Si un identifiant commence avec un 
+-   Contrairement à Java, Dart n'a pas les mots-clés `public`,
+    `protected` et `private`. Si un identifiant commence avec un
     souligner (\_), il est privé à sa librairie. Pour plus de détails,
     voir [Librairies et visibilité](#libraries-and-visibility).
 
 -   Les *identifiants* peuvent commencer par une lettre ou \_, suivi de
     n'importe quelle combinaison de ces caractères ou chiffres.
 
--   Il est parfois important de distinguer *expression* et 
-    *instruction*, nous allons préciser la différence entre ces deux 
+-   Il est parfois important de distinguer *expression* et
+    *instruction*, nous allons préciser la différence entre ces deux
     mots.
 
 -   Les outils Dart peuvent rapporter deux types de problèmes : des
     alertes et des erreurs. Les alertes indiquent juste que votre code
-    peut ne pas fonctionner, mais n'empêche pas l'exécution de votre 
-    programme. Une erreur de compilation empêche totalement l'exécution 
-    de votre programme; une erreur à l'exécution résulte d'une 
+    peut ne pas fonctionner, mais n'empêche pas l'exécution de votre
+    programme. Une erreur de compilation empêche totalement l'exécution
+    de votre programme; une erreur à l'exécution résulte d'une
     [exception](#exceptions) qui est remontée lorsque le code s'exécute.
 
 <ul>
@@ -153,20 +153,20 @@ concepts en mémoire :
   production et checked. Nous recommandons de développer et debugger
   en mode checked, et déployer en mode production.
 
-  *Le mode production* est le mode d'exécution par défaut d'un 
+  *Le mode production* est le mode d'exécution par défaut d'un
   programme Dart, optimisé pour la vitesse. Le mode production ignore
   les [instructions d'assertion](#assert) et le typage statique.
 
-  *Le mode checked* est un mode pour les développeurs, qui aide à 
-  détecter certaines erreurs de type à l'exécution. Par exemple, si on 
+  *Le mode checked* est un mode pour les développeurs, qui aide à
+  détecter certaines erreurs de type à l'exécution. Par exemple, si on
   affecte une chaîne de caractères à une variable déclarée comme `num`,
   alors le mode checked lance une exception.
   </li>
 </ul>
 
-## Mots clés {#mots-clés}
+## Mots clés {#keywords}
 
-Le tableau suivant liste les mots clés du language Dart.
+Le tableau suivant liste les mots clés que le langage Dart traite spécialement.
 
 {% assign bii = '&nbsp;<sup title="built-in-identifier" alt="built-in-identifier">1</sup>' %}
 {% assign lrw = '&nbsp;<sup title="limited reserved word" alt="limited reserved word">2</sup>' %}
@@ -184,23 +184,23 @@ Le tableau suivant liste les mots clés du language Dart.
 | const             | factory{{bii}}    | library{{bii}}    | sync*{{lrw}}      | yield*{{lrw}}     |
 {:.table .table-striped .nowrap}
 
-<sup>1</sup>  Les mots annotés **1** sont des *identifiants inclus*. 
-Evitez d’utiliser les identifants inclus en tant qu’identifiant, 
-et ne les utilisez jamais en nom de classe ou de type. 
-Les identifiants inclus existent pour faciliter le portage de JavaScript à Dart. 
-Par exemple, si du code JavaScrpt a une variable nommée `factory`, 
-il n’est pas nécéssaire de la renommer lorsque vous pmorter le code en Dart.
+<sup>1</sup>  Les mots annotés **1** sont des *identifiants primitifs*.
+Evitez d’utiliser les identifants inclus en tant qu’identifiant,
+et ne les utilisez jamais en nom de classe ou de type.
+Les identifiants inclus existent pour faciliter le portage de JavaScript à Dart.
+Par exemple, si du code JavaScript a une variable nommée `factory`,
+il n’est pas nécessaire de la renommer lorsque vous portez le code en Dart.
 
-<sup>2</sup> Les mots annotés **2** sont nouveaux, 
-ces mots réservés sont liés au support de l’asynchronisme 
-qui a été ajouté après la  sortie de la version 1.0 de Dart. 
-Vous ne pouvez pas utiliser async,await, ou yield en tant 
-qu’identifiant dans le corps d’une fonction marquée avec `async`, `async*`, or `sync*`. 
-Pour plus d’information, regardez 
+<sup>2</sup> Les mots annotés **2** sont nouveaux,
+ces mots réservés sont liés au support de l’asynchronisme
+qui a été ajouté après la  sortie de la version 1.0 de Dart.
+Vous ne pouvez pas utiliser async, await, ou yield en tant
+qu’identifiant dans le corps d’une fonction marquée avec `async`, `async*`, or `sync*`.
+Pour plus d’information, voir
 [Dart Language Asynchrony Support: Phase 1](/articles/await-async/)
 and the [Dart Language Specification](/docs/spec/).
 
-Tous les autres mots de ce tableau sont des <em>mots réservés</em>. 
+Tous les autres mots de ce tableau sont des <em>mots réservés</em>.
 Vous ne pouvez pas utiliser les mots réservés en tant qu’identifiant.
 
 
