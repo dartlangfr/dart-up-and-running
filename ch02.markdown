@@ -296,30 +296,32 @@ const atm = 1.01325 * bar; // Standard atmosphere
 {% endprettify %}
 
 
-## Built-in types {#built-in-types}
+## Types natifs {#built-in-types}
 
-The Dart language has special support for the following types:
+Les types suivants sont nativement supportés par le langage Dart :
 
--   numbers
+-   les nombres
 
--   strings
+-   les chaînes de caractères
 
--   booleans
+-   les booléens
 
--   lists (also known as *arrays*)
+-   les listes (aussi connues comme *tableaux*)
 
--   maps
+-   les dictionnaires (aussi appelés *tableaux associatifs*)
 
--   symbols
+-   les symboles
 
-You can initialize an object of any of these special types using a
-literal. For example, `'this is a
-    string'` is a string literal, and `true` is a boolean literal.
+Vous pouvez initialiser un objet de n'importe quel de ces types en 
+utisant une valeur littérale. Par exemple, `'ceci est une chaîne de 
+caractères'` est une chaîne de caractères littérale, et `true` est un 
+booléen littéral.
 
-Because every variable in Dart refers to an object—an instance of a
-*class*—you can usually use *constructors* to initialize variables. Some
-of the built-in types have their own constructors. For example, you can
-use the `Map()` constructor to create a map, using code such as
+Comme toute variable en Dart fait référence à un objet, c'est-à-dire,
+à une instance d'une *classe*, vous pouvez utiliser des *constructeurs*
+pour initialiser ces variables. Certains de ces types natifs ont leurs 
+propres constructeurs. Par exemple, vous pouvez utiliser le constructeur
+`Map()` pour créer un dictionnaire, en utilisant le code tel que 
 `new Map()`.
 
 
