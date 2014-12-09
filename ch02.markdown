@@ -14,14 +14,14 @@ next-chapter-title: "Library Tour"
 
 # {{ page.title }}
 
-Ce chapitre montre utiliser les fonctionnalités majeures de Dart, des variables
+Ce chapitre vous montre comment utiliser les fonctionnalités majeures de Dart, des variables
 et opérateurs jusqu'aux classes et bibliothèques, en supposant que vous savez
 déjà programmer dans une autre langage.
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
 Pour essayer les fonctionnalités, créez un projet en ligne de commande
-avec le Dart Editor comme décrit ci dessous:
+avec le Dart Editor, comme décrit ci dessous:
 [Up and running](ch01.html#up-and-running).
 </aside>
 
