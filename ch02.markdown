@@ -571,36 +571,38 @@ assert(iMeantToDoThis.isNaN);
 {% endprettify %}
 
 
-### Lists {#lists}
+### Listes {#lists}
 {:.no_toc}
 
-Perhaps the most common collection in nearly every programming language
-is the *array*, or ordered group of objects. In Dart, arrays are
-[List](http://api.dartlang.org/dart_core/List.html) objects, so we
-usually just call them *lists*.
+Peut-être la collection la plus commune dans presque tous les langages
+de programmation est le *tableau*, ou un groupe ordonné d'objets. Dans
+Dart, les tableaux sont des objets 
+[List](http://api.dartlang.org/dart_core/List.html), donc nous les 
+appelons juste *listes*.
 
-Dart list literals look like JavaScript array literals. Here’s a simple
-Dart list:
+Les listes littérales Dart ressemblent aux tableaux littéraux de 
+JavaScript. Voici un exemple d'une liste Dart :
 
 <!-- ch02/list_literal.dart -->
 {% prettify dart %}
-var list = [1, 2, 3];
+var liste = [1, 2, 3];
 {% endprettify %}
 
-Lists use zero-based indexing, where 0 is the index of the first element
-and `list.length - 1` is the index of the last element. You can get a
-list’s length and refer to list elements just as you would in
-JavaScript:
+Les listes utilisent une indexation à partir de zero, c'est-à-dire que
+l'index 0 est l'index du premier élément et `list.length - 1` est 
+l'index du dernier élément. Vous pouvez obtenir la longueur de la liste
+et faire référence aux éléments de la liste comme vous le feriez en 
+JavaScript :
 
 <!-- ch02/list_indexing.dart -->
 {% prettify dart %}
-var list = [1, 2, 3];
-assert(list.length == 3);
-assert(list[1] == 2);
+var liste = [1, 2, 3];
+assert(liste.length == 3);
+assert(liste[1] == 2);
 {% endprettify %}
 
-The List type has many handy methods for manipulating lists. For more
-information about lists, see [Generics](#generics) and
+Le type List a plein de méthodes pratiques pour manipuler les listes.
+Pour plus d'information sur les listes, voir [Generiques](#generics) et
 [Collections](ch03.html#collections).
 
 
