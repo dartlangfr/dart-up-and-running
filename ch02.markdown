@@ -411,86 +411,89 @@ assert((3 | 4)  == 7);  // 0011 | 0100 == 0111
 {% endprettify %}
 
 
-### Strings {#strings}
+### Chaînes de caractères {#strings}
 {:.no_toc}
 
-A Dart string is a sequence of UTF-16 code units. You can use either
-single or double quotes to create a string:
+Une chaîne de caractères en Dart est une suite de codes UTF-16. Vous 
+pouvez utiliser des guillemets simples ou des guillemets doubles pour 
+créer une chaîne de caractères :
 
 <!-- ch02/quoting.dart -->
 {% prettify dart %}
-var s1 = 'Single quotes work well for string literals.';
-var s2 = "Double quotes work just as well.";
-var s3 = 'It\'s easy to escape the string delimiter.';
-var s4 = "It's even easier to just use the other string delimiter.";
+var s1 = 'Les guillemets simples fonctionnent pour les chaînes de caractères littérales.';
+var s2 = "Les guillemets doubles fonctionnent tout aussi bien.";
+var s3 = 'C\'est facile d\'échapper les délimiteurs d\'une chaîne de caractères.';
+var s4 = "C'est encore plus facile d'utiliser l'autre délimiteur.";
 {% endprettify %}
 
-You can put the value of an expression inside a string by using
-`${`*`expression`*`}`. If the expression is an identifier, you can skip
-the {}. To get the string corresponding to an object, Dart calls the
-object’s `toString()` method.
+Vous pouvez mettre la valeur d'une expression à l'intérieur d'une 
+chaine de caractères en utilisant `${`*`expression`*`}`. Si 
+l'expression est un identifiant, vous pouvez omettre les {}. Pour 
+obtenir la chaîne de caractères correspondant à un objet, Dart appelle
+la méthode `toString()` de l'objet.
 
 <!-- ch02/string_interpolation.dart -->
 {% prettify dart %}
-var s = 'string interpolation';
+var s = 'interpolation';
 
-assert('Dart has $s, which is very handy.' ==
-       'Dart has string interpolation, which is very handy.');
-assert('That deserves all caps. ${s.toUpperCase()} is very handy!' ==
-       'That deserves all caps. STRING INTERPOLATION is very handy!');
+assert("Dart a l'$s, ce qui est très pratique." ==
+       "Dart a l'interpolation, ce qui est très pratique.");
+assert("Le même en majuscule. L'${s.toUpperCase()} est très pratique !" ==
+       "Le même en majuscule. L'INTERPOLATION est très pratique !");
 {% endprettify %}
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
-The `==` operator tests whether two objects are equivalent. Two
-strings are equivalent if they contain the same sequence of code
-units.
+L'opérateur `==` teste si deux objets sont équivalents. Deux
+chaînes de caractères sont équivalentes s'elles contiennent la même 
+suite de codes de caractère.
 </aside>
 
-You can concatenate strings using adjacent string literals or the `+`
-operator:
+Vous pouvez concatener des chaînes de caractères en utilisant des 
+chaînes littérales adjacentes ou l'opérateur `+` :
 
 <!-- adjacent_string_literals.dart -->
 {% prettify dart %}
-var s1 = 'String ' 'concatenation'
-         " works even over line breaks.";
-assert(s1 == 'String concatenation works even over line breaks.');
+var s1 = 'La concatenation ' ' de chaînes de caractères'
+         " fonctionne même avec des retours à la ligne.";
+assert(s1 == 'La concatenation de chaînes de caractères fonctionne même avec des retours à la ligne.');
 
-var s2 = 'The addition operator '
-         + 'works, as well.';
-assert(s2 == 'The addition operator works, as well.');
+var s2 = "L'opérateur plus "
+         + 'fonctionne également.';
+assert(s2 == "L'opérateur plus fonctionne également.");
 {% endprettify %}
 
-Another way to create a multi-line string: use a triple quote with
-either single or double quotation marks:
+Une autre façon de créer des chaînes de caractères multiligne est 
+d'utiliser un triplet de guillements qu'ils soient simple ou double :
 
 <!-- ch02/triple_quotes.dart -->
 {% prettify dart %}
 var s1 = '''
-You can create
-multi-line strings like this one.
+Vous pouvez créer
+des chaînes de caractères multiligne comme celle-ci.
 ''';
 
-var s2 = """This is also a
-multi-line string.""";
+var s2 = """Celle-là est aussi une
+chaîne de caractères multiligne.""";
 {% endprettify %}
 
-You can create a “raw” string by prefixing it with `r`:
+Vous pouvez créer une chaîne de caractères “brute” en la préfixant 
+avec `r` :
 
 <!-- ch02/raw_strings.dart -->
 {% prettify dart %}
-var s = r"In a raw string, even \n isn't special.";
+var s = r"Dans une chaîne de caractères brute, même \n n'est pas spécial.";
 {% endprettify %}
 
-You can use Unicode escapes inside of strings:
+Vous pouvez utiliser l'échappement Unicode dans une chaîne de caractères :
 
 <!-- ch02/quoting.dart -->
 {% prettify dart %}
-print('Unicode escapes work: \u2665'); // Unicode escapes work: [heart]
+print("L'échapement Unicode fonctionne : \u2665"); // L'échapement Unicode fonctionne : [heart]
 {% endprettify %}
 
-For more information on using strings, see
-[Strings and regular expressions](ch03.html#strings-and-regular-expressions).
+Pour plus d'information sur comment utiliser les chaînes de caractères, voir
+[Chaînes de caractères et expressions régulières](ch03.html#strings-and-regular-expressions).
 
 
 ### Booleans {#booleans}
