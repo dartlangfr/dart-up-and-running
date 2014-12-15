@@ -1244,66 +1244,65 @@ Le code n'est pas équivalent. Si `emp` est nul ou n'est pas une instance de Per
 </aside>
 
 
-### Assignment operators {#assignment-operators}
+### Opérateur d'assignation {#assignment-operators}
 {:.no_toc}
 
-As you’ve already seen, you assign values using the `=` operator. You
-can also use compound assignment operators such as `+=`, which combine
-an operation with an assignment.
+Comme nous l'avons déjà vu, vous pouvez assigner des valeurs en utilisant l'opérateur `=`.
+Vous pouvez également utiliser des opérateurs composés tels que `+=`, qui combine une opération
+avec une assignation.
 
 | `=`  | `–=` | `/=`  | `%=`  | `>>=` | `^=`
 | `+=` | `*=` | `~/=` | `<<=` | `&=`  | `|=`
 {:.table}
 
-Here’s how compound assignment operators work:
+Voici comment fonctionnent les opérateur d'assignation :
 
-|-----------+----------------------+-----------------------|
-|           | Compound assignment  | Equivalent expression |
-|-----------+----------------------+-----------------------|
-|**For an operator <em>op</em>:** | <code>a <em>op</em>= b</code> | <code>a = a <em>op</em> b</code>
-|**Example:**                     |`a += b`                       | `a = a + b`
+|-----------+----------------------+------------------------|
+|           | Assignation composée | Expression équivalente |
+|-----------+----------------------+------------------------|
+|**Pour une opérateur <em>op</em>:** | <code>a <em>op</em>= b</code> | <code>a = a <em>op</em> b</code>
+|**Exemple:**                     |`a += b`                       | `a = a + b`
 {:.table}
 
-The following example uses both assignment and compound assignment
-operators:
+L'exemple suivant utilise à la fois une assignation et une assignation composeé :
 
 <!-- ch02/op_assign.dart -->
 {% prettify dart %}
-var a = 2;           // Assign using =
-a *= 3;              // Assign and multiply: a = a * 3
+var a = 2;           // Assignation utilisant =
+a *= 3;              // Assignation et multiplication : a = a * 3
 assert(a == 6);
 {% endprettify %}
 
 
-### Logical operators {#logical-operators}
+### Opérateurs logiques {#logical-operators}
 {:.no_toc}
 
-You can invert or combine boolean expressions using the logical
-operators.
+Vous pouvez inverser ou combiner des expressions booléenes en utilisant un opérateur
+logique.
 
 |-----------------------------+-------------------------------------------|
-| Operator                    | Meaning                                   |
+| Operateur                   | Signification                             |
 |-----------------------------+-------------------------------------------|
-| <code>!<em>expr</em></code> | inverts the following expression (changes false to true, and vice versa)
-| `||`                        | logical OR
-| `&&`                        | logical AND
+| <code>!<em>expr</em></code> | Inverse l'expression qui le suite (change faux en vrai, et vice versa)
+| `||`                        | OU logique
+| `&&`                        | ET logique
 {:.table .table-striped}
 
-Here’s an example of using the logical operators:
+Voici un exemple d'utilisateur des opérateurs logiques :
 
 <!-- ch02/op_logical.dart -->
 {% prettify dart %}
 if (!done && (col == 0 || col == 3)) {
-  // ...Do something...
+  // ...Fait quelque chose...
 }
 {% endprettify %}
 
 
-### Bitwise and shift operators {#bitwise-and-shift-operators}
+### Opérateurs binaires et de décalage de bits {#bitwise-and-shift-operators}
 {:.no_toc}
 
-You can manipulate the individual bits of numbers in Dart. Usually,
-you’d use these bitwise and shift operators with integers.
+Vous pouvez manipuler invididuellement les bits des nombres en Dart. Généralement,
+vous utiliserez ces opérateurs binaire et de décalage de bits avec des entiers.
 
 |-----------------------------+-------------------------------------------|
 | Operator                    | Meaning                                   |
@@ -1323,29 +1322,29 @@ Here’s an example of using bitwise and shift operators:
 final value = 0x22;
 final bitmask = 0x0f;
 
-assert((value & bitmask)  == 0x02);  // AND
-assert((value & ~bitmask) == 0x20);  // AND NOT
-assert((value | bitmask)  == 0x2f);  // OR
-assert((value ^ bitmask)  == 0x2d);  // XOR
-assert((value << 4)       == 0x220); // Shift left
-assert((value >> 4)       == 0x02);  // Shift right
+assert((value & bitmask)  == 0x02);  // ET
+assert((value & ~bitmask) == 0x20);  // ET NON
+assert((value | bitmask)  == 0x2f);  // OU
+assert((value ^ bitmask)  == 0x2d);  // OU Exclusif
+assert((value << 4)       == 0x220); // Décalage à gauche
+assert((value >> 4)       == 0x02);  // Décalage à droite
 {% endprettify %}
 
 
-### Other operators {#other-operators}
+### Autres opérateurs {#other-operators}
 {:.no_toc}
 
-A few operators remain, most of which you’ve already seen in other
-examples.
+Il reste quelques opérateurs, vous en avez déjà vu la plupart dans les
+autres exemples.
 
-|----------+-------------------------------------------|
-| Operator | Name              |              Meaning                                   |
 |-----------+-------------------------------------------|
-| `()`     | Function application | Represents a function call
-| `[]`     | List access          | Refers to the value at the specified index in the list
-| <code><em>expr1</em> ? <em>expr2</em> : <em>expr3</em> | Conditional | If _expr1_ is true, executes _expr2_; otherwise, executes _expr3_
-| `.`      | Member access        | Refers to a property of an expression; example: `foo.bar` selects property `bar` from expression `foo`
-| `..`     | Cascade              | Allows you to perform multiple operations on the members of a single object; described in [Classes](#classes)
+| Operateur | Nom              |              Signification                                   |
+|-----------+-------------------------------------------|
+| `()`     | Applique une fonction | Représente un appel de fonction
+| `[]`     | Accède une liste          | Réfère à la valeur à l'index spécifié dans la liste
+| <code><em>expr1</em> ? <em>expr2</em> : <em>expr3</em> | Conditionnel | Si _expr1_ est vraie, exécute _expr2_; sinon, exécute _expr3_
+| `.`      | Accède un membre        | Réfère à une propriété d'une expression; exemple: `foo.bar` selectionne la propriété `bar` de l'expression `foo`
+| `..`     | Cascade              | Vous permet d'effectuer plusieurs opération sur les membres d'un même objet; décrit dans [Classes](#classes)
 {:.table .table-striped}
 
 
