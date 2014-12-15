@@ -2964,35 +2964,37 @@ main() {
 
 ## Metadata {#metadata}
 
+Utilisez les metadata pour donner de l'information complémentaire à votre code.
+Une annotation metadata commence par le caratère `@`, suivi par soit une référence
+à une constante de compilation (telle que `deprecated`) ou un appel à un constructeur constant.
 Use metadata to give additional information about your code. A metadata
 annotation begins with the character `@`, followed by either a reference
 to a compile-time constant (such as `deprecated`) or a call to a
 constant constructor.
 
-Three annotations are available to all Dart code: `@deprecated`,
-`@override`, and `@proxy`. For examples of using `@override` and
-`@proxy`, see [Extending a class](#extending-a-class).
-Here’s an example of using the `@deprecated`
-annotation:
+Trois annotations sont disponibles pour tout code Dart : `@deprecated`,
+`@override`, et `@proxy`. Pour des exemples d'utilisation de `@override` et
+`@proxy`, voir [Extending a class](#extending-a-class).
+Voici un exemple d'utilisation de l'annotation `@deprecated` :
 
 <!-- ch02/ch02_meta/bin/ch02_meta.dart -->
 {% prettify dart %}
 class Television {
-  /// _Deprecated: Use [turnOn] instead._
-  @deprecated      // Metadata; makes Dart Editor warn about using activate().
-  void activate() {
-    turnOn();
+  /// _Deprecated: Utiliser [allumer] à la place._
+  @deprecated      // Metadata; fait en sorte que Dart Editor alerte sur l'utilisation de activate().
+  void activer() {
+    allumer();
   }
 
-  /// Turns the TV's power on.
-  void turnOn() {
+  /// Allume la télé.
+  void allumer() {
     print('on!');
   }
 }
 {% endprettify %}
 
-You can define your own metadata annotations. Here’s an example of
-defining a @todo annotation that takes two arguments:
+Vous pouvez définir vos propres annotations metadata. Voici un exemple de
+définition de l'annotation @todo qui prend deux arguments :
 
 <!-- ch02/ch02_meta_create/todo.dart -->
 {% prettify dart %}
@@ -3006,7 +3008,7 @@ class todo {
 }
 {% endprettify %}
 
-And here’s an example of using that @todo annotation:
+Et voici un exemple d'utilisation de cette annocation @todo :
 
 <!-- ch02/ch02_meta_create/metadata_user.dart -->
 {% prettify dart %}
@@ -3018,29 +3020,28 @@ void doSomething() {
 }
 {% endprettify %}
 
-Metadata can appear before a library, class, typedef, type parameter,
-constructor, factory, function, field, parameter, or variable
-declaration and before an import or export directive. You can
-retrieve metadata at runtime using reflection.
+Les metadatas peuvent apparaitre avant une déclaration de librairie, classe, typedef, paramètre de type,
+constructeur, factory, fonction, champ, paramètre, ou variable et avant un import ou export de directive.
+Vous pouvez récupérer les metadatas durant l'execution en utilisant la réflexion.
 
 
-## Comments {#comments}
+## Commentaires {#comments}
 
-Dart supports single-line comments, multi-line comments, and
-documentation comments.
+Dart supporte les commentaires sur une ou plusieurs lignes et
+les commentaires de documentation.
 
 
-### Single-line comments {#single-line-comments}
+### Commentaires d'une ligne {#single-line-comments}
 {:.no_toc}
 
-A single-line comment begins with `//`. Everything between `//` and the
-end of line is ignored by the Dart compiler.
+Une commentaire d'une ligne comment par `//`. Tout entre `//` et la
+fin de la ligne est ignoré par le compilateur Dart.
 
 <!-- ch02/single_line_comments.dart -->
 {% prettify dart %}
 main() {
-  // TODO: refactor into an AbstractLlamaGreetingFactory?
-  print('Welcome to my Llama farm!');
+  // TODO: refactorer en AbstractLlamaGreetingFactory?
+  print('Bienvenue à ma ferme de Llama !');
 }
 {% endprettify %}
 
