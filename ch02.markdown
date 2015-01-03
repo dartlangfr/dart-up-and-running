@@ -496,78 +496,81 @@ Pour plus d'information sur comment utiliser les chaînes de caractères, voir
 [Chaînes de caractères et expressions régulières](ch03.html#strings-and-regular-expressions).
 
 
-### Booleans {#booleans}
+### Booléens {#booleans}
 {:.no_toc}
 
-To represent boolean values, Dart has a type named `bool`. Only two
-objects have type bool: the boolean literals, `true` and `false`.
+Pour représenter les valeurs booléennes, Dart a un type nommé `bool`. 
+Seulement deux objets ont le type booléen: les valeurs littérales 
+`true` et `false`, respectivement vrai et faux.
 
-When Dart expects a boolean value, only the value `true` is treated as
-true. All other values are treated as false. Unlike in JavaScript,
-values such as `1`, `"aString"`, and `someObject` are all treated as
-false.
+Lorsque Dart s'attend à une valeur booléenne, seulement la valeur `true`
+est considérée comme vraie. Toutes les autres valeurs sont considérées
+comme fausses. Contrairement à JavaScript, les valeurs telles que `1`, 
+`"uneChaineDeCaractères"`, et `unObjet` sont toutes considérées comme 
+fausses.
 
-For example, consider the following code, which is valid both as
-JavaScript and as Dart code:
+Par exemple, considérons le code suivant qui est valide en JavaScript et
+en Dart :
 
 <!-- ch02/strictly_booleans.dart -->
 {% prettify dart %}
-var name = 'Bob';
-if (name) {
-  print('You have a name!'); // Prints in JavaScript, not in Dart.
+var nom = 'Bob';
+if (nom) {
+  print('Tu as un nom !'); // S'affiche en JavaScript, mais pas en Dart.
 }
 {% endprettify %}
 
-If you run this code as JavaScript, it prints “You have a name!” because
-`name` is a non-null object. However, in Dart running in *production
-mode*, the preceding code doesn’t print at all because `name` is converted to
-`false` (because `name
-      != true`). In Dart running in *checked mode*, the preceding code
-throws an exception because the `name` variable is not a bool.
+Si vous lancez ce code en JavaScript, il affiche “Tu as un nom !” car 
+`nom` est un objet non null. Par contre, en Dart tournant dans un mode 
+production, le code précédent n'affiche rien car `nom` est converti 
+en `false` (car `nom != true`). En Dart tournant dans un mode de 
+vérification le code précédent lance une exception car la variable `nom`
+n'est pas un booléen.
 
-Here’s another example of code that behaves differently in JavaScript
-and Dart:
+Voici un autre exemple de code qui se comporte différement entre 
+JavaScript et Dart :
 
 <!-- ch02/if_one.dart -->
 {% prettify dart %}
 if (1) {
-  print('JavaScript prints this line because it thinks 1 is true.');
+  print('JavaScript affiche cette ligne car il pense que 1 est vrai.');
 } else {
-  print('Dart in production mode prints this line.');
-  // However, in checked mode, if (1) throws an exception.
+  print('Dart en mode production affiche cette ligne.');
+  // Cependant, en mode vérification, if (1) lance une exception.
 }
 {% endprettify %}
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
-The previous two samples work only in production mode, not checked
-mode. In checked mode, an exception is thrown if a non-boolean is used
-when a boolean value is expected.
+Les deux examples précédents fonctionnent seulement en mode production, 
+pas en mode vérification. En mode vérification, une exception est lancée
+si un non-booléen est utilisé alors qu'une valeur booléenne est attendue.
 </aside>
 
-Dart’s treatment of booleans is designed to avoid the strange behaviors
-that can arise when many values can be treated as true. What this means
-for you is that, instead of using code like
-<code>if (<em>nonbooleanValue</em>)</code>, you should instead
-explicitly check for values. For example:
+Le traitement des booléens en Dart a été conçu de façon à éviter des 
+comportements étranges qui peuvent arriver lorsque de nombreuses valeurs
+sont considérées comme vraie. Ce qui signifie pour vous c'est que, 
+au lieu d'utiliser du code comme 
+<code>if (<em>valeurNonBooleene</em>)</code>, il faut plutôt 
+vérifier explicitement les valeurs. Par exemple :
 
 <!-- ch02/empty_string.dart -->
 {% prettify dart %}
-// Check for an empty string.
-var fullName = '';
-assert(fullName.isEmpty);
+// Vérifie que la chaîne de caractères est vide.
+var nom = '';
+assert(nom.isEmpty);
 
-// Check for zero.
-var hitPoints = 0;
-assert(hitPoints <= 0);
+// Vérifie si la valeur est zero.
+var pointDeVie = 0;
+assert(pointDeVie <= 0);
 
-// Check for null.
-var unicorn;
-assert(unicorn == null);
+// Vérifie si la valeur est null.
+var unicorne;
+assert(unicorne == null);
 
-// Check for NaN.
-var iMeantToDoThis = 0 / 0;
-assert(iMeantToDoThis.isNaN);
+// Vérifie si la valeur n'est pas un nombre.
+var jeVoulaisLeFaire = 0 / 0;
+assert(jeVoulaisLeFaire.isNaN);
 {% endprettify %}
 
 
@@ -3142,3 +3145,4 @@ Dart.](/articles/idiomatic-dart/)
 
 <hr>
 {% include book-nav.html %}
+
