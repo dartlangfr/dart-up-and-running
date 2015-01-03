@@ -691,25 +691,26 @@ For more information about maps, see
 [Maps](ch03.html#maps).
 
 
-### Symbols {#symbols}
+### Symboles {#symbols}
 {:.no_toc}
 
-A [Symbol](http://api.dartlang.org/dart_core/Symbol.html) object
-represents an operator or identifier declared in a Dart program. You
-might never need to use symbols, but they're invaluable for APIs that
-refer to identifiers by name, because minification changes identifier
-names but not identifier symbols.
+Un objet [Symbol](http://api.dartlang.org/dart_core/Symbol.html) 
+représente un opérateur ou un identifiant déclaré dans un programme 
+Dart. Vous n'aurait peut être jamais le besoin d'utiliser les symboles,
+mais ils sont indispensables pour les APIs qui font référence à un 
+identifiant par son nom, car la minification change les noms des 
+identifiants mais pas ceux des symboles.
 
-To get the symbol for an identifier, use a symbol literal, which is just
-`#` followed by the identifier:
+Pour obtenir le symbole pour un identifiant, utilisez un symbole 
+littéral, qui est juste un `#` suivi de l'identifiant :
 
 <!-- ch02/symbols.dart -->
 {% prettify dart %}
-#radix  // The symbol literal for an identifier named 'radix'.
-#bar    // The symbol literal for an identifier named 'bar'.
+#radix  // Le symbole littéral pour l'identifiant nommé 'radix'.
+#bar    // Le symbole littéral pour l'identifiant nommé 'bar'.
 {% endprettify %}
 
-For more information on symbols, see
+Pour plus d'information sur les symboles, voir
 [dart:mirrors - reflection](ch03.html#dartmirrors---reflection).
 
 
