@@ -609,85 +609,90 @@ Pour plus d'information sur les listes, voir [Generiques](#generics) et
 [Collections](ch03.html#collections).
 
 
-### Maps {#maps}
+### Dictionnaires {#maps}
 {:.no_toc}
 
-In general, a map is an object that associates keys and values. Both
-keys and values can be any type of object. Each *key* occurs only once,
-but you can use the same *value* multiple times. Dart support for maps
-is provided by map literals and the
-[Map](http://api.dartlang.org/dart_core/Map.html) type.
+En général, un dictionnaire est un objet qui associe des clés et des 
+valeurs. Clés et valeurs peuvent être de n'importe quel type d'objet.
+Chaque *clé* n'apparait qu'une seule fois, mais vous pouvez utiliser 
+une même *valeur* plusieurs fois. Le support des dictionnaires par Dart
+est fait grâce aux dictionnaires en valeurs littérales et au type 
+[Map](http://api.dartlang.org/dart_core/Map.html).
 
-Here are a couple of simple Dart maps, created using map literals:
+Voici quelques exemples simples de dictionnaire en Dart, crées en 
+utilisant des valeurs littérales :
 
 <!-- ch02/map_literal.dart -->
 {% prettify dart %}
-var gifts = {
-// Keys      Values
-  'first' : 'partridge',
-  'second': 'turtledoves',
-  'fifth' : 'golden rings'
+var cadeaux = {
+// Clés          Valeurs
+  'premier'   : 'perdrix',
+  'deuxième'  : 'tourterelle',
+  'cinquième' : 'faisan'
 };
 
-var nobleGases = {
-// Keys  Values
-  2 :   'helium',
-  10:   'neon',
+var gazNobles = {
+// Clés  Valeurs
+  2 :   'hélium',
+  10:   'néon',
   18:   'argon',
 };
 {% endprettify %}
 
-You can create the same objects using a Map constructor:
+Vous pouvez créer les mêmes objets en utilisant le constructeur Map :
 
 <!-- ch02/map_constructor.dart -->
 {% prettify dart %}
-var gifts = new Map();
-gifts['first'] = 'partridge';
-gifts['second'] = 'turtledoves';
-gifts['fifth'] = 'golden rings';
+var cadeaux = new Map();
+cadeaux['premier'] = 'perdrix';
+cadeaux['deuxième'] = 'tourterelle';
+cadeaux['cinquième'] = 'anneaux d\'or';
 
-var nobleGases = new Map();
-nobleGases[2] = 'helium';
-nobleGases[10] = 'neon';
-nobleGases[18] = 'argon';
+var gazNobles = new Map();
+gazNobles[2] = 'hélium';
+gazNobles[10] = 'néon';
+gazNobles[18] = 'argon';
 {% endprettify %}
 
-Add a new key-value pair to an existing map just as you would in
-JavaScript:
+Ajoutez une nouvelle paire clé-valeur à un dictionnaire existant comme
+vous le feriez en JavaScript :
 
 <!-- ch02/map_add_item.dart -->
 {% prettify dart %}
-var gifts = {'first': 'partridge'};
-gifts['fourth'] = 'calling birds'; // Add a key-value pair
+var cadeaux = {'premier': 'perdrix'};
+cadeaux['quatrième'] = 'merles noirs'; // Ajoute une paire clé-valeur
 {% endprettify %}
 
-Retrieve a value from a map the same way you would in JavaScript:
+Récupérez une valeur d'un dictionnaire de la même façon que vous le 
+feriez en JavaScript :
 
 <!-- ch02/map_retrieve_item.dart -->
 {% prettify dart %}
-var gifts = {'first': 'partridge'};
-assert(gifts['first'] == 'partridge');
+var cadeaux = {'premier': 'perdrix'};
+assert(cadeaux['premier'] == 'perdrix');
 {% endprettify %}
 
-If you look for a key that isn’t in a map, you get a null in return:
+Si vous cherchez une clé qui n'est pas dans le dictionnaire, vous 
+obtenez un null en retour :
 
 <!-- ch02/map_missing_key.dart -->
 {% prettify dart %}
-var gifts = {'first': 'partridge'};
-assert(gifts['fifth'] == null);
+var cadeaux = {'premier': 'perdrix'};
+assert(cadeaux['cinquième'] == null);
 {% endprettify %}
 
-Use `.length` to get the number of key-value pairs in the map:
+Utilisez `.length` pour obtenir le nombre de paires clé-valeur dans le 
+dictionnaire :
 
 <!-- ch02/map_length.dart -->
 {% prettify dart %}
-var gifts = {'first': 'partridge'};
-gifts['fourth'] = 'calling birds';
-assert(gifts.length == 2);
+var cadeaux = {'premier': 'perdrix'};
+cadeaux['quatrième'] = 'merles noirs';
+assert(cadeaux.length == 2);
 {% endprettify %}
 
-For more information about maps, see
-[Generics](#generics) and
+Pour plus d'information sur les dictionnaires, voir
+[Generics](#generics) et
 [Maps](ch03.html#maps).
 
 
