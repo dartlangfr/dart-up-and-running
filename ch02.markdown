@@ -3140,13 +3140,13 @@ your comments, see [Guidelines for Dart Doc
 Comments.](/articles/doc-comment-guidelines/)
 
 
-## Summary {#summary}
+## Résumé {#summary}
 
-This chapter summarized the commonly used features in the Dart language.
-More features are being implemented, but we expect that they won’t break
-existing code. For more information, see the [Dart Language
-Specification](/docs/spec/) and
-[articles](/articles/) such as [Idiomatic
+Ce chapitre résume les fonctionnalités les plus communes dans le langage
+Dart. D'autres fonctionnalités sont en train d'être implémentées, et nous 
+espérons qu'elles ne casseront pas le code existant. Pour plus 
+d'information, voir la [Spécification du Langage Dart](/docs/spec/) et 
+les [articles](/articles/) tel que [Idiomatic 
 Dart.](/articles/idiomatic-dart/)
 
 
