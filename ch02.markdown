@@ -206,93 +206,95 @@ Vous ne pouvez pas utiliser les mots réservés en tant qu’identifiant.
 
 ## Variables {#variables}
 
-Here’s an example of creating a variable and assigning a value to it:
+
+Ici un exemple de création de variables et d'affectation de valeur:
 
 <!-- ch02/creating_a_variable.dart -->
 {% prettify dart %}
 var name = 'Bob';
 {% endprettify %}
 
-Variables are references. The variable called `name` contains a
-reference to a String object with a value of “Bob”.
+Les variables sont des références. La variable `name` contient une référence
+vers une chaine de caractères qui a pour valeur “Bob”.
 
 
-### Default value {#default-value}
+### Valeur par défaut {#default-value}
 {:.no_toc}
 
-Uninitialized variables have an initial value of `null`. Even variables
-with numeric types are initially null, because numbers are objects.
+Les variables non initialisées ont `null` pour valeur initiale, même les
+variables numériques car les nombres sont des objets.
 
 <!-- ch02/numbers_are_objects.dart -->
 {% prettify dart %}
 int lineCount;
 assert(lineCount == null);
-// Variables (even if they will be numbers) are initially null.
+// Les variables (même si numériques) sont initialisées à null.
 {% endprettify %}
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
-The `assert()` call is ignored in production mode. In checked mode,
-<code>assert(<em>condition</em>)</code>
-throws an exception unless *condition* is true. For details,
-see the [Assert](#assert) section.
+L'appel à `assert()` est ignoré en mode production. Par contre en mode vérification,
+<code>assert(<em>condition</em>)</code> lance une exception si *condition*
+est fausse. Pour plus d'informations, voir la section [Assert](#assert).
 </aside>
 
 
-### Optional types {#optional-types}
+### Types optionnels {#optional-types}
 {:.no_toc}
 
-You have the option of adding static types to your variable
-declarations:
+Vous avez la possibilité d'assigner un type statique à une variable lors de sa déclaration:
 
 <!-- ch02/static_types.dart -->
 {% prettify dart %}
 String name = 'Bob';
 {% endprettify %}
 
-Adding types is a way to clearly express your intent. Tools such as
-compilers and editors can use these types to help you, by providing code
-completion and early warnings for bugs and code completion.
+Mettre des types est un bon moyen de spécifier son intention. Les outils comme les
+compilateurs et éditeurs peuvent utiliser ces types pour vous aider, en
+fournissant de la l'auto-complétion de code ou des alertes préventives sur des
+bugs.
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
-This chapter follows the [style guide
-recommendation](/articles/style-guide/#type-annotations)
-of using `var`, rather than type annotations, for local variables.
+Ce chapitre suit la [convention de code](/articles/style-guide/#type-annotations)
+d'utiliser `var` plutôt que des statiques pour des variables locales.
 </aside>
 
 
-### Final and const {#final-and-const}
+### Final et const {#final-and-const}
 {:.no_toc}
 
-If you never intend to change a variable, use `final` or `const`, either
-instead of `var` or in addition to a type. A final variable can be set
-only once; a const variable is a compile-time constant.
+Si vous n'avez pas l'intention de changer une variable, utiliser `final` ou
+`const`, plutôt que `var` ou en complément à un type. Une variable final peut
+seulement être affectée une fois; une variable const peut être une constante de
+compilation.
 
-A top-level or class variable that’s declared as `final` is initialized
-the first time it’s used:
+Une variable de premier niveau ou de classe déclarée comme `final` est initialisée
+à sa première utilisation:
 
 <!-- ch02/final_initialization.dart -->
 {% prettify dart %}
-final name = 'Bob';   // Or: final String name = 'Bob';
-// name = 'Alice';    // Uncommenting this results in an error
+final nom = 'Bob';   // Ou: final String nom = 'Bob';
+// nom = 'Alice';    // Décommenter cette ligne produit une erreur.
 {% endprettify %}
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
-Lazy initialization of final variables helps apps start up faster.
+L'initialisation paresseuse d'une variable final aide à rendre le démarrage d'une
+application plus rapide.
 </aside>
 
-Use `const` for variables that you want to be compile-time constants. If
-the const variable is at the class level, mark it `static const`.
-(Instance variables can’t be const.) Where you declare the variable, set
-the value to a compile-time constant such as a literal, a const
-variable, or the result of an arithmetic operation on constant numbers:
+Utilisez `const` pour les variables que vous souhaitez utiliser comme constantes de
+compilation. Si la variable const est au niveau de la classe, mettez la en
+`static const` (les variables d'instances ne peuvent pas être const). Là où vous
+déclarez la variable, mettez la valeur en constante de compilation comme
+litérale, une variable const, ou le résultat d'une opération arithmétique sur
+une constante numérique.
 
 <!-- ch02/const.dart -->
 {% prettify dart %}
-const bar = 1000000;       // Unit of pressure (in dynes/cm2)
-const atm = 1.01325 * bar; // Standard atmosphere
+const bar = 1000000;       // Unité de pression (en dynes/cm2)
+const atm = 1.01325 * bar; // Atmosphere standard
 {% endprettify %}
 
 
