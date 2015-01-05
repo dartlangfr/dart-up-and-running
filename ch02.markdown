@@ -1367,63 +1367,61 @@ autres exemples.
 {:.table .table-striped}
 
 
-## Control flow statements {#control-flow-statements}
+##  Structures de contrôle {#control-flow-statements}
 
-You can control the flow of your Dart code using any of the following:
+Vous pouvez contrôler le flux d'exécution de votre code Dart en utilisant :
 
--   `if` and `else`
+-   `if` et `else`
 
--   `for` loops
+-   boucles `for`
 
--   `while` and `do`-`while` loops
+-   boucles `while` et `do`-`while`
 
--   `break` and `continue`
+-   `break` et `continue`
 
--   `switch` and `case`
+-   `switch` et `case`
 
 -   `assert`
 
-You can also affect the control flow using `try-catch` and `throw`, as
-explained in [Exceptions](#exceptions).
+Vous pouvez aussi modifier le flux en utilisant `try-catch` et `throw`, comme expliqué dans [Exceptions](#exceptions).
 
 
-### If and else {#if-and-else}
+### If et else {#if-and-else}
 {:.no_toc}
 
-Dart supports `if` statements with optional `else` statements, as the
-next sample shows. Also see conditional expressions (?:), which are
-covered in [Other operators](#other-operators).
+Dart permet les instructions `if` avec des instructions `else` optionnelles, comme le montre l'exemple suivant.
+Voir aussi les expressions conditionnelles, qui sont abordées dans [Autres opérateurs](#other-operators).
 
 <!-- ch02/flow_if_else.dart -->
 {% prettify dart %}
-if (isRaining()) {
-  you.bringRainCoat();
-} else if (isSnowing()) {
-  you.wearJacket();
+if (estPluvieux()) {
+  vous.prendreImpermeable();
+} else if (estNeigeux()) {
+  vous.porterBlouson();
 } else {
-  car.putTopDown();
+  voiture.conduireDecapotable();
 }
 {% endprettify %}
 
-Remember, unlike JavaScript, Dart treats all values other than `true` as
-`false`. See [Booleans](#booleans) for more information.
+N'oubliez pas, contrairement à JavaScript, Dart considère toutes les valeurs autre que `true` comme `false`. 
+Voir [Booléens](#booleans) pour plus d'informations.
 
 
-### For loops {#for-loops}
+### Boucles for {#for-loops}
 {:.no_toc}
 
-You can iterate with the standard `for` loop. For example:
+Vous pouvez itérer avec une boucle `for` classique. Par exemple :
 
 <!-- ch02/flow_for_loops.dart -->
 {% prettify dart %}
-var message = new StringBuffer("Dart is fun");
+var message = new StringBuffer("Dart est fun");
 for (var i = 0; i < 5; i++) {
   message.write('!');
 }
 {% endprettify %}
 
-Closures inside of Dart’s `for` loops capture the value of the index,
-avoiding a common pitfall found in JavaScript. For example, consider:
+Les closures à l'intérieur d'une boucle capturent la valeur de l'index, évitant un piège classique existant en Javascript.
+Par exemple, prenons :
 
 <!-- ch02/flow_for_loops.dart -->
 {% prettify dart %}
@@ -1434,21 +1432,18 @@ for (var i = 0; i < 2; i++) {
 callbacks.forEach((c) => c());
 {% endprettify %}
 
-The output is `0` and then `1`, as expected. In contrast, the example
-would print `2` and then `2` in JavaScript.
+La sortie est `0` puis `1` comme voulu. A l'inverse, l'exemple afficherait `2` puis `2` en JavaScript.
 
-If the object that you are iterating over is an Iterable, you can use the
-<a href="https://api.dartlang.org/apidocs/channels/stable/dartdoc-viewer/dart-core.Iterable#id_forEach"><code>forEach()</code> method.</a>
-Using `forEach()` is a good option if you don’t need to
-know the current iteration counter:
+Si l'objet sur lequel on itére est un Iterable, vous pouvez utiliser la
+<a href="https://api.dartlang.org/apidocs/channels/stable/dartdoc-viewer/dart-core.Iterable#id_forEach">méthode <code>forEach()</code>.</a>
+Utiliser `forEach()` est une bonne solution si vous n'avez pas besoin de connaître la valeur courante du compteur incrémental:
 
 <!-- ch02/flow_for_loops.dart -->
 {% prettify dart %}
-candidates.forEach((candidate) => candidate.interview());
+candidats.forEach((candidat) => candidat.entretien());
 {% endprettify %}
 
-Iterable classes such as List and Set also support the `for-in` form of
-[iteration](ch03.html#iteration):
+Les classes Iterable tel que List et Set autorisent aussi les [itérations](ch03.html#iteration) `for-in` :
 
 <!-- ch02/flow_for_loops.dart -->
 {% prettify dart %}
@@ -1459,184 +1454,180 @@ for (var x in collection) {
 {% endprettify %}
 
 
-### While and do-while {#while-and-do-while}
+### While et do-while {#while-and-do-while}
 {:.no_toc}
 
-A `while` loop evaluates the condition before the loop:
+Une boucle `while` évalue la condition avant la boucle :
 
 <!-- ch02/flow_while.dart -->
 {% prettify dart %}
-while (!isDone()) {
-  doSomething();
+while (!estFait()) {
+  faireQuelqueChose();
 }
 {% endprettify %}
 
-A `do`-`while` loop evaluates the condition *after* the loop:
+Une boucle `do`-`while` évalue la condition *après* la boucle :
 
 <!-- ch02/flow_while.dart -->
 {% prettify dart %}
 do {
-  printLine();
-} while (!atEndOfPage());
+  afficherLigne();
+} while (!aLaFinDePage());
 {% endprettify %}
 
 
-### Break and continue {#break-and-continue}
+### Break et continue {#break-and-continue}
 {:.no_toc}
 
-Use `break` to stop looping:
+Utiliser `break` pour stopper une boucle :
 
 <!-- ch02/flow_break_continue.dart -->
 {% prettify dart %}
 while (true) {
-  if (shutDownRequested()) break;
-  processIncomingRequests();
+  if (extinctionDemandee()) break;
+  traitementDesRequetesEntrantes();
 }
 {% endprettify %}
 
-Use `continue` to skip to the next loop iteration:
+Utiliser `continue` pour  passer à la prochaine itération de la boucle:
 
 <!-- ch02/flow_break_continue.dart -->
 {% prettify dart %}
-for (int i = 0; i < candidates.length; i++) {
-  var candidate = candidates[i];
-  if (candidate.yearsExperience < 5) {
+for (int i = 0; i < candidats.length; i++) {
+  var candidat = candidats[i];
+  if (candidat.anneeExperience < 5) {
     continue;
   }
-  candidate.interview();
+  candidat.entretien();
 }
 {% endprettify %}
 
-You might write that example differently if you’re using a
-[Iterable](http://api.dartlang.org/dart_core/Iterable.html) such as a
-list or set:
+Vous pourriez écrire cet exemple différement si vous utilisez un [Iterable](http://api.dartlang.org/dart_core/Iterable.html) 
+comme une liste ou un set :
 
 <!-- ch02/flow_break_continue.dart -->
 {% prettify dart %}
-candidates.where((c) => c.yearsExperience >= 5)
-          .forEach((c) => c.interview());
+candidats.where((c) => c.anneeExperience >= 5)
+          .forEach((c) => c.entretien());
 {% endprettify %}
 
 
-### Switch and case {#switch-and-case}
+### Switch et case {#switch-and-case}
 {:.no_toc}
 
-Switch statements in Dart compare integer, string, or compile-time
-constants using `==`. The compared objects must all be instances of the
-same class (and not of any of its subtypes), and the class must not
-override `==`.
+Les instructions switch en Dart comparent les entiers, chaines de caractères, 
+ou constantes de compilations en utilisant `==. Les objets comparés doivent 
+tous être des instances de la même classe (et non pas l'un de ses sous types), 
+et la classe doit surcharger `==`.
 
-Each non-empty `case` clause ends with a `break` statement, as a rule.
-Other valid ways to end a non-empty `case` clause are a `continue`,
-`throw`, or `return` statement.
+Chaque `case` non vide prend fin avec une instruction `break`, c'est une règle.
+Une autre façon possible de fermer un `case` non vide et une instruction `continue`, 
+`throw` ou `return`.
 
-Use a `default` clause to execute code when no `case` clause matches:
+Utiliser une clause `default` pour exécuter du code lorsque aucune clause ne correspond :
 
 <!-- ch02/flow_switch_case.dart -->
 {% prettify dart %}
-var command = 'OPEN';
-switch (command) {
-  case 'CLOSED':
-    executeClosed();
+var commande = 'OUVRIR';
+switch (commande) {
+  case 'FERME':
+    executeFerme();
     break;
-  case 'PENDING':
-    executePending();
+  case 'EN_ATTENTE':
+    executeEnAttente();
     break;
-  case 'APPROVED':
-    executeApproved();
+  case 'APPOUVE':
+    executeApprouve();
     break;
-  case 'DENIED':
-    executeDenied();
+  case 'INTERDIT':
+    executeInterdit();
     break;
-  case 'OPEN':
-    executeOpen();
+  case 'OUVERT':
+    executeOuvert();
     break;
   default:
-    executeUnknown();
+    executeInconnu();
 }
 {% endprettify %}
 
-The following example omits the `break` statement in the `case` clause,
-thus generating an error:
+L'exemple suivant omet l'instruction `break` de la clause `case`, ce qui génère une erreur :
 
 <!-- ch02/flow_switch_case.dart -->
 {% prettify dart %}
-var command = 'OPEN';
-switch (command) {
-  case 'OPEN':
-    executeOpen();
-    // ERROR: Missing break causes an exception to be thrown!!
+var commande = 'OUVERT';
+switch (commande) {
+  case 'OUVERT':
+    executeOuvert();
+    // ERREUR: Break manquant provoque une levée d'exception.
 
+  case 'FERME':
+    executeFerme();
+    break;
+}
+{% endprettify %}
+
+Cependant, Dart permet une clause `case` vide, autorisant un bloc passant au travers :
+
+<!-- ch02/flow_switch_case.dart -->
+{% prettify dart %}
+var commande = 'FERME';
+switch (commande) {
+  case 'FERME': // Cas vide, passe au travers
+  case 'FERME_IMMEDIAT':
+    // Executé à la fois pour FERME et FERME_IMMEDIAT.
+    executeFermeImmediat();
+    break;
+}
+{% endprettify %}
+
+Si vous voulez vraiment passer au travers, vous pouvez utiliser une instruction `continue`
+et une étiquette :
+
+<!-- ch02/flow_switch_case.dart -->
+{% prettify dart %}
+var commande = 'FERME';
+switch (commande) {
   case 'CLOSED':
-    executeClosed();
+    executeFerme();
+    continue maintenantFerme; // Continue l'exécution à l'étiquette maintenantFerme
+
+maintenantFerme:
+  case 'MAINTENANT_FERME':
+    // Executé à la fois pour FERME et MAINTENANT_FERME.
+    executeMaintenantFerme();
     break;
 }
 {% endprettify %}
 
-However, Dart does support empty `case` clauses, allowing a form of
-fall-through:
-
-<!-- ch02/flow_switch_case.dart -->
-{% prettify dart %}
-var command = 'CLOSED';
-switch (command) {
-  case 'CLOSED': // Empty case falls through.
-  case 'NOW_CLOSED':
-    // Runs for both CLOSED and NOW_CLOSED.
-    executeNowClosed();
-    break;
-}
-{% endprettify %}
-
-If you really want fall-through, you can use a `continue` statement and
-a label:
-
-<!-- ch02/flow_switch_case.dart -->
-{% prettify dart %}
-var command = 'CLOSED';
-switch (command) {
-  case 'CLOSED':
-    executeClosed();
-    continue nowClosed; // Continues executing at the nowClosed label.
-
-nowClosed:
-  case 'NOW_CLOSED':
-    // Runs for both CLOSED and NOW_CLOSED.
-    executeNowClosed();
-    break;
-}
-{% endprettify %}
-
-A `case` clause can have local variables, which are visible only inside
-the scope of that clause.
+Une clause `case` peut avoir des variables locales, qui peuvent être visible seulement
+à l'intérieur de la portée de cette clause.
 
 
 ### Assert {#assert}
 {:.no_toc}
 
-Use an `assert` statement to disrupt normal execution if a boolean
-condition is false. You can find examples of assert statements
-throughout this tour. Here are some more:
+Utiliser une instruction assert pour empécher l'exécution normale si une condition booléene 
+est fausse. Vous pouvez trouver des exemples de déclarations assert
+tout au long de cet ouvrage. En voici un de plus :
 
 <!-- ch02/flow_assert.dart -->
 {% prettify dart %}
-assert(text != null);  // Make sure the variable has a non-null value.
-assert(number < 100);  // Make sure the value is less than 100.
-assert(urlString.startsWith('https')); // Make sure this is an HTTPS URL.
+assert(text != null);  // S'assure que la variable a une valeur non nulle.
+assert(number < 100);  // S'assure que la valeur est inférieure à 100.
+assert(urlString.startsWith('https')); // S'assure que la valeur est une url https.
 {% endprettify %}
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
-Assert statements work only in checked mode. They have no effect in
-production mode.
+Les instructions assert fonctionnent seulement en mode vérification. Elles n'ont
+aucun effet en mode production.
 </aside>
 
-Inside the parentheses after `assert`, you can put any expression that
-resolves to a boolean value or to a function. If the expression’s value
-or function’s return value is true, the assertion succeeds and execution
-continues. If it's false, the assertion fails and an exception (an
-[AssertionError](http://api.dartlang.org/dart_core/AssertionError.html))
-is thrown.
+A l'intérieur des parenthèses, après `assert`, vous pouvez placer une expression
+qui renvoit une valeur booléene ou une fonction. Si la valeur d'une expression ou
+de la fonction retournée est vraie, l'assertion réussit et l'exécution continue.
+Si elle est fausse, l'assertion échoue et une exception (une 
+[AssertionError](http://api.dartlang.org/dart_core/AssertionError.html)) est levée.
 
 
 ## Exceptions {#exceptions}
