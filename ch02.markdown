@@ -3030,7 +3030,7 @@ les commentaires de documentation.
 ### Commentaires d'une ligne {#single-line-comments}
 {:.no_toc}
 
-Une commentaire d'une ligne comment par `//`. Tout entre `//` et la
+Un commentaire d'une ligne comment par `//`. Tout entre `//` et la
 fin de la ligne est ignoré par le compilateur Dart.
 
 <!-- ch02/single_line_comments.dart -->
@@ -3042,79 +3042,66 @@ main() {
 {% endprettify %}
 
 
-### Multi-line comments {#multi-line-comments}
+### Commentaires de plusieurs lignes {#multi-line-comments}
 {:.no_toc}
 
-A multi-line comment begins with `/*` and ends with `*/`. Everything
-between `/*` and `*/` is ignored by the Dart compiler (unless the
-comment is a documentation comment; see the next section). Multi-line
-comments can nest.
+Une commentaire de plusieurs lignes commence par `/*` et se termine par `*/`.
+Tout entre `/*` et `*/` est ignoré par le compilareur Dart (a moins que le commentaire de soit un commentaire de documentation; voir la section suivante). Les commentaires de plusieurs lignes peuvent s'imbiquer.
 
 <!-- ch02/multi_line_comments.dart -->
 {% prettify dart %}
 main() {
   /*
-   * This is a lot of work. Consider raising chickens.
+   * C'est beaucoup de travail. Envisager l'élevage de poulets.
 
   Llama larry = new Llama();
-  larry.feed();
-  larry.exercise();
-  larry.clean();
+  larry.nourrir();
+  larry.préparer();
+  larry.nettoyer();
    */
 }
 {% endprettify %}
 
 
-### Documentation comments {#documentation-comments}
+### Commentaires de documentation {#documentation-comments}
 {:.no_toc}
 
-Documentation comments are multi-line or single-line comments that begin
-with `///` or `/**`. Using `///` on consecutive lines has the same
-effect as a multi-line doc comment.
+Les commentaires de documentation sont des commentaires d'une ou plusieurs lignes qui commencent
+avec `///` ou `/**`. Utiliser `///` sur plusieurs lignes consécutives a le même effet qu'un commentaire de documentation sur plusieurs lignes.
 
-Inside a documentation comment, the Dart compiler ignores all text
-unless it is enclosed in brackets. Using brackets, you can refer to
-classes, methods, fields, top-level variables, functions, and
-parameters. The names in brackets are resolved in the lexical scope of
-the documented program element.
+Dans un commentaire de documentation, le compilateur Dart ignore tout text sauf si celui-ci est entouré par des crochets.
+En utilisant des crochets, vous pouvez référer à une classe, une méthode, un champ, une variable globale, une fonction et des paramètres. Les noms entre crochets sont résolues dans le champ lexical de l'élément documenté.
 
-Here is an example of documentation comments with references to other
-classes and arguments:
+Voici un exemple de commentaires de documentation qui référencient d'autres classes et arguments:
 
 <!-- ch02/doc_comments.dart -->
 {% prettify dart %}
-/// A domesticated South American camelid (Lama glama).
+/// Une camélidé domestiqué d'amérique du sud (Lama glama).
 ///
-/// Andean cultures have used llamas as meat and pack animals
-/// since pre-Hispanic times.
-class Llama {
-  String name;
+/// Les cultures Andines utilisent les Lamas comme nouriture et animaux de portage
+/// depuis les temps préhistoriques.
+class Lama {
+  String nom;
 
-  /// Feeds your llama [Food].
+  /// Nourris ton lama [Nourriture].
   ///
-  /// The typical llama eats one bale of hay per week.
-  void feed(Food food) {
+  /// Un lama typique mange une botte de foin par semaine.
+  void nourrir(Nourriture nourriture) {
     // ...
   }
 
-  /// Exercises your llama with an [activity] for
-  /// [timeLimit] minutes.
-  void exercise(Activity activity, int timeLimit) {
+  /// Fait travailler ton lama sur une [activité] pour
+  /// [limiteDeTemps] minutes.
+  void travaille(Activité activité, int limiteDeTemps) {
     // ...
   }
 }
 {% endprettify %}
 
-In the generated documentation, `[Food]` becomes a link to the API docs
-for the Food class.
+Dans la documentation générée, `[Nourriture]` devient un lien pour la documentation d'API pour la classe Nourriture.
 
-To parse Dart code and generate HTML documentation, you can use the
-SDK’s [documentation generation
-tool.](/tools/docgen/) For an example of
-generated documentation, see the [Dart API
-documentation.](http://api.dartlang.org) For advice on how to structure
-your comments, see [Guidelines for Dart Doc
-Comments.](/articles/doc-comment-guidelines/)
+Pour parser du code Dart et générer de la documentation HTML, vous pouvez utiliser the SDK [outil de génération de documentation.](/tools/docgen/) Pour un exemple de documentation générée, voir [Documentation API Dart.](http://api.dartlang.org)
+Pour des conseils sur la struturation des commentaire, voir [Guide pour les commentaires de documentation Dart.](/articles/doc-comment-guidelines/)
 
 
 ## Summary {#summary}
