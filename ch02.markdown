@@ -2966,15 +2966,11 @@ main() {
 
 Utilisez les metadata pour donner de l'information complémentaire à votre code.
 Une annotation metadata commence par le caratère `@`, suivi par soit une référence
-à une constante de compilation (telle que `deprecated`) ou un appel à un constructeur constant.
-Use metadata to give additional information about your code. A metadata
-annotation begins with the character `@`, followed by either a reference
-to a compile-time constant (such as `deprecated`) or a call to a
-constant constructor.
+à une constante de compilation (telle que `deprecated`) soit un appel à un constructeur constant.
 
 Trois annotations sont disponibles pour tout code Dart : `@deprecated`,
 `@override`, et `@proxy`. Pour des exemples d'utilisation de `@override` et
-`@proxy`, voir [Extending a class](#extending-a-class).
+`@proxy`, voir [Etendre une classe](#extending-a-class).
 Voici un exemple d'utilisation de l'annotation `@deprecated` :
 
 <!-- ch02/ch02_meta/bin/ch02_meta.dart -->
@@ -2988,7 +2984,7 @@ class Television {
 
   /// Allume la télé.
   void allumer() {
-    print('on!');
+    print('On!');
   }
 }
 {% endprettify %}
@@ -3000,23 +2996,23 @@ définition de l'annotation @todo qui prend deux arguments :
 {% prettify dart %}
 library todo;
 
-class todo {
-  final String who;
-  final String what;
+class aFaire {
+  final String qui;
+  final String quoi;
 
-  const todo(this.who, this.what);
+  const aFaire(this.qui, this.quoi);
 }
 {% endprettify %}
 
-Et voici un exemple d'utilisation de cette annocation @todo :
+Et voici un exemple d'utilisation de cette annotation @todo :
 
 <!-- ch02/ch02_meta_create/metadata_user.dart -->
 {% prettify dart %}
 import 'todo.dart';
 
-@todo('seth', 'make this do something')
-void doSomething() {
-  print('do something');
+@todo('seth', 'Fait faire quelque chose à cette fonction')
+void faitQuelqueChose() {
+  print('Fait quelque chose');
 }
 {% endprettify %}
 
