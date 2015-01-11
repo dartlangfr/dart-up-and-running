@@ -1622,117 +1622,104 @@ is thrown.
 
 ## Exceptions {#exceptions}
 
-Your Dart code can throw and catch exceptions. Exceptions are errors
-indicating that something unexpected happened. If the exception isn’t
-caught, the isolate that raised the exception is suspended, and
-typically the isolate and its program are terminated.
+Votre code Dart peut lever et attraper des exceptions. Les exceptions sont des erreurs indiquant que quelque chose d'inattendu est survenu. Si l'exception n'est pas attrapée, l'isolate qui a levé l'exception est suspendu, et l'isolate et son programme sont interrompus.
 
-In contrast to Java, all of Dart’s exceptions are unchecked exceptions.
-Methods do not declare which exceptions they might throw, and you are
-not required to catch any exceptions.
+Contrairement à Java, toutes les exceptions Dart sont des exceptions incontrôlées.
+Les méthodes ne déclarents par quelles exceptions elles sont susceptible de lever, et il ne vous est pas demandé de toutes les attraper.
 
-Dart provides
-[Exception](http://api.dartlang.org/dart_core/Exception.html) and
+Dart founit les types
+[Exception](http://api.dartlang.org/dart_core/Exception.html) et
 [Error](http://api.dartlang.org/docs/continuous/dart_core/Error.html)
-types, as well as numerous predefined subtypes. You can, of course,
-define your own exceptions. However, Dart programs can throw any
-non-null object—not just Exception and Error objects—as an exception.
+, ainsi que de nombreux sous types prédéfinis. Vous pouvez bien entendu définir vos propre exception. Cependant, les programmes Dart peuvent lever n'importe quel objet non nul comme une exception, pas seulement des objets Exception et Error.
 
 
-### Throw {#throw}
+### Lever une exception {#throw}
 {:.no_toc}
 
-Here’s an example of throwing, or *raising*, an exception:
+Voici un exemple de comment lever une exception :
 
 <!-- PENDING: NEED TEST FOR THIS -->
 {% prettify dart %}
-throw new FormatException('expected at least one section');
+throw new FormatException('au moins une section attendue');
 {% endprettify %}
 
-You can also throw arbitrary objects:
+Vous pouvez également lever n'importe quel type d'objet :
 
 <!-- ch02/flow_exceptions.dart -->
 {% prettify dart %}
-throw 'Out of llamas!';
+throw 'A cours de lamas!';
 {% endprettify %}
 
-Because throwing an exception is an expression, you can throw exceptions
-in =\> statements, as well as anywhere else that allows expressions:
+Lever une exception étant une expression, vous pouvez lever des exceptions dans les instructions =\>, ainsi que dans tout autre endroit permettant les expressions :
 
 <!-- ch02/flow_exceptions.dart -->
 {% prettify dart %}
-distanceTo(Point other) => throw new UnimplementedError();
+distanceJusqua(Point autre) => throw new UnimplementedError();
 {% endprettify %}
 
 
-### Catch {#catch}
+### Attraper une exception {#catch}
 {:.no_toc}
 
-Catching, or capturing, an exception stops the exception from
-propagating. Catching an exception gives you a chance to handle it:
+Attraper, ou capturer une exception interromp la propagation de l'exception. Attraper une exception vous offre la possibilité de la trairer :
 
 <!-- ch02/flow_exceptions.dart -->
 {% prettify dart %}
 try {
-  breedMoreLlamas();
-} on OutOfLlamasException {
-  buyMoreLlamas();
+  eleverPlusDeLamas();
+} on PlusDeLamaException {
+  acheterPlusDeLamas();
 }
 {% endprettify %}
 
-To handle code that can throw more than one type of exception, you can
-specify multiple catch clauses. The first catch clause that matches the
-thrown object’s type handles the exception. If the catch clause does not
-specify a type, that clause can handle any type of thrown object:
+Pour traiter du code qui peut lever plus d'un type d'exception,
+vous pouvez spécifier de multiples clauses catch. La première clause catch qui correspond au type de l'exception levée traite l'exception. Si la clause catch ne spécifie pas de type, cette clause peut traiter n'importe quel type d'objet levé :
 
 <!-- ch02/flow_exceptions.dart -->
 {% prettify dart %}
 try {
-  breedMoreLlamas();
-} on OutOfLlamasException { // A specific exception
-  buyMoreLlamas();
-} on Exception catch (e) {  // Anything else that is an exception
-  print('Unknown exception: $e');
-} catch (e) {               // No specified type, handles all
-  print('Something really unknown: $e');
+  eleverPlusDeLamas();
+} on PlusDeLamaException { // Une exception spécifique
+  acheterPlusDeLamas();
+} on Exception catch (e) {  // N'importe quoi d'autre qui est uen exception
+  print('Exception inconnue : $e');
+} catch (e) {               // Pas de type spécifié, traite tout
+  print('Quelque chose de vraiment pas connu : $e');
 }
 {% endprettify %}
 
-As the preceding code shows, you can use either `on` or `catch` or both.
-Use `on` when you need to specify the exception type. Use `catch` when
-your exception handler needs the exception object.
+Comme le montre le code précédent, vous pouvez utiliser au choix `on` ou `catch` ou les deux.
+Utiliez `on` quand vous avez besoin de spécifier le type de l'exception. Utilisez `catch` lorque traitement de l'exception a besoin de l'objet exception.
 
 
-### Finally {#finally}
+### Clause finally {#finally}
 {:.no_toc}
 
-To ensure that some code runs whether or not an exception is thrown, use
-a `finally` clause. If no `catch` clause matches the exception, the
-exception is propagated after the `finally` clause runs:
+Pour s'assurer qu'une partie de code s'exécute qu'une exception est été levée ou pas, utilisez la clause `finally`. Si aucune clause `catch` ne correspond à l'exception, cette dernière est propagée après que la clause `finally` n'ait été lancée :
 
 <!-- ch02/flow_exceptions.dart -->
 {% prettify dart %}
 try {
-  breedMoreLlamas();
+  eleverPlusDeLamas();
 } finally {
-  cleanLlamaStalls();  // Always clean up, even if an exception is thrown.
+  nettoyerLesStalles();  // Toujours nettoyer, même si une exception est levée.
 }
 {% endprettify %}
 
-The `finally` clause runs after any matching `catch` clauses:
+La clause `finally` s'exécute après n'importe quelle clause `catch` :
 
 <!-- ch02/flow_exceptions.dart -->
 {% prettify dart %}
 try {
-  breedMoreLlamas();
+  eleverPlusDeLamas();
 } catch(e) {
-  print('Error: $e');  // Handle the exception first.
+  print('Erreur: $e');  // Traiter l'exception en premier.
 } finally {
-  cleanLlamaStalls();  // Then clean up.
+  nettoyerLesStalles();  // Ensuite nettoyer.
 }
 {% endprettify %}
 
-Learn more by reading the [Exceptions](ch03.html#exceptions) section.
+Apprenez en davantage en lisant la section  [Exceptions](ch03.html#exceptions).
 
 
 ## Classes {#classes}
