@@ -1054,21 +1054,21 @@ Vous pouvez surcharger certains de ces opérateurs, comme décrit dans
 |--------------------------+------------------------------------------------|
 |Description               | Opérateur                                       |
 |--------------------------|------------------------------------------------|
-| unary postfix            | <code><em>expr</em>++</code>    <code><em>expr</em>--</code>    `()`    `[]`    `.`             |
-| unary prefix             | <code>-<em>expr</em></code>    <code>!<em>expr</em></code>    <code>~<em>expr</em></code>    <code>++<em>expr</em></code>    <code>--<em>expr</em></code>   |
-| multiplicative           | `*`    `/`    `%`    `~/`                      |
-| additive                 | `+`    `-`                                     |
-| shift                    | `<<`    `>>`                                   |
-| bitwise AND              | `&`                                            |
-| bitwise XOR              | `^`                                            |
-| bitwise OR               | `|`                                            |
-| relational&nbsp;and&nbsp;type&nbsp;test | `>=`    `>`    `<=`    `<`    `as`    `is`    `is!`      |
-| equality                 | `==`    `!=`                                   |
-| logical AND              | `&&`                                           |
-| logical OR               | `||`                                           |
-| conditional              | <code><em>expr1</em> ? <em>expr2</em> : <em>expr3</em></code>        |
+| postfix unaire           | <code><em>expr</em>++</code>    <code><em>expr</em>--</code>    `()`    `[]`    `.`             |
+| prefix unaire            | <code>-<em>expr</em></code>    <code>!<em>expr</em></code>    <code>~<em>expr</em></code>    <code>++<em>expr</em></code>    <code>--<em>expr</em></code>   |
+| multificatif           | `*`    `/`    `%`    `~/`                      |
+| additif                 | `+`    `-`                                     |
+| décalage                    | `<<`    `>>`                                   |
+| ET binaire              | `&`                                            |
+| OU exclusif binaire              | `^`                                            |
+| OU binaire               | `|`                                            |
+| comparatif&nbsp;et&nbsp;test de&nbsp;type | `>=`    `>`    `<=`    `<`    `as`    `is`    `is!`      |
+| égalité                 | `==`    `!=`                                   |
+| ET logique              | `&&`                                           |
+| OR logique               | `||`                                           |
+| conditionnel              | <code><em>expr1</em> ? <em>expr2</em> : <em>expr3</em></code>        |
 | cascade                  | `..`                                           |
-| assignment               | `=`    `*=`    `/=`    `~/=`    `%=`    `+=`    `-=`    `<<=`    `>>=`    `&=`    `^=`    `|=`                 |
+| assignation               | `=`    `*=`    `/=`    `~/=`    `%=`    `+=`    `-=`    `<<=`    `>>=`    `&=`    `^=`    `|=`                 |
 {:.table .table-striped}
 
 Quand vous utilisez les opérateurs, vous créez des expressions. Voici quelques exemples d'expressions utilisant des opérateurs :
@@ -1139,10 +1139,10 @@ Dart supporte également les opérateurs de pré et post incrémentation et déc
 |-----------------------------+-------------------------------------------|
 | Opérateur                    | Signification                                   |
 |-----------------------------+-------------------------------------------|
-| <code>++<em>var</em></code> | <code><em>var</em> = <em>var</em> + 1</code> (expression value is <code><em>var</em> + 1</code>)
-| <code><em>var</em>++</code> | <code><em>var</em> = <em>var</em> + 1</code> (expression value is <code><em>var</em></code>)
-| <code>--<em>var</em></code> | <code><em>var</em> = <em>var</em> – 1</code> (expression value is <code><em>var</em> – 1</code>)
-| <code><em>var</em>--</code> | <code><em>var</em> = <em>var</em> – 1</code> (expression value is <code><em>var</em></code>)
+| <code>++<em>var</em></code> | <code><em>var</em> = <em>var</em> + 1</code> (la valeur de l'expression est <code><em>var</em> + 1</code>)
+| <code><em>var</em>++</code> | <code><em>var</em> = <em>var</em> + 1</code> (la valeur de l'expression est <code><em>var</em></code>)
+| <code>--<em>var</em></code> | <code><em>var</em> = <em>var</em> – 1</code> (la valeur de l'expression est <code><em>var</em> – 1</code>)
+| <code><em>var</em>--</code> | <code><em>var</em> = <em>var</em> – 1</code> (la valeur de l'expression est <code><em>var</em></code>)
 {:.table .table-striped}
 
 Exemple:
@@ -1164,7 +1164,7 @@ b = --a;        // Decrémente a avant d'attribuer sa valeur à b.
 assert(a == b); // -1 == -1
 
 a = 0;
-b = a--;        // Decrémente a après avoir attribué savaleur à b.
+b = a--;        // Decrémente a après avoir attribué sa valeur à b.
 assert(a != b); // -1 != 0
 {% endprettify %}
 
@@ -1177,7 +1177,7 @@ Le tableau suivant liste les significations des opérateurs d'égalité et de co
 |-----------+-------------------------------------------|
 | Opérateur | Signification                             |
 |-----------+-------------------------------------------|
-| `==`      |       Egal; see discussion below
+| `==`      |       Egal; voir plus bas
 | `!=`      |       Pas égal
 | `>`       |       Plus grand que
 | `<`       |       Plus petit que
@@ -1210,10 +1210,10 @@ assert(2 <= 3);
 ### Opérateurs de test de type {#type-test-operators}
 {:.no_toc}
 
-Les opérateurs `as`, `is`, and `is!` sont très utilies pour tester les types durant l'éxecution.
+Les opérateurs `as`, `is`, and `is!` sont très utiles pour tester les types durant l'éxecution.
 
 |-----------+-------------------------------------------|
-| Operateurr| Signification                             |
+| Operateur| Signification                             |
 |-----------+-------------------------------------------|
 | `as`      | Conversion de type
 | `is`      | Vrai si l'objet a le même type
@@ -1222,7 +1222,7 @@ Les opérateurs `as`, `is`, and `is!` sont très utilies pour tester les types d
 
 Le résultat de `obj is T` est vrai si `obj` implémente l'interface précisée par `T`. Par exemple, `obj is Object` est toujours vrai.
 
-Utilisez l'opérateur `as` pour convertir un objet dans un type spécifique. En général, vous devez l'utiliser comme racourci pour un test `is` sur un objet suivi d'une expression utilisant cet objet. Par exemple, dans le code suivant :
+Utilisez l'opérateur `as` pour convertir un objet dans un type spécifique. En général, vous devez l'utiliser comme raccourci pour un test `is` sur un objet suivi d'une expression utilisant cet objet. Par exemple, dans le code suivant :
 
 <!-- ch02/op_as.dart -->
 {% prettify dart %}
@@ -1288,7 +1288,7 @@ logique.
 | `&&`                        | ET logique
 {:.table .table-striped}
 
-Voici un exemple d'utilisateur des opérateurs logiques :
+Voici un exemple d'utilisation des opérateurs logiques :
 
 <!-- ch02/op_logical.dart -->
 {% prettify dart %}
@@ -1301,21 +1301,21 @@ if (!done && (col == 0 || col == 3)) {
 ### Opérateurs binaires et de décalage de bits {#bitwise-and-shift-operators}
 {:.no_toc}
 
-Vous pouvez manipuler invididuellement les bits des nombres en Dart. Généralement,
+Vous pouvez manipuler individuellement les bits des nombres en Dart. Généralement,
 vous utiliserez ces opérateurs binaire et de décalage de bits avec des entiers.
 
 |-----------------------------+-------------------------------------------|
-| Operator                    | Meaning                                   |
+| Operateur                    | Signification                                   |
 |-----------------------------+-------------------------------------------|
-| `&`                         | AND
-| `|`                         | OR
-| `^`                         | XOR
-| <code>~<em>expr</em></code> | Unary bitwise complement (0s become 1s; 1s become 0s)
-| `<<`                        | Shift left
-| `>>`                        | Shift right
+| `&`                         | ET
+| `|`                         | OU
+| `^`                         | OU Exclusid
+| <code>~<em>expr</em></code> | Complément binaire à 1 (0s become 1s; 1s become 0s)
+| `<<`                        | Décalage à gauche
+| `>>`                        | Décalage à droite
 {:.table .table-striped}
 
-Here’s an example of using bitwise and shift operators:
+Voici un exemple d'utilisation des opérateurs binaires et de décalage :
 
 <!-- ch02/op_bitwise.dart -->
 {% prettify dart %}
@@ -1344,7 +1344,7 @@ autres exemples.
 | `[]`     | Accède une liste          | Réfère à la valeur à l'index spécifié dans la liste
 | <code><em>expr1</em> ? <em>expr2</em> : <em>expr3</em> | Conditionnel | Si _expr1_ est vraie, exécute _expr2_; sinon, exécute _expr3_
 | `.`      | Accède un membre        | Réfère à une propriété d'une expression; exemple: `foo.bar` selectionne la propriété `bar` de l'expression `foo`
-| `..`     | Cascade              | Vous permet d'effectuer plusieurs opération sur les membres d'un même objet; décrit dans [Classes](#classes)
+| `..`     | Cascade              | Vous permet d'effectuer plusieurs opérations sur les membres d'un même objet; décrit dans [Classes](#classes)
 {:.table .table-striped}
 
 
