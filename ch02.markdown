@@ -297,108 +297,112 @@ const atm = 1.01325 * bar; // Atmosphere standard
 {% endprettify %}
 
 
-## Built-in types {#built-in-types}
+## Types natifs {#built-in-types}
 
-The Dart language has special support for the following types:
+Les types suivants sont nativement supportés par le langage Dart :
 
--   numbers
+-   les nombres
 
--   strings
+-   les chaînes de caractères
 
--   booleans
+-   les booléens
 
--   lists (also known as *arrays*)
+-   les listes (aussi connues comme *tableaux*)
 
--   maps
+-   les dictionnaires (aussi appelés *tableaux associatifs*)
 
--   symbols
+-   les symboles
 
-You can initialize an object of any of these special types using a
-literal. For example, `'this is a
-    string'` is a string literal, and `true` is a boolean literal.
+Vous pouvez initialiser un objet de n'importe quel de ces types en 
+utisant une valeur littérale. Par exemple, `'ceci est une chaîne de 
+caractères'` est une chaîne de caractères littérale, et `true` est un 
+booléen littéral.
 
-Because every variable in Dart refers to an object—an instance of a
-*class*—you can usually use *constructors* to initialize variables. Some
-of the built-in types have their own constructors. For example, you can
-use the `Map()` constructor to create a map, using code such as
+Comme toute variable en Dart fait référence à un objet, c'est-à-dire,
+à une instance d'une *classe*, vous pouvez utiliser des *constructeurs*
+pour initialiser ces variables. Certains de ces types natifs ont leurs 
+propres constructeurs. Par exemple, vous pouvez utiliser le constructeur
+`Map()` pour créer un dictionnaire, en utilisant le code tel que 
 `new Map()`.
 
 
-### Numbers {#numbers}
+### Nombres {#numbers}
 {:.no_toc}
 
-Dart numbers come in two flavors:
+Il existe deux types de nombre en Dart :
 
 [`int`](http://api.dartlang.org/dart_core/int.html)
 
-:   Integer values, which generally should be in the range
-    -2<sup>53</sup> to 2<sup>53</sup>
+:   Les valeurs entières, qui doivent être généralement comprise entre
+    -2<sup>53</sup> et 2<sup>53</sup>
 
 [`double`](http://api.dartlang.org/dart_core/double.html)
 
-:   64-bit (double-precision) floating-point numbers, as specified by
-    the IEEE 754 standard
+:   Les nombres à virgule flottante 64-bit (double précision), tel que
+    spécifié dans le standart IEEE 754
 
-Both `int` and `double` are subtypes of
-[`num`.](http://api.dartlang.org/dart_core/num.html) The num type
-includes basic operators such as +, -, /, and \*, as well as bitwise
-operators such as \>\>. The num type is also where you’ll find
-`abs()`,` ceil()`, and `floor()`, among other methods. If num and its
-subtypes don’t have what you’re looking for, the
-[Math](http://api.dartlang.org/dart_math.html) library might.
+Les deux types `int` et `double` sont des sous-types de 
+[`num`.](http://api.dartlang.org/dart_core/num.html) Le type num 
+inclut des opérateurs de base tel que +, -, /, et \*, mais aussi les 
+opérateurs bit à bit tel que \>\>. Vous trouverez aussi dans le type 
+num, `abs()`,` ceil()`, et `floor()`, parmi d'autres méthodes. Si num 
+et ses sous-types n'ont pas ce que vous recherchez, la librairie
+[Math](http://api.dartlang.org/dart_math.html) peut vous aider.
 
 <aside class="alert alert-warning" markdown="1">
-**Warning:**
-Integers outside of the
--2<sup>53</sup> to 2<sup>53</sup> range currently behave
-differently in JavaScript produced from Dart code than they do when
-the same Dart code runs in the Dart VM. The reason is that Dart is
-specified to have arbitrary-precision integers, but JavaScript isn't.
-See [issue 1533](http://dartbug.com/1533) for details.
+**Attention :**
+Actuellement, les nombres entiers en dehors de l'intervalle
+-2<sup>53</sup> et 2<sup>53</sup> se comporte différement dans le 
+JavaScript généré à partir du code Dart comparé au même code Dart 
+tournant sous la machine virtuelle Dart. La raison est que Dart a été 
+spécifié pour avoir des entiers multiprécisions, ce qui n'est pas le 
+cas de JavaScript.
+Voir [issue 1533](http://dartbug.com/1533) pour plus de détails.
 </aside>
 
-Integers are numbers without a decimal point. Here are some examples of
-defining integer literals:
+Les entiers sont des nombres sans décimale. Voici quelques exemples 
+de nombres entiers littéraux :
 
 <!-- ch02/integer_literals.dart -->
 {% prettify dart %}
 var x = 1;
 var hex = 0xDEADBEEF;
-var bigInt = 346534658346524376592384765923749587398457294759347029438709349347;
+var grosEntier = 346534658346524376592384765923749587398457294759347029438709349347;
 {% endprettify %}
 
-If a number includes a decimal, it is a double. Here are some examples
-of defining double literals:
+Si un nombre inclut une décimale, c'est un double. Voici quelques exemples 
+de nombres réels littéraux :
 
 <!-- ch02/double_literals.dart -->
 {% prettify dart %}
 var y = 1.1;
-var exponents = 1.42e5;
+var dixPuissance = 1.42e5;
 {% endprettify %}
 
-Here’s how you turn a string into a number, or vice versa:
+Voici comment transformer une chaîne de caractères en nombre, ou vice 
+versa :
 
 <!-- ch02/number_conversion.dart -->
 {% prettify dart %}
 // String -> int
-var one = int.parse('1');
-assert(one == 1);
+var un = int.parse('1');
+assert(un == 1);
 
 // String -> double
-var onePointOne = double.parse('1.1');
-assert(onePointOne == 1.1);
+var unVirguleUn = double.parse('1.1');
+assert(unVirguleUn == 1.1);
 
 // int -> String
-String oneAsString = 1.toString();
-assert(oneAsString == '1');
+String unEnString = 1.toString();
+assert(unEnString == '1');
 
 // double -> String
-String piAsString = 3.14159.toStringAsFixed(2);
-assert(piAsString == '3.14');
+String piEnString = 3.14159.toStringAsFixed(2);
+assert(piEnString == '3.14');
 {% endprettify %}
 
-The int type specifies the traditional bitwise shift (\<\<, \>\>), AND
-(&), and OR (|) operators. For example:
+Le type int définit le traditionnel décalage de bit (\<\<, \>\>), les 
+opérateurs ET (&), et OU (|). Par exemple :
 
 <!-- ch02/bit_shifting.dart -->
 {% prettify dart %}
@@ -408,297 +412,311 @@ assert((3 | 4)  == 7);  // 0011 | 0100 == 0111
 {% endprettify %}
 
 
-### Strings {#strings}
+### Chaînes de caractères {#strings}
 {:.no_toc}
 
-A Dart string is a sequence of UTF-16 code units. You can use either
-single or double quotes to create a string:
+Une chaîne de caractères en Dart est une suite de codes UTF-16. Vous 
+pouvez utiliser des guillemets simples ou des guillemets doubles pour 
+créer une chaîne de caractères :
 
 <!-- ch02/quoting.dart -->
 {% prettify dart %}
-var s1 = 'Single quotes work well for string literals.';
-var s2 = "Double quotes work just as well.";
-var s3 = 'It\'s easy to escape the string delimiter.';
-var s4 = "It's even easier to just use the other string delimiter.";
+var s1 = 'Les guillemets simples fonctionnent pour les chaînes de caractères littérales.';
+var s2 = "Les guillemets doubles fonctionnent tout aussi bien.";
+var s3 = 'C\'est facile d\'échapper les délimiteurs d\'une chaîne de caractères.';
+var s4 = "C'est encore plus facile d'utiliser l'autre délimiteur.";
 {% endprettify %}
 
-You can put the value of an expression inside a string by using
-`${`*`expression`*`}`. If the expression is an identifier, you can skip
-the {}. To get the string corresponding to an object, Dart calls the
-object’s `toString()` method.
+Vous pouvez mettre la valeur d'une expression à l'intérieur d'une 
+chaine de caractères en utilisant `${`*`expression`*`}`. Si 
+l'expression est un identifiant, vous pouvez omettre les {}. Pour 
+obtenir la chaîne de caractères correspondant à un objet, Dart appelle
+la méthode `toString()` de l'objet.
 
 <!-- ch02/string_interpolation.dart -->
 {% prettify dart %}
-var s = 'string interpolation';
+var s = 'interpolation';
 
-assert('Dart has $s, which is very handy.' ==
-       'Dart has string interpolation, which is very handy.');
-assert('That deserves all caps. ${s.toUpperCase()} is very handy!' ==
-       'That deserves all caps. STRING INTERPOLATION is very handy!');
+assert("Dart a l'$s, ce qui est très pratique." ==
+       "Dart a l'interpolation, ce qui est très pratique.");
+assert("Le même en majuscule. L'${s.toUpperCase()} est très pratique !" ==
+       "Le même en majuscule. L'INTERPOLATION est très pratique !");
 {% endprettify %}
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
-The `==` operator tests whether two objects are equivalent. Two
-strings are equivalent if they contain the same sequence of code
-units.
+L'opérateur `==` teste si deux objets sont équivalents. Deux
+chaînes de caractères sont équivalentes s'elles contiennent la même 
+suite de codes de caractère.
 </aside>
 
-You can concatenate strings using adjacent string literals or the `+`
-operator:
+Vous pouvez concatener des chaînes de caractères en utilisant des 
+chaînes littérales adjacentes ou l'opérateur `+` :
 
 <!-- adjacent_string_literals.dart -->
 {% prettify dart %}
-var s1 = 'String ' 'concatenation'
-         " works even over line breaks.";
-assert(s1 == 'String concatenation works even over line breaks.');
+var s1 = 'La concatenation ' ' de chaînes de caractères'
+         " fonctionne même avec des retours à la ligne.";
+assert(s1 == 'La concatenation de chaînes de caractères fonctionne même avec des retours à la ligne.');
 
-var s2 = 'The addition operator '
-         + 'works, as well.';
-assert(s2 == 'The addition operator works, as well.');
+var s2 = "L'opérateur plus "
+         + 'fonctionne également.';
+assert(s2 == "L'opérateur plus fonctionne également.");
 {% endprettify %}
 
-Another way to create a multi-line string: use a triple quote with
-either single or double quotation marks:
+Une autre façon de créer des chaînes de caractères multiligne est 
+d'utiliser un triplet de guillements qu'ils soient simple ou double :
 
 <!-- ch02/triple_quotes.dart -->
 {% prettify dart %}
 var s1 = '''
-You can create
-multi-line strings like this one.
+Vous pouvez créer
+des chaînes de caractères multiligne comme celle-ci.
 ''';
 
-var s2 = """This is also a
-multi-line string.""";
+var s2 = """Celle-là est aussi une
+chaîne de caractères multiligne.""";
 {% endprettify %}
 
-You can create a “raw” string by prefixing it with `r`:
+Vous pouvez créer une chaîne de caractères “brute” en la préfixant 
+avec `r` :
 
 <!-- ch02/raw_strings.dart -->
 {% prettify dart %}
-var s = r"In a raw string, even \n isn't special.";
+var s = r"Dans une chaîne de caractères brute, même \n n'est pas spécial.";
 {% endprettify %}
 
-You can use Unicode escapes inside of strings:
+Vous pouvez utiliser l'échappement Unicode dans une chaîne de caractères :
 
 <!-- ch02/quoting.dart -->
 {% prettify dart %}
-print('Unicode escapes work: \u2665'); // Unicode escapes work: [heart]
+print("L'échapement Unicode fonctionne : \u2665"); // L'échapement Unicode fonctionne : [heart]
 {% endprettify %}
 
-For more information on using strings, see
-[Strings and regular expressions](ch03.html#strings-and-regular-expressions).
+Pour plus d'information sur comment utiliser les chaînes de caractères, voir
+[Chaînes de caractères et expressions régulières](ch03.html#strings-and-regular-expressions).
 
 
-### Booleans {#booleans}
+### Booléens {#booleans}
 {:.no_toc}
 
-To represent boolean values, Dart has a type named `bool`. Only two
-objects have type bool: the boolean literals, `true` and `false`.
+Pour représenter les valeurs booléennes, Dart a un type nommé `bool`. 
+Seulement deux objets ont le type booléen: les valeurs littérales 
+`true` et `false`, respectivement vrai et faux.
 
-When Dart expects a boolean value, only the value `true` is treated as
-true. All other values are treated as false. Unlike in JavaScript,
-values such as `1`, `"aString"`, and `someObject` are all treated as
-false.
+Lorsque Dart s'attend à une valeur booléenne, seulement la valeur `true`
+est considérée comme vraie. Toutes les autres valeurs sont considérées
+comme fausses. Contrairement à JavaScript, les valeurs telles que `1`, 
+`"uneChaineDeCaractères"`, et `unObjet` sont toutes considérées comme 
+fausses.
 
-For example, consider the following code, which is valid both as
-JavaScript and as Dart code:
+Par exemple, considérons le code suivant qui est valide en JavaScript et
+en Dart :
 
 <!-- ch02/strictly_booleans.dart -->
 {% prettify dart %}
-var name = 'Bob';
-if (name) {
-  print('You have a name!'); // Prints in JavaScript, not in Dart.
+var nom = 'Bob';
+if (nom) {
+  print('Tu as un nom !'); // S'affiche en JavaScript, mais pas en Dart.
 }
 {% endprettify %}
 
-If you run this code as JavaScript, it prints “You have a name!” because
-`name` is a non-null object. However, in Dart running in *production
-mode*, the preceding code doesn’t print at all because `name` is converted to
-`false` (because `name
-      != true`). In Dart running in *checked mode*, the preceding code
-throws an exception because the `name` variable is not a bool.
+Si vous lancez ce code en JavaScript, il affiche “Tu as un nom !” car 
+`nom` est un objet non null. Par contre, en Dart tournant dans un mode 
+production, le code précédent n'affiche rien car `nom` est converti 
+en `false` (car `nom != true`). En Dart tournant dans un mode de 
+vérification le code précédent lance une exception car la variable `nom`
+n'est pas un booléen.
 
-Here’s another example of code that behaves differently in JavaScript
-and Dart:
+Voici un autre exemple de code qui se comporte différement entre 
+JavaScript et Dart :
 
 <!-- ch02/if_one.dart -->
 {% prettify dart %}
 if (1) {
-  print('JavaScript prints this line because it thinks 1 is true.');
+  print('JavaScript affiche cette ligne car il pense que 1 est vrai.');
 } else {
-  print('Dart in production mode prints this line.');
-  // However, in checked mode, if (1) throws an exception.
+  print('Dart en mode production affiche cette ligne.');
+  // Cependant, en mode vérification, if (1) lance une exception.
 }
 {% endprettify %}
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
-The previous two samples work only in production mode, not checked
-mode. In checked mode, an exception is thrown if a non-boolean is used
-when a boolean value is expected.
+Les deux examples précédents fonctionnent seulement en mode production, 
+pas en mode vérification. En mode vérification, une exception est lancée
+si un non-booléen est utilisé alors qu'une valeur booléenne est attendue.
 </aside>
 
-Dart’s treatment of booleans is designed to avoid the strange behaviors
-that can arise when many values can be treated as true. What this means
-for you is that, instead of using code like
-<code>if (<em>nonbooleanValue</em>)</code>, you should instead
-explicitly check for values. For example:
+Le traitement des booléens en Dart a été conçu de façon à éviter des 
+comportements étranges qui peuvent arriver lorsque de nombreuses valeurs
+sont considérées comme vraie. Ce qui signifie pour vous c'est que, 
+au lieu d'utiliser du code comme 
+<code>if (<em>valeurNonBooleene</em>)</code>, il faut plutôt 
+vérifier explicitement les valeurs. Par exemple :
 
 <!-- ch02/empty_string.dart -->
 {% prettify dart %}
-// Check for an empty string.
-var fullName = '';
-assert(fullName.isEmpty);
+// Vérifie que la chaîne de caractères est vide.
+var nom = '';
+assert(nom.isEmpty);
 
-// Check for zero.
-var hitPoints = 0;
-assert(hitPoints <= 0);
+// Vérifie si la valeur est zero.
+var pointDeVie = 0;
+assert(pointDeVie <= 0);
 
-// Check for null.
-var unicorn;
-assert(unicorn == null);
+// Vérifie si la valeur est null.
+var unicorne;
+assert(unicorne == null);
 
-// Check for NaN.
-var iMeantToDoThis = 0 / 0;
-assert(iMeantToDoThis.isNaN);
+// Vérifie si la valeur n'est pas un nombre.
+var jeVoulaisLeFaire = 0 / 0;
+assert(jeVoulaisLeFaire.isNaN);
 {% endprettify %}
 
 
-### Lists {#lists}
+### Listes {#lists}
 {:.no_toc}
 
-Perhaps the most common collection in nearly every programming language
-is the *array*, or ordered group of objects. In Dart, arrays are
-[List](http://api.dartlang.org/dart_core/List.html) objects, so we
-usually just call them *lists*.
+Peut-être la collection la plus commune dans presque tous les langages
+de programmation est le *tableau*, ou un groupe ordonné d'objets. Dans
+Dart, les tableaux sont des objets 
+[List](http://api.dartlang.org/dart_core/List.html), donc nous les 
+appelons juste *listes*.
 
-Dart list literals look like JavaScript array literals. Here’s a simple
-Dart list:
+Les listes littérales Dart ressemblent aux tableaux littéraux de 
+JavaScript. Voici un exemple d'une liste Dart :
 
 <!-- ch02/list_literal.dart -->
 {% prettify dart %}
-var list = [1, 2, 3];
+var liste = [1, 2, 3];
 {% endprettify %}
 
-Lists use zero-based indexing, where 0 is the index of the first element
-and `list.length - 1` is the index of the last element. You can get a
-list’s length and refer to list elements just as you would in
-JavaScript:
+Les listes utilisent une indexation à partir de zero, c'est-à-dire que
+l'index 0 est l'index du premier élément et `list.length - 1` est 
+l'index du dernier élément. Vous pouvez obtenir la longueur de la liste
+et faire référence aux éléments de la liste comme vous le feriez en 
+JavaScript :
 
 <!-- ch02/list_indexing.dart -->
 {% prettify dart %}
-var list = [1, 2, 3];
-assert(list.length == 3);
-assert(list[1] == 2);
+var liste = [1, 2, 3];
+assert(liste.length == 3);
+assert(liste[1] == 2);
 {% endprettify %}
 
-The List type has many handy methods for manipulating lists. For more
-information about lists, see [Generics](#generics) and
+Le type List a plein de méthodes pratiques pour manipuler les listes.
+Pour plus d'information sur les listes, voir [Generiques](#generics) et
 [Collections](ch03.html#collections).
 
 
-### Maps {#maps}
+### Dictionnaires {#maps}
 {:.no_toc}
 
-In general, a map is an object that associates keys and values. Both
-keys and values can be any type of object. Each *key* occurs only once,
-but you can use the same *value* multiple times. Dart support for maps
-is provided by map literals and the
-[Map](http://api.dartlang.org/dart_core/Map.html) type.
+En général, un dictionnaire est un objet qui associe des clés et des 
+valeurs. Clés et valeurs peuvent être de n'importe quel type d'objet.
+Chaque *clé* n'apparait qu'une seule fois, mais vous pouvez utiliser 
+une même *valeur* plusieurs fois. Le support des dictionnaires par Dart
+est fait grâce aux dictionnaires en valeurs littérales et au type 
+[Map](http://api.dartlang.org/dart_core/Map.html).
 
-Here are a couple of simple Dart maps, created using map literals:
+Voici quelques exemples simples de dictionnaire en Dart, crées en 
+utilisant des valeurs littérales :
 
 <!-- ch02/map_literal.dart -->
 {% prettify dart %}
-var gifts = {
-// Keys      Values
-  'first' : 'partridge',
-  'second': 'turtledoves',
-  'fifth' : 'golden rings'
+var cadeaux = {
+// Clés          Valeurs
+  'premier'   : 'perdrix',
+  'deuxième'  : 'tourterelle',
+  'cinquième' : 'faisan'
 };
 
-var nobleGases = {
-// Keys  Values
-  2 :   'helium',
-  10:   'neon',
+var gazNobles = {
+// Clés  Valeurs
+  2 :   'hélium',
+  10:   'néon',
   18:   'argon',
 };
 {% endprettify %}
 
-You can create the same objects using a Map constructor:
+Vous pouvez créer les mêmes objets en utilisant le constructeur Map :
 
 <!-- ch02/map_constructor.dart -->
 {% prettify dart %}
-var gifts = new Map();
-gifts['first'] = 'partridge';
-gifts['second'] = 'turtledoves';
-gifts['fifth'] = 'golden rings';
+var cadeaux = new Map();
+cadeaux['premier'] = 'perdrix';
+cadeaux['deuxième'] = 'tourterelle';
+cadeaux['cinquième'] = 'anneaux d\'or';
 
-var nobleGases = new Map();
-nobleGases[2] = 'helium';
-nobleGases[10] = 'neon';
-nobleGases[18] = 'argon';
+var gazNobles = new Map();
+gazNobles[2] = 'hélium';
+gazNobles[10] = 'néon';
+gazNobles[18] = 'argon';
 {% endprettify %}
 
-Add a new key-value pair to an existing map just as you would in
-JavaScript:
+Ajoutez une nouvelle paire clé-valeur à un dictionnaire existant comme
+vous le feriez en JavaScript :
 
 <!-- ch02/map_add_item.dart -->
 {% prettify dart %}
-var gifts = {'first': 'partridge'};
-gifts['fourth'] = 'calling birds'; // Add a key-value pair
+var cadeaux = {'premier': 'perdrix'};
+cadeaux['quatrième'] = 'merles noirs'; // Ajoute une paire clé-valeur
 {% endprettify %}
 
-Retrieve a value from a map the same way you would in JavaScript:
+Récupérez une valeur d'un dictionnaire de la même façon que vous le 
+feriez en JavaScript :
 
 <!-- ch02/map_retrieve_item.dart -->
 {% prettify dart %}
-var gifts = {'first': 'partridge'};
-assert(gifts['first'] == 'partridge');
+var cadeaux = {'premier': 'perdrix'};
+assert(cadeaux['premier'] == 'perdrix');
 {% endprettify %}
 
-If you look for a key that isn’t in a map, you get a null in return:
+Si vous cherchez une clé qui n'est pas dans le dictionnaire, vous 
+obtenez un null en retour :
 
 <!-- ch02/map_missing_key.dart -->
 {% prettify dart %}
-var gifts = {'first': 'partridge'};
-assert(gifts['fifth'] == null);
+var cadeaux = {'premier': 'perdrix'};
+assert(cadeaux['cinquième'] == null);
 {% endprettify %}
 
-Use `.length` to get the number of key-value pairs in the map:
+Utilisez `.length` pour obtenir le nombre de paires clé-valeur dans le 
+dictionnaire :
 
 <!-- ch02/map_length.dart -->
 {% prettify dart %}
-var gifts = {'first': 'partridge'};
-gifts['fourth'] = 'calling birds';
-assert(gifts.length == 2);
+var cadeaux = {'premier': 'perdrix'};
+cadeaux['quatrième'] = 'merles noirs';
+assert(cadeaux.length == 2);
 {% endprettify %}
 
-For more information about maps, see
-[Generics](#generics) and
+Pour plus d'information sur les dictionnaires, voir
+[Generics](#generics) et
 [Maps](ch03.html#maps).
 
 
-### Symbols {#symbols}
+### Symboles {#symbols}
 {:.no_toc}
 
-A [Symbol](http://api.dartlang.org/dart_core/Symbol.html) object
-represents an operator or identifier declared in a Dart program. You
-might never need to use symbols, but they're invaluable for APIs that
-refer to identifiers by name, because minification changes identifier
-names but not identifier symbols.
+Un objet [Symbol](http://api.dartlang.org/dart_core/Symbol.html) 
+représente un opérateur ou un identifiant déclaré dans un programme 
+Dart. Vous n'aurait peut être jamais le besoin d'utiliser les symboles,
+mais ils sont indispensables pour les APIs qui font référence à un 
+identifiant par son nom, car la minification change les noms des 
+identifiants mais pas ceux des symboles.
 
-To get the symbol for an identifier, use a symbol literal, which is just
-`#` followed by the identifier:
+Pour obtenir le symbole pour un identifiant, utilisez un symbole 
+littéral, qui est juste un `#` suivi de l'identifiant :
 
 <!-- ch02/symbols.dart -->
 {% prettify dart %}
-#radix  // The symbol literal for an identifier named 'radix'.
-#bar    // The symbol literal for an identifier named 'bar'.
+#radix  // Le symbole littéral pour l'identifiant nommé 'radix'.
+#bar    // Le symbole littéral pour l'identifiant nommé 'bar'.
 {% endprettify %}
 
-For more information on symbols, see
+Pour plus d'information sur les symboles, voir
 [dart:mirrors - reflection](ch03.html#dartmirrors---reflection).
 
 
@@ -3134,3 +3152,4 @@ Dart.](/articles/idiomatic-dart/)
 
 <hr>
 {% include book-nav.html %}
+
