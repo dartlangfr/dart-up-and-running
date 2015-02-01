@@ -2864,14 +2864,16 @@ void main() {
 
 ## Isolates {#isolates}
 
-Modern web browsers, even on mobile platforms, run on multi-core CPUs.
-To take advantage of all those cores, developers traditionally use
-shared-memory threads running concurrently. However, shared-state
-concurrency is error prone and can lead to complicated code.
+Les navigateurs modernes, même sur les plateformes mobiles,
+fonctionnent sur des processeurs multi-coeurs.
+Pour tirer avantage de ces coeurs, les développeurs utilisent traditionnellement
+des treads à mémoire partagée s'éxcutant en parrallèle.
+Cependant, le parallélisme à état partagé est source d'erreur et
+peut ammener à du code complexe.
 
-Instead of threads, all Dart code runs inside of *isolates*. Each
-isolate has its own memory heap, ensuring that no isolate’s state is
-accessible from any other isolate.
+Au lieu d'utiliser les threads, tout code Dart tourne au sein d'un d'*isolates*.
+Chaque isolate possède sa propre mémoire tas, permettant de garantir qu'aucun état
+d'isolate n'est accessible depuis un autre isolate.
 
 
 ## Typedefs {#typedefs}
