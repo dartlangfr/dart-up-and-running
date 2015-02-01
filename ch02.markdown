@@ -1083,9 +1083,9 @@ a ? b: c
 a is T
 {% endprettify %}
 
-Dans le précédent tableau des opérateurs, chaque opérateur a une plus haute priorité que les opérateurs dans des lignes suivantes.
+Dans le précédent tableau des opérateurs, chaque opérateur a une plus haute priorité que les opérateurs des lignes suivantes.
 
-Par exemple, l'opérateur multiplicatif `%` a une priorité plus importante que (et de ce fait s'éxecute avant) l'opérateur `==`, qui a lui même une priorité plus importante que l'opérateur logique AND `&&`.
+Par exemple, l'opérateur multiplicatif `%` a une priorité plus importante que (et de ce fait s'éxecute avant) l'opérateur `==`, qui a lui même une priorité plus importante que l'opérateur logique ET `&&`.
 Cette priorié signifie que les deux lignes de code suivantes s'exécutent de la même façon :
 
 <!-- ch02/precedence.dart -->
@@ -1099,7 +1099,7 @@ if (n % i == 0 && d % i == 0)
 
 <aside class="alert alert-warning" markdown="1">
 **Attention:**
-Pour les opérateurs qui travaillent sur deux opérandes, c'est l'opérande la plus à gauche qui détermine la version de l'opérateur utilisé. Par exemple, si vous avez un objet Vecteur et un objet Point, `unVecteur + unPoint` utilise l'opérateur + de l'objet Vecteur.
+Pour les opérateurs qui travaillent sur deux opérandes, c'est l'opérande le plus à gauche qui détermine la version de l'opérateur utilisé. Par exemple, si vous avez un objet Vecteur et un objet Point, `unVecteur + unPoint` utilise l'opérateur + de l'objet Vecteur.
 </aside>
 
 
@@ -1109,14 +1109,14 @@ Pour les opérateurs qui travaillent sur deux opérandes, c'est l'opérande la p
 Dart supporte les opérateurs arithmétiques usuels, comme montré dans le tableau suivant.
 
 |-----------------------------+-------------------------------------------|
-| Operateur                    | Signification                                   |
+| Opérateur                    | Equivalent à                             |
 |-----------------------------+-------------------------------------------|
-| `+`                         | Ajoute
-| `–`                         | Soustrait
+| `+`                         | Addition
+| `–`                         | Soustraction
 | <code>-<em>expr</em></code> | Moins unaire, aussi connu comme négation (inverse le signe de l'expression)
-| `*`                         | Multiplie
-| `/`                         | Divise
-| `~/`                        | Divise, retourne un résultat entier
+| `*`                         | Multiplication
+| `/`                         | Division
+| `~/`                        | Division, retourne un résultat entier
 | `%`                         | Donne le reste d'une division entière (modulo)
 {:.table .table-striped}
 
@@ -1137,7 +1137,7 @@ print('5/2 = ${5~/2} reste ${5%2}'); // 5/2 = 2 reste 1
 Dart supporte également les opérateurs de pré et post incrémentation et décrémentation
 
 |-----------------------------+-------------------------------------------|
-| Opérateur                    | Signification                                   |
+| Opérateur                    | Équivalent à                                   |
 |-----------------------------+-------------------------------------------|
 | <code>++<em>var</em></code> | <code><em>var</em> = <em>var</em> + 1</code> (la valeur de l'expression est <code><em>var</em> + 1</code>)
 | <code><em>var</em>++</code> | <code><em>var</em> = <em>var</em> + 1</code> (la valeur de l'expression est <code><em>var</em></code>)
@@ -1185,7 +1185,7 @@ Le tableau suivant liste les significations des opérateurs d'égalité et de co
 | `<=`      |       Plus petit ou égal
 {:.table .table-striped}
 
-Pour tester si deux objets x et y sont identiques, utilisez l'opérateur `==`. (Dans les rares cas où vous avez besoin de savoir si deux objets sont éxactement le même, utilisez la fonction
+Pour tester si deux objets x et y sont identiques, utilisez l'opérateur `==`. (Dans les rares cas où vous avez besoin de savoir si deux objets sont exactement le même, utilisez la fonction
 [identical()](https://api.dartlang.org/apidocs/channels/stable/dartdoc-viewer/dart-core#id_identical) à la place.) Voici comment fonctionne l'opérateur `==`:
 
 1.  Si *x* ou *y* est nul, renvoie vrai si les deux sont nuls, et faux si seulement l'un d'eux est nul.
