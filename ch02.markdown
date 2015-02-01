@@ -1054,18 +1054,18 @@ Vous pouvez surcharger certains de ces opérateurs, comme décrit dans
 |--------------------------+------------------------------------------------|
 |Description               | Opérateur                                       |
 |--------------------------|------------------------------------------------|
-| postfix unaire           | <code><em>expr</em>++</code>    <code><em>expr</em>--</code>    `()`    `[]`    `.`             |
-| prefix unaire            | <code>-<em>expr</em></code>    <code>!<em>expr</em></code>    <code>~<em>expr</em></code>    <code>++<em>expr</em></code>    <code>--<em>expr</em></code>   |
+| post-fixé unaire           | <code><em>expr</em>++</code>    <code><em>expr</em>--</code>    `()`    `[]`    `.`             |
+| pre-fixé unaire            | <code>-<em>expr</em></code>    <code>!<em>expr</em></code>    <code>~<em>expr</em></code>    <code>++<em>expr</em></code>    <code>--<em>expr</em></code>   |
 | multificatif           | `*`    `/`    `%`    `~/`                      |
 | additif                 | `+`    `-`                                     |
 | décalage                    | `<<`    `>>`                                   |
 | ET binaire              | `&`                                            |
 | OU exclusif binaire              | `^`                                            |
 | OU binaire               | `|`                                            |
-| comparatif&nbsp;et&nbsp;test de&nbsp;type | `>=`    `>`    `<=`    `<`    `as`    `is`    `is!`      |
+| comparateur&nbsp;et&nbsp;test de&nbsp;type | `>=`    `>`    `<=`    `<`    `as`    `is`    `is!`      |
 | égalité                 | `==`    `!=`                                   |
 | ET logique              | `&&`                                           |
-| OR logique               | `||`                                           |
+| OU logique               | `||`                                           |
 | conditionnel              | <code><em>expr1</em> ? <em>expr2</em> : <em>expr3</em></code>        |
 | cascade                  | `..`                                           |
 | assignation               | `=`    `*=`    `/=`    `~/=`    `%=`    `+=`    `-=`    `<<=`    `>>=`    `&=`    `^=`    `|=`                 |
@@ -1178,7 +1178,7 @@ Le tableau suivant liste les significations des opérateurs d'égalité et de co
 | Opérateur | Signification                             |
 |-----------+-------------------------------------------|
 | `==`      |       Egal; voir plus bas
-| `!=`      |       Pas égal
+| `!=`      |       Différent
 | `>`       |       Plus grand que
 | `<`       |       Plus petit que
 | `>=`      |       Plus grand ou égal
@@ -1207,13 +1207,13 @@ assert(2 <= 3);
 {% endprettify %}
 
 
-### Opérateurs de test de type {#type-test-operators}
+### Opérateurs de test sur les types {#type-test-operators}
 {:.no_toc}
 
 Les opérateurs `as`, `is`, and `is!` sont très utiles pour tester les types durant l'éxecution.
 
 |-----------+-------------------------------------------|
-| Operateur| Signification                             |
+| Opérateur| Signification                             |
 |-----------+-------------------------------------------|
 | `as`      | Conversion de type
 | `is`      | Vrai si l'objet a le même type
@@ -1244,7 +1244,7 @@ Le code n'est pas équivalent. Si `emp` est nul ou n'est pas une instance de Per
 </aside>
 
 
-### Opérateur d'assignation {#assignment-operators}
+### Opérateurs d'assignation {#assignment-operators}
 {:.no_toc}
 
 Comme nous l'avons déjà vu, vous pouvez assigner des valeurs en utilisant l'opérateur `=`.
@@ -1255,12 +1255,12 @@ avec une assignation.
 | `+=` | `*=` | `~/=` | `<<=` | `&=`  | `|=`
 {:.table}
 
-Voici comment fonctionnent les opérateur d'assignation :
+Voici comment fonctionnent les opérateurs d'assignation :
 
 |-----------+----------------------+------------------------|
 |           | Assignation composée | Expression équivalente |
 |-----------+----------------------+------------------------|
-|**Pour une opérateur <em>op</em>:** | <code>a <em>op</em>= b</code> | <code>a = a <em>op</em> b</code>
+|**Pour un opérateur <em>op</em>:** | <code>a <em>op</em>= b</code> | <code>a = a <em>op</em> b</code>
 |**Exemple:**                     |`a += b`                       | `a = a + b`
 {:.table}
 
@@ -1277,13 +1277,13 @@ assert(a == 6);
 ### Opérateurs logiques {#logical-operators}
 {:.no_toc}
 
-Vous pouvez inverser ou combiner des expressions booléenes en utilisant un opérateur
-logique.
+Vous pouvez inverser ou combiner des expressions booléenes en utilisant des opérateurs
+logiques.
 
 |-----------------------------+-------------------------------------------|
 | Operateur                   | Signification                             |
 |-----------------------------+-------------------------------------------|
-| <code>!<em>expr</em></code> | Inverse l'expression qui le suite (change faux en vrai, et vice versa)
+| <code>!<em>expr</em></code> | Inverse l'expression qui le suit (change faux en vrai, et vice versa)
 | `||`                        | OU logique
 | `&&`                        | ET logique
 {:.table .table-striped}
@@ -1302,15 +1302,15 @@ if (!done && (col == 0 || col == 3)) {
 {:.no_toc}
 
 Vous pouvez manipuler individuellement les bits des nombres en Dart. Généralement,
-vous utiliserez ces opérateurs binaire et de décalage de bits avec des entiers.
+vous utiliserez ces opérateurs binaires et de décalage de bits avec des entiers.
 
 |-----------------------------+-------------------------------------------|
-| Operateur                    | Signification                                   |
+| Opérateur                    | Signification                                   |
 |-----------------------------+-------------------------------------------|
 | `&`                         | ET
 | `|`                         | OU
-| `^`                         | OU Exclusid
-| <code>~<em>expr</em></code> | Complément binaire à 1 (0s become 1s; 1s become 0s)
+| `^`                         | OU Exclusif
+| <code>~<em>expr</em></code> | Complément binaire à 1 (les 0 deviennent des 1; les 1 deviennent des 0)
 | `<<`                        | Décalage à gauche
 | `>>`                        | Décalage à droite
 {:.table .table-striped}
@@ -1338,12 +1338,12 @@ Il reste quelques opérateurs, vous en avez déjà vu la plupart dans les
 autres exemples.
 
 |-----------+-------------------------------------------|
-| Operateur | Nom              |              Signification                                   |
+| Opérateur | Nom              |              Signification                                   |
 |-----------+-------------------------------------------|
 | `()`     | Applique une fonction | Représente un appel de fonction
-| `[]`     | Accède une liste          | Réfère à la valeur à l'index spécifié dans la liste
+| `[]`     | Accède à une liste          | Réfère à la valeur dans la liste à l'index spécifié
 | <code><em>expr1</em> ? <em>expr2</em> : <em>expr3</em> | Conditionnel | Si _expr1_ est vraie, exécute _expr2_; sinon, exécute _expr3_
-| `.`      | Accède un membre        | Réfère à une propriété d'une expression; exemple: `foo.bar` selectionne la propriété `bar` de l'expression `foo`
+| `.`      | Accède un membre        | Réfère à une propriété d'une expression; exemple: `foo.bar` sélectionne la propriété `bar` de l'expression `foo`
 | `..`     | Cascade              | Vous permet d'effectuer plusieurs opérations sur les membres d'un même objet; décrit dans [Classes](#classes)
 {:.table .table-striped}
 
@@ -1661,7 +1661,7 @@ distanceJusqua(Point autre) => throw new UnimplementedError();
 ### Attraper une exception {#catch}
 {:.no_toc}
 
-Attraper, ou capturer une exception interromp la propagation de l'exception. Attraper une exception vous offre la possibilité de la trairer :
+Attraper, ou capturer une exception interromp la propagation de l'exception. Attraper une exception vous offre la possibilité de la traiter :
 
 <!-- ch02/flow_exceptions.dart -->
 {% prettify dart %}
@@ -1689,7 +1689,7 @@ try {
 {% endprettify %}
 
 Comme le montre le code précédent, vous pouvez utiliser au choix `on` ou `catch` ou les deux.
-Utiliez `on` quand vous avez besoin de spécifier le type de l'exception. Utilisez `catch` lorque traitement de l'exception a besoin de l'objet exception.
+Utilisez `on` quand vous avez besoin de spécifier le type de l'exception. Utilisez `catch` lorque traitement de l'exception a besoin de l'objet exception.
 
 
 ### Clause finally {#finally}
@@ -2991,7 +2991,7 @@ class aFaire {
 }
 {% endprettify %}
 
-Et voici un exemple d'utilisation de cette annotation @todo :
+Et voici un exemple d'utilisation de cette annotation @aFaire :
 
 <!-- ch02/ch02_meta_create/metadata_user.dart -->
 {% prettify dart %}
@@ -3017,14 +3017,14 @@ les commentaires de documentation.
 ### Commentaires d'une ligne {#single-line-comments}
 {:.no_toc}
 
-Un commentaire d'une ligne comment par `//`. Tout entre `//` et la
+Un commentaire d'une ligne commence par `//`. Tout entre `//` et la
 fin de la ligne est ignoré par le compilateur Dart.
 
 <!-- ch02/single_line_comments.dart -->
 {% prettify dart %}
 main() {
   // TODO: refactorer en AbstractLlamaGreetingFactory?
-  print('Bienvenue à ma ferme de Llama !');
+  print('Bienvenue à ma ferme de lamas !');
 }
 {% endprettify %}
 
@@ -3032,8 +3032,8 @@ main() {
 ### Commentaires de plusieurs lignes {#multi-line-comments}
 {:.no_toc}
 
-Une commentaire de plusieurs lignes commence par `/*` et se termine par `*/`.
-Tout entre `/*` et `*/` est ignoré par le compilareur Dart (a moins que le commentaire de soit un commentaire de documentation; voir la section suivante). Les commentaires de plusieurs lignes peuvent s'imbiquer.
+Un commentaire de plusieurs lignes commence par `/*` et se termine par `*/`.
+Tout entre `/*` et `*/` est ignoré par le compilateur Dart (à moins que le commentaire ne soit un commentaire de documentation; voir la section suivante). Les commentaires de plusieurs lignes peuvent s'imbriquer.
 
 <!-- ch02/multi_line_comments.dart -->
 {% prettify dart %}
@@ -3043,7 +3043,7 @@ main() {
 
   Llama larry = new Llama();
   larry.nourrir();
-  larry.préparer();
+  larry.preparer();
   larry.nettoyer();
    */
 }
@@ -3065,7 +3065,7 @@ Voici un exemple de commentaires de documentation qui référencient d'autres cl
 {% prettify dart %}
 /// Une camélidé domestiqué d'amérique du sud (Lama glama).
 ///
-/// Les cultures Andines utilisent les Lamas comme nouriture et animaux de portage
+/// Les cultures Andines utilisent les lamas comme nouriture et animaux de portage
 /// depuis les temps préhistoriques.
 class Lama {
   String nom;
