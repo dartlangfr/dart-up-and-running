@@ -1073,21 +1073,21 @@ Vous pouvez surcharger certains de ces opérateurs, comme décrit dans
 |--------------------------+------------------------------------------------|
 |Description               | Opérateur                                       |
 |--------------------------|------------------------------------------------|
-| unary postfix            | <code><em>expr</em>++</code>    <code><em>expr</em>--</code>    `()`    `[]`    `.`             |
-| unary prefix             | <code>-<em>expr</em></code>    <code>!<em>expr</em></code>    <code>~<em>expr</em></code>    <code>++<em>expr</em></code>    <code>--<em>expr</em></code>   |
-| multiplicative           | `*`    `/`    `%`    `~/`                      |
-| additive                 | `+`    `-`                                     |
-| shift                    | `<<`    `>>`                                   |
-| bitwise AND              | `&`                                            |
-| bitwise XOR              | `^`                                            |
-| bitwise OR               | `|`                                            |
-| relational&nbsp;and&nbsp;type&nbsp;test | `>=`    `>`    `<=`    `<`    `as`    `is`    `is!`      |
-| equality                 | `==`    `!=`                                   |
-| logical AND              | `&&`                                           |
-| logical OR               | `||`                                           |
-| conditional              | <code><em>expr1</em> ? <em>expr2</em> : <em>expr3</em></code>        |
+| post-fixé unaire           | <code><em>expr</em>++</code>    <code><em>expr</em>--</code>    `()`    `[]`    `.`             |
+| pre-fixé unaire            | <code>-<em>expr</em></code>    <code>!<em>expr</em></code>    <code>~<em>expr</em></code>    <code>++<em>expr</em></code>    <code>--<em>expr</em></code>   |
+| multificatif           | `*`    `/`    `%`    `~/`                      |
+| additif                 | `+`    `-`                                     |
+| décalage                    | `<<`    `>>`                                   |
+| ET binaire              | `&`                                            |
+| OU exclusif binaire              | `^`                                            |
+| OU binaire               | `|`                                            |
+| comparateur&nbsp;et&nbsp;test de&nbsp;type | `>=`    `>`    `<=`    `<`    `as`    `is`    `is!`      |
+| égalité                 | `==`    `!=`                                   |
+| ET logique              | `&&`                                           |
+| OU logique               | `||`                                           |
+| conditionnel              | <code><em>expr1</em> ? <em>expr2</em> : <em>expr3</em></code>        |
 | cascade                  | `..`                                           |
-| assignment               | `=`    `*=`    `/=`    `~/=`    `%=`    `+=`    `-=`    `<<=`    `>>=`    `&=`    `^=`    `|=`                 |
+| assignation               | `=`    `*=`    `/=`    `~/=`    `%=`    `+=`    `-=`    `<<=`    `>>=`    `&=`    `^=`    `|=`                 |
 {:.table .table-striped}
 
 Quand vous utilisez les opérateurs, vous créez des expressions. Voici quelques exemples d'expressions utilisant des opérateurs :
@@ -1158,10 +1158,10 @@ Dart supporte également les opérateurs de pré et post incrémentation et déc
 |-----------------------------+-------------------------------------------|
 | Opérateur                    | Signification                                   |
 |-----------------------------+-------------------------------------------|
-| <code>++<em>var</em></code> | <code><em>var</em> = <em>var</em> + 1</code> (expression value is <code><em>var</em> + 1</code>)
-| <code><em>var</em>++</code> | <code><em>var</em> = <em>var</em> + 1</code> (expression value is <code><em>var</em></code>)
-| <code>--<em>var</em></code> | <code><em>var</em> = <em>var</em> – 1</code> (expression value is <code><em>var</em> – 1</code>)
-| <code><em>var</em>--</code> | <code><em>var</em> = <em>var</em> – 1</code> (expression value is <code><em>var</em></code>)
+| <code>++<em>var</em></code> | <code><em>var</em> = <em>var</em> + 1</code> (la valeur de l'expression est <code><em>var</em> + 1</code>)
+| <code><em>var</em>++</code> | <code><em>var</em> = <em>var</em> + 1</code> (la valeur de l'expression est <code><em>var</em></code>)
+| <code>--<em>var</em></code> | <code><em>var</em> = <em>var</em> – 1</code> (la valeur de l'expression est <code><em>var</em> – 1</code>)
+| <code><em>var</em>--</code> | <code><em>var</em> = <em>var</em> – 1</code> (la valeur de l'expression est <code><em>var</em></code>)
 {:.table .table-striped}
 
 Exemple:
@@ -1183,7 +1183,7 @@ b = --a;        // Decrémente a avant d'attribuer sa valeur à b.
 assert(a == b); // -1 == -1
 
 a = 0;
-b = a--;        // Decrémente a après avoir attribué savaleur à b.
+b = a--;        // Decrémente a après avoir attribué sa valeur à b.
 assert(a != b); // -1 != 0
 {% endprettify %}
 
@@ -1196,8 +1196,8 @@ Le tableau suivant liste les significations des opérateurs d'égalité et de co
 |-----------+-------------------------------------------|
 | Opérateur | Signification                             |
 |-----------+-------------------------------------------|
-| `==`      |       Egal; see discussion below
-| `!=`      |       Pas égal
+| `==`      |       Egal; voir plus bas
+| `!=`      |       Différent
 | `>`       |       Plus grand que
 | `<`       |       Plus petit que
 | `>=`      |       Plus grand ou égal
@@ -1226,13 +1226,13 @@ assert(2 <= 3);
 {% endprettify %}
 
 
-### Opérateurs de test de type {#type-test-operators}
+### Opérateurs de test sur les types {#type-test-operators}
 {:.no_toc}
 
-Les opérateurs `as`, `is`, and `is!` sont très utilies pour tester les types durant l'éxecution.
+Les opérateurs `as`, `is`, and `is!` sont très utiles pour tester les types durant l'éxecution.
 
 |-----------+-------------------------------------------|
-| Operateurr| Signification                             |
+| Opérateur| Signification                             |
 |-----------+-------------------------------------------|
 | `as`      | Conversion de type
 | `is`      | Vrai si l'objet a le même type
@@ -1241,7 +1241,7 @@ Les opérateurs `as`, `is`, and `is!` sont très utilies pour tester les types d
 
 Le résultat de `obj is T` est vrai si `obj` implémente l'interface précisée par `T`. Par exemple, `obj is Object` est toujours vrai.
 
-Utilisez l'opérateur `as` pour convertir un objet dans un type spécifique. En général, vous devez l'utiliser comme racourci pour un test `is` sur un objet suivi d'une expression utilisant cet objet. Par exemple, dans le code suivant :
+Utilisez l'opérateur `as` pour convertir un objet dans un type spécifique. En général, vous devez l'utiliser comme raccourci pour un test `is` sur un objet suivi d'une expression utilisant cet objet. Par exemple, dans le code suivant :
 
 <!-- ch02/op_as.dart -->
 {% prettify dart %}
@@ -1263,108 +1263,107 @@ Le code n'est pas équivalent. Si `emp` est nul ou n'est pas une instance de Per
 </aside>
 
 
-### Assignment operators {#assignment-operators}
+### Opérateurs d'assignation {#assignment-operators}
 {:.no_toc}
 
-As you’ve already seen, you assign values using the `=` operator. You
-can also use compound assignment operators such as `+=`, which combine
-an operation with an assignment.
+Comme nous l'avons déjà vu, vous pouvez assigner des valeurs en utilisant l'opérateur `=`.
+Vous pouvez également utiliser des opérateurs composés tels que `+=`, qui combine une opération
+avec une assignation.
 
 | `=`  | `–=` | `/=`  | `%=`  | `>>=` | `^=`
 | `+=` | `*=` | `~/=` | `<<=` | `&=`  | `|=`
 {:.table}
 
-Here’s how compound assignment operators work:
+Voici comment fonctionnent les opérateurs d'assignation :
 
-|-----------+----------------------+-----------------------|
-|           | Compound assignment  | Equivalent expression |
-|-----------+----------------------+-----------------------|
-|**For an operator <em>op</em>:** | <code>a <em>op</em>= b</code> | <code>a = a <em>op</em> b</code>
-|**Example:**                     |`a += b`                       | `a = a + b`
+|-----------+----------------------+------------------------|
+|           | Assignation composée | Expression équivalente |
+|-----------+----------------------+------------------------|
+|**Pour un opérateur <em>op</em>:** | <code>a <em>op</em>= b</code> | <code>a = a <em>op</em> b</code>
+|**Exemple:**                     |`a += b`                       | `a = a + b`
 {:.table}
 
-The following example uses both assignment and compound assignment
-operators:
+L'exemple suivant utilise à la fois une assignation et une assignation composeé :
 
 <!-- ch02/op_assign.dart -->
 {% prettify dart %}
-var a = 2;           // Assign using =
-a *= 3;              // Assign and multiply: a = a * 3
+var a = 2;           // Assignation utilisant =
+a *= 3;              // Assignation et multiplication : a = a * 3
 assert(a == 6);
 {% endprettify %}
 
 
-### Logical operators {#logical-operators}
+### Opérateurs logiques {#logical-operators}
 {:.no_toc}
 
-You can invert or combine boolean expressions using the logical
-operators.
+Vous pouvez inverser ou combiner des expressions booléenes en utilisant des opérateurs
+logiques.
 
 |-----------------------------+-------------------------------------------|
-| Operator                    | Meaning                                   |
+| Operateur                   | Signification                             |
 |-----------------------------+-------------------------------------------|
-| <code>!<em>expr</em></code> | inverts the following expression (changes false to true, and vice versa)
-| `||`                        | logical OR
-| `&&`                        | logical AND
+| <code>!<em>expr</em></code> | Inverse l'expression qui le suit (change faux en vrai, et vice versa)
+| `||`                        | OU logique
+| `&&`                        | ET logique
 {:.table .table-striped}
 
-Here’s an example of using the logical operators:
+Voici un exemple d'utilisation des opérateurs logiques :
 
 <!-- ch02/op_logical.dart -->
 {% prettify dart %}
 if (!done && (col == 0 || col == 3)) {
-  // ...Do something...
+  // ...Fait quelque chose...
 }
 {% endprettify %}
 
 
-### Bitwise and shift operators {#bitwise-and-shift-operators}
+### Opérateurs binaires et de décalage de bits {#bitwise-and-shift-operators}
 {:.no_toc}
 
-You can manipulate the individual bits of numbers in Dart. Usually,
-you’d use these bitwise and shift operators with integers.
+Vous pouvez manipuler individuellement les bits des nombres en Dart. Généralement,
+vous utiliserez ces opérateurs binaires et de décalage de bits avec des entiers.
 
 |-----------------------------+-------------------------------------------|
-| Operator                    | Meaning                                   |
+| Opérateur                    | Signification                                   |
 |-----------------------------+-------------------------------------------|
-| `&`                         | AND
-| `|`                         | OR
-| `^`                         | XOR
-| <code>~<em>expr</em></code> | Unary bitwise complement (0s become 1s; 1s become 0s)
-| `<<`                        | Shift left
-| `>>`                        | Shift right
+| `&`                         | ET
+| `|`                         | OU
+| `^`                         | OU Exclusif
+| <code>~<em>expr</em></code> | Complément binaire à 1 (les 0 deviennent des 1; les 1 deviennent des 0)
+| `<<`                        | Décalage à gauche
+| `>>`                        | Décalage à droite
 {:.table .table-striped}
 
-Here’s an example of using bitwise and shift operators:
+Voici un exemple d'utilisation des opérateurs binaires et de décalage :
 
 <!-- ch02/op_bitwise.dart -->
 {% prettify dart %}
 final value = 0x22;
 final bitmask = 0x0f;
 
-assert((value & bitmask)  == 0x02);  // AND
-assert((value & ~bitmask) == 0x20);  // AND NOT
-assert((value | bitmask)  == 0x2f);  // OR
-assert((value ^ bitmask)  == 0x2d);  // XOR
-assert((value << 4)       == 0x220); // Shift left
-assert((value >> 4)       == 0x02);  // Shift right
+assert((value & bitmask)  == 0x02);  // ET
+assert((value & ~bitmask) == 0x20);  // ET NON
+assert((value | bitmask)  == 0x2f);  // OU
+assert((value ^ bitmask)  == 0x2d);  // OU Exclusif
+assert((value << 4)       == 0x220); // Décalage à gauche
+assert((value >> 4)       == 0x02);  // Décalage à droite
 {% endprettify %}
 
 
-### Other operators {#other-operators}
+### Autres opérateurs {#other-operators}
 {:.no_toc}
 
-A few operators remain, most of which you’ve already seen in other
-examples.
+Il reste quelques opérateurs, vous en avez déjà vu la plupart dans les
+autres exemples.
 
-|----------+-------------------------------------------|
-| Operator | Name              |              Meaning                                   |
 |-----------+-------------------------------------------|
-| `()`     | Function application | Represents a function call
-| `[]`     | List access          | Refers to the value at the specified index in the list
-| <code><em>expr1</em> ? <em>expr2</em> : <em>expr3</em> | Conditional | If _expr1_ is true, executes _expr2_; otherwise, executes _expr3_
-| `.`      | Member access        | Refers to a property of an expression; example: `foo.bar` selects property `bar` from expression `foo`
-| `..`     | Cascade              | Allows you to perform multiple operations on the members of a single object; described in [Classes](#classes)
+| Opérateur | Nom              |              Signification                                   |
+|-----------+-------------------------------------------|
+| `()`     | Applique une fonction | Représente un appel de fonction
+| `[]`     | Accède à une liste          | Réfère à la valeur dans la liste à l'index spécifié
+| <code><em>expr1</em> ? <em>expr2</em> : <em>expr3</em> | Conditionnel | Si _expr1_ est vraie, exécute _expr2_; sinon, exécute _expr3_
+| `.`      | Accède un membre        | Réfère à une propriété d'une expression; exemple: `foo.bar` sélectionne la propriété `bar` de l'expression `foo`
+| `..`     | Cascade              | Vous permet d'effectuer plusieurs opérations sur les membres d'un même objet; décrit dans [Classes](#classes)
 {:.table .table-striped}
 
 
@@ -1642,117 +1641,104 @@ is thrown.
 
 ## Exceptions {#exceptions}
 
-Your Dart code can throw and catch exceptions. Exceptions are errors
-indicating that something unexpected happened. If the exception isn’t
-caught, the isolate that raised the exception is suspended, and
-typically the isolate and its program are terminated.
+Votre code Dart peut lever et attraper des exceptions. Les exceptions sont des erreurs indiquant que quelque chose d'inattendu est survenu. Si l'exception n'est pas attrapée, l'isolate qui a levé l'exception est suspendu, et l'isolate et son programme sont interrompus.
 
-In contrast to Java, all of Dart’s exceptions are unchecked exceptions.
-Methods do not declare which exceptions they might throw, and you are
-not required to catch any exceptions.
+Contrairement à Java, toutes les exceptions Dart sont des exceptions incontrôlées.
+Les méthodes ne déclarents par quelles exceptions elles sont susceptible de lever, et il ne vous est pas demandé de toutes les attraper.
 
-Dart provides
-[Exception](http://api.dartlang.org/dart_core/Exception.html) and
+Dart founit les types
+[Exception](http://api.dartlang.org/dart_core/Exception.html) et
 [Error](http://api.dartlang.org/docs/continuous/dart_core/Error.html)
-types, as well as numerous predefined subtypes. You can, of course,
-define your own exceptions. However, Dart programs can throw any
-non-null object—not just Exception and Error objects—as an exception.
+, ainsi que de nombreux sous types prédéfinis. Vous pouvez bien entendu définir vos propre exception. Cependant, les programmes Dart peuvent lever n'importe quel objet non nul comme une exception, pas seulement des objets Exception et Error.
 
 
-### Throw {#throw}
+### Lever une exception {#throw}
 {:.no_toc}
 
-Here’s an example of throwing, or *raising*, an exception:
+Voici un exemple de comment lever une exception :
 
 <!-- PENDING: NEED TEST FOR THIS -->
 {% prettify dart %}
-throw new FormatException('expected at least one section');
+throw new FormatException('au moins une section attendue');
 {% endprettify %}
 
-You can also throw arbitrary objects:
+Vous pouvez également lever n'importe quel type d'objet :
 
 <!-- ch02/flow_exceptions.dart -->
 {% prettify dart %}
-throw 'Out of llamas!';
+throw 'A cours de lamas!';
 {% endprettify %}
 
-Because throwing an exception is an expression, you can throw exceptions
-in =\> statements, as well as anywhere else that allows expressions:
+Lever une exception étant une expression, vous pouvez lever des exceptions dans les instructions =\>, ainsi que dans tout autre endroit permettant les expressions :
 
 <!-- ch02/flow_exceptions.dart -->
 {% prettify dart %}
-distanceTo(Point other) => throw new UnimplementedError();
+distanceJusqua(Point autre) => throw new UnimplementedError();
 {% endprettify %}
 
 
-### Catch {#catch}
+### Attraper une exception {#catch}
 {:.no_toc}
 
-Catching, or capturing, an exception stops the exception from
-propagating. Catching an exception gives you a chance to handle it:
+Attraper, ou capturer une exception interromp la propagation de l'exception. Attraper une exception vous offre la possibilité de la traiter :
 
 <!-- ch02/flow_exceptions.dart -->
 {% prettify dart %}
 try {
-  breedMoreLlamas();
-} on OutOfLlamasException {
-  buyMoreLlamas();
+  eleverPlusDeLamas();
+} on PlusDeLamaException {
+  acheterPlusDeLamas();
 }
 {% endprettify %}
 
-To handle code that can throw more than one type of exception, you can
-specify multiple catch clauses. The first catch clause that matches the
-thrown object’s type handles the exception. If the catch clause does not
-specify a type, that clause can handle any type of thrown object:
+Pour traiter du code qui peut lever plus d'un type d'exception,
+vous pouvez spécifier de multiples clauses catch. La première clause catch qui correspond au type de l'exception levée traite l'exception. Si la clause catch ne spécifie pas de type, cette clause peut traiter n'importe quel type d'objet levé :
 
 <!-- ch02/flow_exceptions.dart -->
 {% prettify dart %}
 try {
-  breedMoreLlamas();
-} on OutOfLlamasException { // A specific exception
-  buyMoreLlamas();
-} on Exception catch (e) {  // Anything else that is an exception
-  print('Unknown exception: $e');
-} catch (e) {               // No specified type, handles all
-  print('Something really unknown: $e');
+  eleverPlusDeLamas();
+} on PlusDeLamaException { // Une exception spécifique
+  acheterPlusDeLamas();
+} on Exception catch (e) {  // N'importe quoi d'autre qui est uen exception
+  print('Exception inconnue : $e');
+} catch (e) {               // Pas de type spécifié, traite tout
+  print('Quelque chose de vraiment pas connu : $e');
 }
 {% endprettify %}
 
-As the preceding code shows, you can use either `on` or `catch` or both.
-Use `on` when you need to specify the exception type. Use `catch` when
-your exception handler needs the exception object.
+Comme le montre le code précédent, vous pouvez utiliser au choix `on` ou `catch` ou les deux.
+Utilisez `on` quand vous avez besoin de spécifier le type de l'exception. Utilisez `catch` lorque traitement de l'exception a besoin de l'objet exception.
 
 
-### Finally {#finally}
+### Clause finally {#finally}
 {:.no_toc}
 
-To ensure that some code runs whether or not an exception is thrown, use
-a `finally` clause. If no `catch` clause matches the exception, the
-exception is propagated after the `finally` clause runs:
+Pour s'assurer qu'une partie de code s'exécute qu'une exception est été levée ou pas, utilisez la clause `finally`. Si aucune clause `catch` ne correspond à l'exception, cette dernière est propagée après que la clause `finally` n'ait été lancée :
 
 <!-- ch02/flow_exceptions.dart -->
 {% prettify dart %}
 try {
-  breedMoreLlamas();
+  eleverPlusDeLamas();
 } finally {
-  cleanLlamaStalls();  // Always clean up, even if an exception is thrown.
+  nettoyerLesStalles();  // Toujours nettoyer, même si une exception est levée.
 }
 {% endprettify %}
 
-The `finally` clause runs after any matching `catch` clauses:
+La clause `finally` s'exécute après n'importe quelle clause `catch` :
 
 <!-- ch02/flow_exceptions.dart -->
 {% prettify dart %}
 try {
-  breedMoreLlamas();
+  eleverPlusDeLamas();
 } catch(e) {
-  print('Error: $e');  // Handle the exception first.
+  print('Erreur: $e');  // Traiter l'exception en premier.
 } finally {
-  cleanLlamaStalls();  // Then clean up.
+  nettoyerLesStalles();  // Ensuite nettoyer.
 }
 {% endprettify %}
 
-Learn more by reading the [Exceptions](ch03.html#exceptions) section.
+Apprenez en davantage en lisant la section  [Exceptions](ch03.html#exceptions).
 
 
 ## Classes {#classes}
@@ -2984,160 +2970,144 @@ main() {
 
 ## Metadata {#metadata}
 
-Use metadata to give additional information about your code. A metadata
-annotation begins with the character `@`, followed by either a reference
-to a compile-time constant (such as `deprecated`) or a call to a
-constant constructor.
+Utilisez les metadata pour donner de l'information complémentaire à votre code.
+Une annotation metadata commence par le caratère `@`, suivi par soit une référence
+à une constante de compilation (telle que `deprecated`) soit un appel à un constructeur constant.
 
-Three annotations are available to all Dart code: `@deprecated`,
-`@override`, and `@proxy`. For examples of using `@override` and
-`@proxy`, see [Extending a class](#extending-a-class).
-Here’s an example of using the `@deprecated`
-annotation:
+Trois annotations sont disponibles pour tout code Dart : `@deprecated`,
+`@override`, et `@proxy`. Pour des exemples d'utilisation de `@override` et
+`@proxy`, voir [Etendre une classe](#extending-a-class).
+Voici un exemple d'utilisation de l'annotation `@deprecated` :
 
 <!-- ch02/ch02_meta/bin/ch02_meta.dart -->
 {% prettify dart %}
 class Television {
-  /// _Deprecated: Use [turnOn] instead._
-  @deprecated      // Metadata; makes Dart Editor warn about using activate().
-  void activate() {
-    turnOn();
+  /// _Deprecated: Utiliser [allumer] à la place._
+  @deprecated      // Metadata; fait en sorte que Dart Editor alerte sur l'utilisation de activate().
+  void activer() {
+    allumer();
   }
 
-  /// Turns the TV's power on.
-  void turnOn() {
-    print('on!');
+  /// Allume la télé.
+  void allumer() {
+    print('On!');
   }
 }
 {% endprettify %}
 
-You can define your own metadata annotations. Here’s an example of
-defining a @todo annotation that takes two arguments:
+Vous pouvez définir vos propres annotations metadata. Voici un exemple de
+définition de l'annotation @todo qui prend deux arguments :
 
 <!-- ch02/ch02_meta_create/todo.dart -->
 {% prettify dart %}
 library todo;
 
-class todo {
-  final String who;
-  final String what;
+class aFaire {
+  final String qui;
+  final String quoi;
 
-  const todo(this.who, this.what);
+  const aFaire(this.qui, this.quoi);
 }
 {% endprettify %}
 
-And here’s an example of using that @todo annotation:
+Et voici un exemple d'utilisation de cette annotation @aFaire :
 
 <!-- ch02/ch02_meta_create/metadata_user.dart -->
 {% prettify dart %}
 import 'todo.dart';
 
-@todo('seth', 'make this do something')
-void doSomething() {
-  print('do something');
+@todo('seth', 'Fait faire quelque chose à cette fonction')
+void faitQuelqueChose() {
+  print('Fait quelque chose');
 }
 {% endprettify %}
 
-Metadata can appear before a library, class, typedef, type parameter,
-constructor, factory, function, field, parameter, or variable
-declaration and before an import or export directive. You can
-retrieve metadata at runtime using reflection.
+Les metadatas peuvent apparaitre avant une déclaration de librairie, classe, typedef, paramètre de type,
+constructeur, factory, fonction, champ, paramètre, ou variable et avant un import ou export de directive.
+Vous pouvez récupérer les metadatas durant l'execution en utilisant la réflexion.
 
 
-## Comments {#comments}
+## Commentaires {#comments}
 
-Dart supports single-line comments, multi-line comments, and
-documentation comments.
+Dart supporte les commentaires sur une ou plusieurs lignes et
+les commentaires de documentation.
 
 
-### Single-line comments {#single-line-comments}
+### Commentaires d'une ligne {#single-line-comments}
 {:.no_toc}
 
-A single-line comment begins with `//`. Everything between `//` and the
-end of line is ignored by the Dart compiler.
+Un commentaire d'une ligne commence par `//`. Tout entre `//` et la
+fin de la ligne est ignoré par le compilateur Dart.
 
 <!-- ch02/single_line_comments.dart -->
 {% prettify dart %}
 main() {
-  // TODO: refactor into an AbstractLlamaGreetingFactory?
-  print('Welcome to my Llama farm!');
+  // TODO: refactorer en AbstractLlamaGreetingFactory?
+  print('Bienvenue à ma ferme de lamas !');
 }
 {% endprettify %}
 
 
-### Multi-line comments {#multi-line-comments}
+### Commentaires de plusieurs lignes {#multi-line-comments}
 {:.no_toc}
 
-A multi-line comment begins with `/*` and ends with `*/`. Everything
-between `/*` and `*/` is ignored by the Dart compiler (unless the
-comment is a documentation comment; see the next section). Multi-line
-comments can nest.
+Un commentaire de plusieurs lignes commence par `/*` et se termine par `*/`.
+Tout entre `/*` et `*/` est ignoré par le compilateur Dart (à moins que le commentaire ne soit un commentaire de documentation; voir la section suivante). Les commentaires de plusieurs lignes peuvent s'imbriquer.
 
 <!-- ch02/multi_line_comments.dart -->
 {% prettify dart %}
 main() {
   /*
-   * This is a lot of work. Consider raising chickens.
+   * C'est beaucoup de travail. Envisager l'élevage de poulets.
 
   Llama larry = new Llama();
-  larry.feed();
-  larry.exercise();
-  larry.clean();
+  larry.nourrir();
+  larry.preparer();
+  larry.nettoyer();
    */
 }
 {% endprettify %}
 
 
-### Documentation comments {#documentation-comments}
+### Commentaires de documentation {#documentation-comments}
 {:.no_toc}
 
-Documentation comments are multi-line or single-line comments that begin
-with `///` or `/**`. Using `///` on consecutive lines has the same
-effect as a multi-line doc comment.
+Les commentaires de documentation sont des commentaires d'une ou plusieurs lignes qui commencent
+avec `///` ou `/**`. Utiliser `///` sur plusieurs lignes consécutives a le même effet qu'un commentaire de documentation sur plusieurs lignes.
 
-Inside a documentation comment, the Dart compiler ignores all text
-unless it is enclosed in brackets. Using brackets, you can refer to
-classes, methods, fields, top-level variables, functions, and
-parameters. The names in brackets are resolved in the lexical scope of
-the documented program element.
+Dans un commentaire de documentation, le compilateur Dart ignore tout text sauf si celui-ci est entouré par des crochets.
+En utilisant des crochets, vous pouvez référer à une classe, une méthode, un champ, une variable globale, une fonction et des paramètres. Les noms entre crochets sont résolues dans le champ lexical de l'élément documenté.
 
-Here is an example of documentation comments with references to other
-classes and arguments:
+Voici un exemple de commentaires de documentation qui référencient d'autres classes et arguments:
 
 <!-- ch02/doc_comments.dart -->
 {% prettify dart %}
-/// A domesticated South American camelid (Lama glama).
+/// Une camélidé domestiqué d'amérique du sud (Lama glama).
 ///
-/// Andean cultures have used llamas as meat and pack animals
-/// since pre-Hispanic times.
-class Llama {
-  String name;
+/// Les cultures Andines utilisent les lamas comme nouriture et animaux de portage
+/// depuis les temps préhistoriques.
+class Lama {
+  String nom;
 
-  /// Feeds your llama [Food].
+  /// Nourris ton lama [Nourriture].
   ///
-  /// The typical llama eats one bale of hay per week.
-  void feed(Food food) {
+  /// Un lama typique mange une botte de foin par semaine.
+  void nourrir(Nourriture nourriture) {
     // ...
   }
 
-  /// Exercises your llama with an [activity] for
-  /// [timeLimit] minutes.
-  void exercise(Activity activity, int timeLimit) {
+  /// Fait travailler ton lama sur une [activité] pour
+  /// [limiteDeTemps] minutes.
+  void travaille(Activité activité, int limiteDeTemps) {
     // ...
   }
 }
 {% endprettify %}
 
-In the generated documentation, `[Food]` becomes a link to the API docs
-for the Food class.
+Dans la documentation générée, `[Nourriture]` devient un lien pour la documentation d'API pour la classe Nourriture.
 
-To parse Dart code and generate HTML documentation, you can use the
-SDK’s [documentation generation
-tool.](/tools/docgen/) For an example of
-generated documentation, see the [Dart API
-documentation.](http://api.dartlang.org) For advice on how to structure
-your comments, see [Guidelines for Dart Doc
-Comments.](/articles/doc-comment-guidelines/)
+Pour parser du code Dart et générer de la documentation HTML, vous pouvez utiliser the SDK [outil de génération de documentation.](/tools/docgen/) Pour un exemple de documentation générée, voir [Documentation API Dart.](http://api.dartlang.org)
+Pour des conseils sur la struturation des commentaire, voir [Guide pour les commentaires de documentation Dart.](/articles/doc-comment-guidelines/)
 
 
 ## Résumé {#summary}
