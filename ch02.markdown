@@ -2143,17 +2143,16 @@ logger.log('Bouton cliqué');
 {% endhighlight %}
 
 
-### Methods {#methods}
+### Méthodes {#methods}
 {:.no_toc}
 
-Methods are functions that provide behavior for an object.
+Les méthodes sont des fonctions qui fournissent un comportement pour un objet.
 
-#### Instance methods {#instance-methods}
+#### Méthodes d'instance {#instance-methods}
 {:.no_toc}
 
-Instance methods on objects can access instance variables and `this`.
-The `distanceTo()` method in the following sample is an example of an
-instance method:
+Les méthodes d'instance sur un des objets peuvent accéder aux variables d'intance et `this`.
+La méthode 'distanceA()' dans l'example suivant est un exemple de méthode d'instance.
 
 <!-- ch02/distance_to.dart -->
 {% highlight dart %}
@@ -2164,91 +2163,90 @@ class Point {
   num y;
   Point(this.x, this.y);
 
-  num distanceTo(Point other) {
-    var dx = x - other.x;
-    var dy = y - other.y;
+  num distanceA(Point autre) {
+    var dx = x - autre.x;
+    var dy = y - autre.y;
     return sqrt(dx * dx + dy * dy);
   }
 }
 {% endhighlight %}
 
-#### Getters and setters {#getters-and-setters}
+#### Getters et setters {#getters-and-setters}
 {:.no_toc}
 
-Getters and setters are special methods that provide read and write
-access to an object’s properties. Recall that each instance variable has
-an implicit getter, plus a setter if appropriate. You can create
-additional properties by implementing getters and setters, using the
-`get` and `set` keywords:
+Les getters et setters sont des méthodes spéciales qui fournissent des accès
+en lecture et écriture aux propriétés d'un objet. Rappelons que chaque
+variable d'instance a un getter implicite, plus un setter le cas échéant.
+Vous pouvez créer des propriétés additionelles en implémentant des getters 
+et setters, en utilisant les mots clés `get` et `set` :
 
 <!-- ch02/rectangle.dart -->
 {% highlight dart %}
 class Rectangle {
-  num left;
-  num top;
-  num width;
-  num height;
+  num gauche;
+  num haut;
+  num largeur;
+  num hauteur;
 
-  Rectangle(this.left, this.top, this.width, this.height);
+  Rectangle(this.gauche, this.haut, this.largeur, this.hauteur);
 
-  // Define two calculated properties: right and bottom.
-  num get right             => left + width;
-      set right(num value)  => left = value - width;
-  num get bottom            => top + height;
-      set bottom(num value) => top = value - height;
+  // Définie deux propriétés calculées : droite and bas.
+  num get droite             => gauche + largeur;
+      set droite(num valeur)  => gauche = valeur - largeur;
+  num get bas            => haut + hauteur;
+      set bas(num valeur) => haut = valeur - hauteur;
 }
 
 main() {
   var rect = new Rectangle(3, 4, 20, 15);
-  assert(rect.left == 3);
-  rect.right = 12;
-  assert(rect.left == -8);
+  assert(rect.gauche == 3);
+  rect.droite = 12;
+  assert(rect.gauche == -8);
 }
 {% endhighlight %}
 
-With getters and setters, you can start with instance variables, later
-wrapping them with methods, all without changing client code.
+Avec les getters et setters, vous pouvez commencer avec des variables d'instances, 
+et plus tard les encapsuler avec des méthodes, tout cela sans changer le code client.
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
-Operators such as increment (++) work in the expected way, whether or
-not a getter is explicitly defined. To avoid any unexpected side
-effects, the operator calls the getter exactly once, saving its value
-in a temporary variable.
+Les opérateurs comme l'incrémentation (++) fonctionnent de la façon prévue, même si un 
+getter est explicitement défini. Pour éviter des effets imprévus, l'opérateur appelle le 
+getter exactement une fois, sauvant la valeur dans une variable temporaire.
 </aside>
 
-#### Abstract methods {#abstract-methods}
+#### Méthods abstraites {#abstract-methods}
 {:.no_toc}
 
-Instance, getter, and setter methods can be abstract, defining an
-interface but leaving its implementation up to other classes. To make a
-method abstract, use a semicolon (;) instead of a method body:
+Les méthodes d'instance, getters et setters peuvent être abstrait, définissant une
+interface mais laissant l'implémentation à d'autres classes. Pour rendre une méthode
+abstraite, utiliser le point virgule (;) au lieu d'un corps de méthode :
 
 <!-- ch02/doer.dart -->
 {% highlight dart %}
-abstract class Doer {
-  // ...Define instance variables and methods...
+abstract class Actif {
+  // ... Définie des variables et méthodes d'instances...
 
-  void doSomething(); // Define an abstract method.
+  void faireQuelqueChose(); // Défine une méthode abstraite.
 }
 
-class EffectiveDoer extends Doer {
-  void doSomething() {
-    // ...Provide an implementation, so the method is not abstract here...
+class ActifEfficace extends Actif {
+  void faireQuelqueChose() {
+    // ... Founit une implémentation, donc la méthode ici n'est pas abstraite...
   }
 }
 {% endhighlight %}
 
-Calling an abstract method results in a run-time error.
+Appeler une méthode abstraitre produit une erreur d'exécution.
 
-Also see [Abstract classes](#abstract-classes).
+Voir aussi [Classes abstraites](#abstract-classes).
 
-#### Overridable operators {#overridable-operators}
+#### Surcharge d'opérateurs {#overridable-operators}
 {:.no_toc}
 
-You can override the operators shown in the following table.
-For example, if you define a
-Vector class, you might define a `+` method to add two vectors.
+Vous pouvez surcharger les opérateurs présents dans le tableau suivant.
+Par exemple, si vous définissez une classe Vecteur, vous pourriez définir
+une méthode `+` pour additionner deux vecteurs.
 
 `<`  | `+`  | `|`  | `[]`
 `>`  | `/`  | `^`  | `[]=`
@@ -2257,15 +2255,21 @@ Vector class, you might define a `+` method to add two vectors.
 `–`  | `%`  | `>>`
 {:.table}
 
-Here’s an example of a class that overrides the `+` and `-` operators:
+Voici un exemple d'une classe qui surcharge les opérateurs `+` et `-` :
 
 <!-- ch02/vector.dart -->
+<<<<<<< HEAD
 {% highlight dart %}
 class Vector {
+=======
+{% prettify dart %}
+class Vecteur {
+>>>>>>> Classes - Méthodes
   final int x;
   final int y;
   const Vector(this.x, this.y);
 
+<<<<<<< HEAD
   /// Overrides + (a + b).
   Vector operator +(Vector v) {
     return new Vector(x + v.x, y + v.y);
@@ -2274,12 +2278,20 @@ class Vector {
   /// Overrides - (a - b).
   Vector operator -(Vector v) {
     return new Vector(x - v.x, y - v.y);
+=======
+  Vecteur operator +(Vecteur v) { // Surcharge + (a + b).
+    return new Vecteur(x + v.x, y + v.y);
+  }
+
+  Vecteur operator -(Vecteur v) { // Surcharge - (a - b).
+    return new Vecteur(x - v.x, y - v.y);
+>>>>>>> Classes - Méthodes
   }
 }
 
 main() {
-  final v = new Vector(2, 3);
-  final w = new Vector(2, 2);
+  final v = new Vecteur(2, 3);
+  final w = new Vecteur(2, 2);
 
   // v == (2, 3)
   assert(v.x == 2 && v.y == 3);
@@ -2292,12 +2304,12 @@ main() {
 }
 {% endhighlight %}
 
-If you override `==`, you should also override Object's `hashCode` getter.
-For an example of overriding `==` and `hashCode`, see
-[Implementing map keys](ch03.html#implementing-map-keys).
+Si vous surcharger `==`, vous devriez surcharger le getter `hashCode` de Object.
+Pour un exemple de surcharge de `==` et `hashCode`, voir 
+[Implémentation des clés d'un dictionnaire](ch03.html#implementing-map-keys).
 
-For more information on overriding, in general, see
-[Extending a class](#extending-a-class).
+Pour plus d'information sur la surcharge, de façon générale, voir
+[Etendre une classe](#extending-a-class).
 
 
 ### Classes abstraites {#abstract-classes}
