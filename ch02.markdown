@@ -2304,43 +2304,42 @@ class SpecializedContainer extends AbstractContainer {
 {% endprettify %}
 
 
-### Implicit interfaces {#implicit-interfaces}
+### Interfaces implicites {#implicit-interfaces}
 {:.no_toc}
 
-Every class implicitly defines an interface containing all the instance
-members of the class and of any interfaces it implements. If you want to
-create a class A that supports class B’s API without inheriting B’s
-implementation, class A should implement the B interface.
+Toute classe définie implicitement une interface contenant tous les membres
+de la classe ainsi que toutes interfaces qu'elle implémente. Si vous créer une classe
+A qui supporte l'API de la classe B sans hériter de l'implémentation de B, la classe
+A doit implémenter l'interface B.
 
-A class implements one or more interfaces by declaring them in an
-`implements` clause and then providing the APIs required by the
-interfaces. For example:
+Une classe implémente une ou plusieurs interfaces en les déclarant dans la clause
+`implements` et en fournissant l'API requise par ces interfaces. 
+Par exemple :
 
 <!-- ch02/imposter.dart -->
 {% prettify dart %}
-// A person. The implicit interface contains greet().
-class Person {
-  final _name;          // In the interface, but visible only in this library,
-  Person(this._name);   // Not in the interface, since this is a constructor.
-  String greet(who) => 'Hello, $who. I am $_name.'; // In the interface.
+// Une personne. L'interface implicite contient la méthode saluer().
+class Personne {
+  final _nom;          // Dans l'interface, mais visible uniquement dans cette librairie,
+  Personne(this._nom);   // Pas dans l'interface étant donné qu'il s'agit d'un constructeur.
+  String saluer(qui) => 'Salut, $qui. Je suis $_nom.'; // Dans l'interface.
 }
 
-// An implementation of the Person interface.
-class Imposter implements Person {
-  final _name = "";      // We have to define this, but we don't use it.
-  String greet(who) => 'Hi $who. Do you know who I am?';
+// Une implémentation de l'interface Personne.
+class Imposteur implements Personne {
+  final _nom = "";      // Nous avons besoin de la définir, mais ne l'utilisons pas.
+  String saluer(qui) => 'Hé $qui. Tu sais qui je suis ?';
 }
 
-greetBob(Person person) => person.greet('bob');
+saluerBob(Personne personne) => personne.saluer('bob');
 
 main() {
-  print(greetBob(new Person('kathy')));
-  print(greetBob(new Imposter()));
+  print(saluerBob(new Personne('kathy')));
+  print(saluerBob(new Imposteur()));
 }
 {% endprettify %}
 
-Here’s an example of specifying that a class implements multiple
-interfaces:
+Voici un exemple de classe implémentant plusieurs interfaces :
 
 <!-- ch02/point_interfaces.dart -->
 {% prettify dart %}
