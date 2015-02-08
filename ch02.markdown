@@ -2696,41 +2696,38 @@ For more information about generics, see [Optional Types in
 Dart.](/articles/optional-types/)
 
 
-## Libraries and visibility {#libraries-and-visibility}
+## Librairies et visibilité {#libraries-and-visibility}
 
-The `import`, `part`, and `library` directives can help you create a
-modular and shareable code base. Libraries not only provide APIs, but
-are a unit of privacy: identifiers that start with an underscore (\_)
-are visible only inside the library. *Every Dart app is a library*, even
-if it doesn’t use a library directive.
+Les directives `import`, `part`, et `library` peuvent vous aider à créer
+une base de code modulaire et partageable. Les libraries fournissent non seulement
+des APIs, mais sont une unité de cloisonement : les identifiants qui commencent
+par un underscore (\_) ne sont visibles qu'au sein de la librairie.
+*Toute application Dart est une librairie*, même si elle n'utilise pas une directive library.
 
-Libraries can be distributed using packages. See
-[Pub Package and Asset Manager](/tools/pub/)
-for information about
-pub, a package manager included in the SDK.
+Les librairies peuvent être distribuées comme packages.
+Voir [Pub Package and Asset Manager](/tools/pub/)
+pour davantage d'informations sur pub, un gestionnaire de package inclu dans le SDK.
 
 
-### Using libraries {#using-libraries}
+### Utiliser les librairies {#using-libraries}
 {:.no_toc}
 
-Use `import` to specify how a namespace from one library is used in the
-scope of another library.
+Utilisez `import` pour spécifier comment un espace de nommage d'une librairie est utilisé
+dans le cadre d'une autre librairie.
 
-For example, Dart web apps generally use the
-[dart:html](http://api.dartlang.org/html.html) library, which they can
-import like this:
+Par exemple, les applications Web Dart utilisent généralement la librairie
+[dart:html](http://api.dartlang.org/html.html), qu'elles peuvent importer ainsi :
 
 <!-- ch02/libraries/using_libraries.dart -->
 {% prettify dart %}
 import 'dart:html';
 {% endprettify %}
 
-The only required argument to `import` is a URI specifying the
-library.
-For built-in libraries, the URI has the special `dart:` scheme.
-For other libraries, you can use a file system path or the `package:`
-scheme. The `package:` scheme specifies libraries provided by a package
-manager such as the pub tool. For example:
+Le seul argument nécessaire à `import` est une URI spécifiant la librairie.
+Pour les librairies natives, les URI ont le préfixe spécial `dart:`.
+Pour les autres librairies, vous pouvez utilisez un chemin de votre système
+de fichier ou le préfixe `package:`. Le préfixe `package:` désigne les librairies 
+fournies par un gestionnaire de package tel que l'outil pub. Par exemple :
 
 <!-- ch02/libraries/using_schemes.dart, mylib, utils -->
 {% prettify dart %}
@@ -2741,142 +2738,139 @@ import 'package:utils/utils.dart';
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
-*URI* stands for uniform resource identifier.
-*URLs* (uniform resource locators) are a common kind of URI.
+*URI* est l'acronyme de uniform resource identifier.
+*URLs* (uniform resource locators) est un type commun d'URI.
 </aside>
 
 
-#### Specifying a library prefix {#specifying-a-library-prefix}
+#### Spécifier un préfixe de librairie {#specifying-a-library-prefix}
 {:.no_toc}
 
-If you import two libraries that have conflicting identifiers, then you
-can specify a prefix for one or both libraries. For example, if library1
-and library2 both have an Element class, then you might have code like
-this:
+Si vous importez deux librairies qui ont des identifiants en conflit, vous
+avez la possibilité de spécifier un préfixe pour l'une ou les deux de ces librairies.
+Par exemple, si librairie1 et librairie2 possèdent toutes deux une classe Element, 
+vous pouvez avoir le code suivant :
 
 <!-- ch02/libraries/library_prefix.dart, lib1, lib2 -->
 {% prettify dart %}
 import 'package:lib1/lib1.dart';
 import 'package:lib2/lib2.dart' as lib2;
 // ...
-var element1 = new Element();      // Uses Element from lib1.
-var element2 = new lib2.Element(); // Uses Element from lib2.
+var element1 = new Element();      // Utilise Element de lib1.
+var element2 = new lib2.Element(); // Utilise Element de lib2.
 {% endprettify %}
 
-#### Importing only part of a library {#importing-only-part-of-a-library}
+#### Importer une partie d'une librairie {#importing-only-part-of-a-library}
 {:.no_toc}
 
-If you want to use only part of a library, you can selectively import
-the library. For example:
+Si vous ne désirez utiliser qu'une partie d'une librairie, vous avez la possibilité
+de choisir quoi importer de celle-ci. Par exemple :
 
 <!-- ch02/libraries/library_partil.dart, lib1, lib2 -->
 {% prettify dart %}
-import 'package:lib1/lib1.dart' show foo; // Import only foo.
-import 'package:lib2/lib2.dart' hide foo; // Import all names EXCEPT foo.
+import 'package:lib1/lib1.dart' show foo; // Importe uniquement foo.
+import 'package:lib2/lib2.dart' hide foo; // Importe tout SAUF foo.
 {% endprettify %}
 
 
-### Implementing libraries {#implementing-libraries}
+### Créer une librairie {#implementing-libraries}
 {:.no_toc}
 
-Use `library` to name a library, and `part` to specify additional files
-in the library.
+Utilisez `library` pour nommer une librairie, et `part` pour spécifier des fichiers additionnels
+dans la librairie.
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
-You don’t have to use `library` in an app (a file that has a top-level
-main() function), but doing so lets you implement the app in multiple
-files.
+Il n'est pas nécessaire d'utiliser `library` dans une application (une fichier qui a une fonction de haut niveau
+main()), mais le faire vous permet d'implémenter votre application dans plusieurs fichiers.
 </aside>
 
-#### Declaring a library {#declaring-a-library}
+#### Déclarer une librairie {#declaring-a-library}
 {:.no_toc}
 
-Use <code>library <em>identifier</em></code>
-to specify the name of the current library:
+Utilisez <code><em>l'identifiant</em> library</code>
+pour spécifier le nom de la librairie courante :
 
 <!-- ch02/ballgame.dart -->
 {% prettify dart %}
-library ballgame;   // Declare that this is a library named ballgame.
+library jeudeballe;   // Déclare qu'il s'agit d'une librairie nommée jeudeballe.
 
-import 'dart:html'; // This app uses the HTML library.
-// ...Code goes here...
+import 'dart:html'; // Cette application utilise la librairie HTML.
+// ... Le code va ici ...
 {% endprettify %}
 
-#### Associating a file with a library {#associating-a-file-with-a-library}
+#### Associer un fichier à une librairie {#associating-a-file-with-a-library}
 {:.no_toc}
 
-To add an implementation file, put
-<code>part <em>fileUri</em></code>
-in the file that has the `library` statement, where *fileUri*
-is the path to the implementation file. Then in the implementation file, put
-<code>part of <em>identifier</em></code>,
-where *identifier* is the name of the library. The following
-example uses `part` and `part of` to implement a library in three files.
+Pour ajouter un fichier d'implémentation, ajoutez
+<code>part <em>uriDuFichier</em></code>
+dans le fichier qui a la déclaration `library`, où *uriDuFichier*
+est le chemin vers le fichier d'implémentation. Indiquez alors
+<code>part of <em>identifiant</em></code>,
+où *identifiant* est le nom de la librairie. L'exemple suivant
+utilise `part` et `part of` pour implémenter une librairie de trois fichiers.
 
-The first file, `ballgame.dart`, declares the ballgame library, imports
-other libraries it needs, and specifies that `ball.dart` and `util.dart`
-are parts of this library:
+Le premier fichier `jeudeballe.dart`, déclare la librairie jeudeballe, importe 
+les librairies qui lui sont nécessaires, et indique que `balle.dart` et `util.dart`
+font partie de la librairie :
 
 <!-- ch02/ballgame.dart -->
 {% prettify dart %}
-library ballgame;
+library jeudeballe;
 
 import 'dart:html';
-// ...Other imports go here...
+// ... Les autres imports viennent ici ...
 
-part 'ball.dart';
+part 'balle.dart';
 part 'util.dart';
 
-// ...Code might go here...
+// ... Le code peut venir ici ...
 {% endprettify %}
 
-The second file, `ball.dart`, implements part of the ballgame library:
+Le deuxième fichier, `balle.dart`, implémente une partie de la librairie jeudeballe :
 
 <!-- ch02/ball.dart -->
 {% prettify dart %}
-part of ballgame;
+part of jeudeballe;
 
-// ...Code goes here...
+// ... Le code vient ici ...
 {% endprettify %}
 
-The third file, `util.dart`, implements the rest of the ballgame
-library:
+Le troisième fichier `util.dart`, implémente le reste de la librairie jeudeballe :
 
 <!-- ch02/util.dart -->
 {% prettify dart %}
-part of ballgame;
+part of jeudeballe;
 
-// ...Code goes here...
+// ... Le code vient ici ...
 {% endprettify %}
 
-#### Re-exporting libraries {#re-exporting-libraries}
+#### Ré-exporter des librairies {#re-exporting-libraries}
 {:.no_toc}
 
-You can combine or repackage libraries by re-exporting part or all of
-them. For example, you might have a huge library that you implement as a
-set of smaller libraries. Or you might create a library that provides a
-subset of methods from another library.
+Vous pouvez combiner et repackager des librairies en ré-exportant tout ou partie de celles-ci.
+Par exemple, vous pouvez avec une énorme librairie que vous implémentez sous forme de plus petites librairies.
+Ou alors vous pouvez créer un librairie qui fournit un sous ensemble de méthodes d'une autre librairie.
 
 <!-- ch02/french.dart, togo.dart, french_togo.dart -->
 {% prettify dart %}
-// In french.dart:
-library french;
+// Dans francais.dart:
+library francais;
 
-hello() => print('Bonjour!');
-goodbye() => print('Au Revoir!');
+bonjour() => print('Bonjour!');
+auRevoir() => print('Au Revoir!');
 
 // In togo.dart:
 library togo;
-import 'french.dart';
-export 'french.dart' show hello;
+import 'francais.dart';
+export 'francais.dart' show bonjour;
 
-// In another .dart file:
+// Dans un autre fichier .dart :
 import 'togo.dart';
 
 void main() {
-  hello();   //print bonjour
-  goodbye(); //FAIL
+  bonjour();   //affiche bonjour
+  auRevoir(); //ERREUR
 }
 {% endprettify %}
 
