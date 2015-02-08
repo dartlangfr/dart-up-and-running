@@ -2871,7 +2871,7 @@ des treads à mémoire partagée s'éxcutant en parrallèle.
 Cependant, le parallélisme à état partagé est source d'erreur et
 peut ammener à du code complexe.
 
-Au lieu d'utiliser les threads, tout code Dart tourne au sein d'un d'*isolates*.
+Au lieu d'utiliser les threads, tout code Dart tourne au sein d'un *isolates*.
 Chaque isolate possède sa propre mémoire tas, permettant de garantir qu'aucun état
 d'isolate n'est accessible depuis un autre isolate.
 
