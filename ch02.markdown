@@ -1812,25 +1812,26 @@ assert(identical(a, b)); // They are the same instance!
 The following sections discuss how to implement classes.
 
 
-### Instance variables {#instance-variables}
+### Variables d'instance {#instance-variables}
 {:.no_toc}
 
-Here’s how you declare instance variables:
+Voici comment déclarer des variables d'instance :
 
 <!-- ch02/instance_variables.dart -->
 {% prettify dart %}
 class Point {
-  num x;      // Declare an instance variable (x), initially null.
-  num y;      // Declare y, initially null.
-  num z = 0;  // Declare z, initially 0.
+  num x;      // Déclare une variable d'instance (x), initialisée à null.
+  num y;      // Déclare y, initialisée à null.
+  num z = 0;  // Déclare z, initialisée à 0.
 }
 {% endprettify %}
 
-All uninitialized instance variables have the value `null`.
+Toutes les variables d'instance non initialisée ont la valeur `null`.
 
-All instance variables generate an implicit *getter* method. Non-final
-instance variables also generate an implicit *setter* method. For details,
-see [Getters and setters](#getters-and-setters).
+Toutes les variables d'instance génèrent une méthode *getter* implicite.
+Les variables d'instance non-finales génèrent également une méthode 
+*setter* implicite. Pour plus de détails, voir 
+[Getters et setters](#getters-and-setters).
 
 <!-- ch02/instance_variables.dart -->
 {% prettify dart %}
@@ -1841,16 +1842,16 @@ class Point {
 
 main() {
   var point = new Point();
-  point.x = 4;             // Use the setter method for x.
-  assert(point.x == 4);    // Use the getter method for x.
-  assert(point.y == null); // Values default to null.
+  point.x = 4;             // Utilise la méthode setter pour x.
+  assert(point.x == 4);    // Utilise la méthode getter pour x.
+  assert(point.y == null); // Les valeurs par défaut sont nulles.
 }
 {% endprettify %}
 
-If you initialize an instance variable where it is declared (instead of
-in a constructor or method), the value is set when the instance is
-created, which is before the constructor and its initializer list
-execute.
+Si vous initialisez une variable d'instance là où elle est déclarée 
+(plutôt que dans un constructeur ou dans une méthode), la valeur est 
+définie quand l'instance est créée, c'est-à-dire, avant l'exécution du
+constructeur et de sa liste d'initialisation.
 
 
 ### Constructors {#constructors}
