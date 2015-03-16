@@ -2262,44 +2262,44 @@ For more information on overriding, in general, see
 [Extending a class](#extending-a-class).
 
 
-### Abstract classes {#abstract-classes}
+### Classes abstraites {#abstract-classes}
 {:.no_toc}
 
-Use the `abstract` modifier to define an *abstract class*—a class that
-can’t be instantiated. Abstract classes are useful for defining
-interfaces, often with some implementation. If you want your abstract
-class to appear to be instantiable, define a [factory
-constructor](#factory-constructors).
+Utilisez le modificateur `abstract` pour définir une *classe abstraite*,
+c'est-à-dire, une classe qui ne peut pas être instanciée. Les classes 
+abstraites sont utiles pour définir des interfaces, souvent avec quelques
+implémentations. Si vous voulez que votre classe abstraite apparaisse 
+comme instanciable, définissez un [constructeur factory](#factory-constructors).
 
-Abstract classes often have [abstract methods](#abstract-methods).
-Here’s an example of declaring an abstract class that has an abstract
-method:
+Les classes abstraites ont souvent des [méthodes abstraites](#abstract-methods).
+Voici un exemple de déclaration d'une classe abstraite qui a une méthode 
+abstraite:
 
 <!-- ch02/abstract.dart -->
 {% prettify dart %}
-// This class is declared abstract and thus can't be instantiated.
-abstract class AbstractContainer {
-  // ...Define constructors, fields, methods...
+// Cette classe est déclarée comme abstraite et ne peut pas être instanciée.
+abstract class ConteneurAbstrait {
+  // ...Définition des constructeurs, champs, méthodes...
 
-  void updateChildren(); // Abstract method.
+  void rafraichirEnfants(); // Abstract method.
 }
 {% endprettify %}
 
-The following class isn’t abstract, and thus can be instantiated even
-though it defines an abstract method:
+La classe suivante n'est pas abstraite, et elle peut être instanciée,
+même si elle définit une méthode abstraite :
 
 <!-- ch02/abstract.dart -->
 {% prettify dart %}
-class SpecializedContainer extends AbstractContainer {
-  // ...Define more constructors, fields, methods...
+class ConteneurSpecialise extends ConteneurAbstrait {
+  // ...Définition d'autres constructeurs, champs, méthodes...
 
-  void updateChildren() {
-    // ...Implement updateChildren()...
+  void rafraichirEnfants() {
+    // ...Implémentation de rafraichirEnfants()...
   }
 
-  // Abstract method causes a warning but
-  // doesn't prevent instantiation.
-  void doSomething();
+  // La méthode abstraite cause une alerte mais
+  // n'empêche pas l'instantiation.
+  void faireQuelqueChose();
 }
 {% endprettify %}
 
