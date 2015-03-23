@@ -1743,73 +1743,76 @@ Apprenez en davantage en lisant la section  [Exceptions](ch03.html#exceptions).
 
 ## Classes {#classes}
 
-Dart is an object-oriented language with classes and mixin-based
-inheritance. Every object is an instance of a class, and all classes
-descend from [Object.](http://api.dartlang.org/dart_core/Object.html)
-*Mixin-based inheritance* means that although every class (except for
-Object) has exactly one superclass, a class body can be reused in
-multiple class hierarchies.
+Dart est un langage orienté objet avec des classes et un héritage 
+à base de mixin. Chaque objet est une instance d'une classe, et toutes
+les classes descendent d'[Object.](http://api.dartlang.org/dart_core/Object.html)
+L'héritage à base de mixin signifie qu'un corps d'une classe peut être
+réutilisé dans un héritage multiple, même si toute classe (excepté pour
+Object) a une et une seule classe mère (superclass).
 
-To create an object, you can use the `new` keyword with a *constructor*
-for a class. Constructor names can be either <code><em>ClassName</em></code> or
-<code><em>ClassName</em>.<em>identifier</em></code>. For example:
+Pour créer un objet, vous pouvez utiliser le mot-clé `new` avec le 
+*constructeur* d'une classe. Les noms des constructeurs peuvent être soit
+<code><em>NomClasse</em></code> soit
+<code><em>NomClasse</em>.<em>identifiant</em></code>. Par exemple :
 
 <!-- ch02/object_classes.dart -->
 {% prettify dart %}
 var jsonData = JSON.decode('{"x":1, "y":2}');
 
-var p1 = new Point(2, 2);              // Create a Point using Point().
-var p2 = new Point.fromJson(jsonData); // Create a Point using Point.fromJson().
+var p1 = new Point(2, 2);              // Créer un Point en utilisant Point().
+var p2 = new Point.fromJson(jsonData); // Créer un Point en utilisant Point.fromJson().
 {% endprettify %}
 
-Objects have *members* consisting of functions and data (*methods* and
-*instance variables*, respectively). When you call a method, you *invoke*
-it on an object: the method has access to that object’s functions and
-data.
+Les objets ont des *membres* constitués de fonctions et de données 
+(respectivement *méthodes* et *variables d'instance*). Lorsque vous 
+appelez une méthode, vous l'*invoquez* sur un objet : la méthode a accès
+aux fonctions et données de l'objet.
 
-Use a dot (.) to refer to an instance variable or method:
+Utilisez un point (.) pour faire référence à une variable d'instance 
+ou une méthode :
 
 <!-- ch02/object_classes.dart -->
 {% prettify dart %}
 var p = new Point(2, 2);
 
-p.y = 3;          // Set the value of the instance variable y.
-assert(p.y == 3); // Get the value of y.
+p.y = 3;          // Défini la valeur de la variable d'instance y.
+assert(p.y == 3); // Obtient la valeur de y.
 
-num distance = p.distanceTo(new Point(4, 4)); // Invoke distanceTo() on p.
+num distance = p.distanceTo(new Point(4, 4)); // Invoque distanceTo() sur p.
 {% endprettify %}
 
-Use the cascade operator (..) when you want to perform a series of
-operations on the members of a single object:
+Utilisez l'opérateur en cascade (..) lorsque vous voulez enchainer des 
+opérations sur les membres d'un même objet :
 
 <!-- ch02/object_classes.dart -->
 {% prettify dart %}
 querySelector('#button')
-    ..text = 'Click to Confirm'                        // Get an object. Use its
-    ..classes.add('important')                         // instance variables
-    ..onClick.listen((e) => window.alert('Confirmed!')); // and methods.
+    ..text = 'Cliquer pour confirmer'                    // Récupère un objet. Utilise 
+    ..classes.add('important')                           // ses variables d'instance
+    ..onClick.listen((e) => window.alert('Confirmé !')); // et ses méthodes.
 {% endprettify %}
 
-Some classes provide constant constructors. To create a compile-time
-constant using a constant constructor, use `const` instead of `new`:
+Certaines classes fournissent des constructeurs de constantes. Pour 
+créer une constante à la compilation en utilisant constructeur de 
+constantes, utilisez `const` au lieu de `new` :
 
 <!-- ch02/object_classes.dart -->
 {% prettify dart %}
-var p = const ImmutablePoint(2, 2);
+var p = const PointImmuable(2, 2);
 {% endprettify %}
 
-Constructing two identical compile-time constants results in a single,
-canonical instance:
+La construction de deux constantes de compilation identiques résulte 
+en une seule et unique instance :
 
 <!-- ch02/object_classes.dart -->
 {% prettify dart %}
-var a = const ImmutablePoint(1, 1);
-var b = const ImmutablePoint(1, 1);
+var a = const PointImmuable(1, 1);
+var b = const PointImmuable(1, 1);
 
-assert(identical(a, b)); // They are the same instance!
+assert(identical(a, b)); // Ce sont les mêmes instances !
 {% endprettify %}
 
-The following sections discuss how to implement classes.
+Les sections suivantes montrent comment implémenter des classes.
 
 
 ### Instance variables {#instance-variables}
