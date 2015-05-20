@@ -2415,22 +2415,23 @@ For more information on annotations, see
 [Metadata](#metadata).
 
 
-### Adding features to a class: mixins {#adding-features-to-a-class-mixins}
+### Ajout de fonctionnalités à une classe: mixins {#adding-features-to-a-class-mixins}
 {:.no_toc}
 
-Mixins are a way of reusing a class's code in multiple class
-hierarchies.
+Les mixins sont une façon de réutiliser le code d'une classe dans des 
+héritages multiples.
 
-To use a mixin, use the `with` keyword followed by one or more mixin
-names. The following example shows two classes that use mixins:
+Pour utiliser un mixin, utilisez le mot-clé `with` suivi par un ou 
+plusieurs noms de mixin. L'exemple suivant montre deux classes qui 
+utilisent les mixins :
 
 <!-- ch02/mixins.dart -->
 {% prettify dart %}
-class Musician extends Performer with Musical {
+class Musicien extends Interprete with Musical {
   // ...
 }
 
-class Maestro extends Person with Musical, Aggressive, Demented {
+class Maestro extends Personne with Musical, Aggressif, Dement {
   Maestro(String maestroName) {
     name = maestroName;
     canConduct = true;
@@ -2438,29 +2439,30 @@ class Maestro extends Person with Musical, Aggressive, Demented {
 }
 {% endprettify %}
 
-To implement a mixin, create a class that extends Object, declares no
-constructors, and has no calls to `super`. For example:
+Pour implémenter un mixin, créez une classe qui étend d'Object, ne 
+déclare pas de constructeurs, et n'a aucun appels à `super`. Par 
+exemple:
 
 <!-- ch02/mixins.dart -->
 {% prettify dart %}
 abstract class Musical {
-  bool canPlayPiano = false;
-  bool canCompose = false;
-  bool canConduct = false;
+  bool peutJouerDuPiano = false;
+  bool peutComposer = false;
+  bool peutConduire = false;
 
-  void entertainMe() {
-    if (canPlayPiano) {
-      print('Playing piano');
-    } else if (canConduct) {
-      print('Waving hands');
+  void divertisMoi() {
+    if (peutJouerDuPiano) {
+      print('Joue du piano');
+    } else if (peutComposer) {
+      print('Bouge les mains');
     } else {
-      print('Humming to self');
+      print('Fredonne');
     }
   }
 }
 {% endprettify %}
 
-For more information, see the article [Mixins in
+Pour plus d'information, voir l'article [Mixins dans
 Dart.](/articles/mixins/)
 
 
