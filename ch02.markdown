@@ -2459,7 +2459,7 @@ abstract class Musical {
   bool peutComposer = false;
   bool peutConduire = false;
 
-  void divertiMoi() {
+  void divertisMoi() {
     if (peutJouerDuPiano) {
       print('Joue du piano');
     } else if (peutComposer) {
