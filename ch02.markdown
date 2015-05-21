@@ -2964,8 +2964,8 @@ main() {
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
-Pour le moment, les typedefs sont cantonnés au types de fonction. Cela
-va certainement évolué.
+Pour le moment, les typedefs sont cantonnés aux types de fonction. Cela
+va certainement évoluer.
 </aside>
 
 Du fait que les typedefs sont des alias, ils offrent un moyen de vérifier le type de n'importe
