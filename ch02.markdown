@@ -2273,7 +2273,7 @@ comme instanciable, définissez un [constructeur factory](#factory-constructors)
 
 Les classes abstraites ont souvent des [méthodes abstraites](#abstract-methods).
 Voici un exemple de déclaration d'une classe abstraite qui a une méthode 
-abstraite:
+abstraite :
 
 <!-- ch02/abstract.dart -->
 {% prettify dart %}
@@ -2298,7 +2298,7 @@ class ConteneurSpecialise extends ConteneurAbstrait {
   }
 
   // La méthode abstraite cause une alerte mais
-  // n'empêche pas l'instantiation.
+  // n'empêche pas l'instanciation.
   void faireQuelqueChose();
 }
 {% endprettify %}
