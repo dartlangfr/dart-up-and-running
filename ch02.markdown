@@ -1787,7 +1787,7 @@ opérations sur les membres d'un même objet :
 <!-- ch02/object_classes.dart -->
 {% prettify dart %}
 querySelector('#button')
-    ..text = 'Cliquer pour confirmer'                    // Récupère un objet. Utilise 
+    ..text = 'Cliquez pour confirmer'                    // Récupère un objet. Utilise 
     ..classes.add('important')                           // ses variables d'instance
     ..onClick.listen((e) => window.alert('Confirmé !')); // et ses méthodes.
 {% endprettify %}
