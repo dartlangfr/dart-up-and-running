@@ -2308,7 +2308,7 @@ class SpecializedContainer extends AbstractContainer {
 {:.no_toc}
 
 Toute classe définie implicitement une interface contenant tous les membres
-de la classe ainsi que toutes interfaces qu'elle implémente. Si vous créer une classe
+de la classe ainsi que toutes interfaces qu'elle implémente. Si vous créez une classe
 A qui supporte l'API de la classe B sans hériter de l'implémentation de B, la classe
 A doit implémenter l'interface B.
 
