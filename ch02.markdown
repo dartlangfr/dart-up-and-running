@@ -2905,12 +2905,14 @@ d'isolate n'est accessible depuis un autre isolate.
 
 ## Typedefs {#typedefs}
 
-In Dart, functions are objects, just like strings and numbers are
-objects. A *typedef*, or *function-type alias*, gives a function type a
-name that you can use when declaring fields and return types. A typedef
-retains type information when a function type is assigned to a variable.
+En Dart, les fonctions sont des objets, tout comme les chaines de caractères
+et les nombres sont des objets.
+Un *typedef*, ou *alias de type de fonction*, donne un nom à un type de fonction
+que vous pouvez utiliser pour déclarer un champ ou un type de retour.
+Un typedef garde les informations de type lorsqu'un type de fonction est
+assigné à une variable.
 
-Consider the following code, which does not use a typedef:
+Voici un exemple de code qui n'utilise pas de typedef:
 
 <!-- ch02/sorted_collection.dart -->
 {% prettify dart %}
@@ -2922,21 +2924,20 @@ class SortedCollection {
   }
 }
 
-int sort(Object a, Object b) => ... ; // Initial, broken implementation.
+int sort(Object a, Object b) => ... ; // Implémentation initiale erronée.
 
 main() {
   SortedCollection collection = new SortedCollection(sort);
 
-  // All we know is that compare is a function, but what type of function?
+  // Tout ce que nous savons est que compare est une fonction, mais quel type de fonction ?
   assert(collection.compare is Function);
 }
 {% endprettify %}
 
-Type information is lost when assigning `f` to `compare`. The type of
-`f` is `(Object, ``Object)` → `int` (where → means returns), yet the
-type of `compare` is Function. If we change the code to use explicit
-names and retain type information, both developers and tools can use
-that information.
+L'information de type est perdue lors de l'assignation de `f` à `compare`.
+Le type de `f` est `(Object, ``Object)` → `int` (où → signigie retourne), le type de `compare`
+est également Function. Si nous adaptons le code pour utiliser des noms explicites et garder l'information,
+les développeurs ainsi que les outils peuvent utiliser cette information.
 
 <!-- ch02/sorted_collection.dart -->
 {% prettify dart %}
@@ -2948,7 +2949,7 @@ class SortedCollection {
   SortedCollection(this.compare);
 }
 
-int sort(Object a, Object b) => ... ; // Initial, broken implementation.
+int sort(Object a, Object b) => ... ; // Implémentation initial erronée.
 
 main() {
   SortedCollection collection = new SortedCollection(sort);
@@ -2959,12 +2960,12 @@ main() {
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
-Currently, typedefs are restricted to function types. We expect this
-to change.
+Pour le moment, les typedefs sont cantonnés aux types de fonction. Cela
+va certainement évoluer.
 </aside>
 
-Because typedefs are simply aliases, they offer a way to check the type
-of any function. For example:
+Du fait que les typedefs sont des alias, ils offrent un moyen de vérifier le type de n'importe
+quelle fonction. Par exemple :
 
 <!-- ch02/sorted_collection.dart -->
 {% prettify dart %}
@@ -2973,7 +2974,7 @@ typedef int Compare(int a, int b);
 int sort(int a, int b) => a - b;
 
 main() {
-  assert(sort is Compare); // True!
+  assert(sort is Compare); // Vrai!
 }
 {% endprettify %}
 
