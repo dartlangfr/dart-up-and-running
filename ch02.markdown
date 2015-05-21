@@ -2350,51 +2350,50 @@ class Point implements Comparable, Location {
 {% endprettify %}
 
 
-### Extending a class {#extending-a-class}
+### Etendre une classe {#extending-a-class}
 {:.no_toc}
 
-Use `extends` to create a subclass, and `super` to refer to the
-superclass:
+Utilisez `extends` pour créer une sous-classe, et `super` pour référer
+à la super-classe :
 
 <!-- smart_tv.dart -->
 {% prettify dart %}
 class Television {
-  void turnOn() {
-    _illuminateDisplay();
-    _activateIrSensor();
+  void allumer() {
+    _eclairerLecran();
+    _activerCapteurInfrarouge();
   }
   // ...
 }
 
-class SmartTelevision extends Television {
-  void turnOn() {
-    super.turnOn();
-    _bootNetworkInterface();
-    _initializeMemory();
-    _upgradeApps();
+class TelevisionIntelligente extends Television {
+  void allumer() {
+    super.allumer();
+    _demarrerInterfaceReseau();
+    _initialiserMemoire();
+    _mettreAJourApplications();
   }
   // ...
 }
 {% endprettify %}
 
-Subclasses can override instance methods, getters, and setters. Here’s
-an example of overriding the Object class’s `noSuchMethod()` method,
-which is called whenever code attempts to use a non-existent method or
-instance variable:
+Les sous-classes peuvent étendre les méthodes d'instance, les getters et setters.
+Voici un exemple de surcharge de la méthode `noSuchMethod()` de la classe Object.
+Celle-ci est appelée par n'importe quel code qui tente d'utiliser une méthode ou une variable
+d'instance inexistante :
 
 <!-- ch02/no_such_method.dart -->
 {% prettify dart %}
 class A {
-  // Unless you override noSuchMethod, using a non-existent member
-  // results in a NoSuchMethodError.
+  // A moins que vous ne surchargiez noSuchMethod, utiliser un membre inexistant
+  // se terminera par une NoSuchMethodError.
   void noSuchMethod(Invocation mirror) {
-    print('You tried to use a non-existent member: ${mirror.memberName}');
+    print('Vous avez essayer d'utiliser un membre inexistant : ${mirror.memberName}');
   }
 }
 {% endprettify %}
 
-You can use the `@override` annotation to indicate that you are
-intentionally overriding a member:
+Vous pouvez utiliser l'annotation `@override` pour indiquer que vous surchargez intentionnellement un membre :
 
 <!-- ch02/ch02_meta/bin/ch02_override.dart -->
 {% prettify dart %}
@@ -2406,9 +2405,8 @@ class A {
 }
 {% endprettify %}
 
-If you use `noSuchMethod()` to implement every possible getter, setter,
-and method for a class, then you can use the `@proxy` annotation to
-avoid warnings:
+Si vous utilisez `noSuchMethod()` pour implémenter tous les getter, setters, méthodes
+pour une classen alors vous pouvez utiliser l'annotation `@proxy` pour éviter les avertissements:
 
 <!-- ch02/ch02_meta/bin/ch02_proxy.dart -->
 {% prettify dart %}
@@ -2420,7 +2418,7 @@ class A {
 }
 {% endprettify %}
 
-For more information on annotations, see
+Pour plus d'information sur les annotations, jetez un oeil à
 [Metadata](#metadata).
 
 
