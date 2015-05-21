@@ -2043,20 +2043,20 @@ class Point {
 }
 {% endprettify %}
 
-#### Constant constructors {#constant-constructors}
+#### Constructeurs constants {#constant-constructors}
 {:.no_toc}
 
-If your class produces objects that never change, you can make these
-objects compile-time constants. To do this, define a `const` constructor
-and make sure that all instance variables are `final`.
+Si votre classe produit des objets qui ne changent jamais, vous faire de
+ces objets des constantes de compilation. Pour ce faire, définissez un constructeur
+`const` et assurez vous que toutes les variables d'instance sont `final`.
 
 <!-- ch02/immutable_point.dart -->
 {% prettify dart %}
 class ImmutablePoint {
   final num x;
   final num y;
-  const ImmutablePoint(this.x, this.y);
-  static final ImmutablePoint origin = const ImmutablePoint(0, 0);
+  const PointImmutable(this.x, this.y);
+  static final PointImmutable origine = const PointImmutable(0, 0);
 }
 {% endprettify %}
 
