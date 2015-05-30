@@ -2469,44 +2469,44 @@ Pour plus d'information, voir l'article [Mixins dans
 Dart.](/articles/mixins/)
 
 
-### Class variables and methods {#class-variables-and-methods}
+### Variables de classes et méthodes {#class-variables-and-methods}
 {:.no_toc}
 
-Use the `static` keyword to implement class-wide variables and methods.
+Utilisez le mot clé `static` pour implémenter des variables et méthodes de classes.
 
-#### Static variables {#static-variables}
+#### Variables statiques {#static-variables}
 {:.no_toc}
 
-Static variables (class variables) are useful for class-wide state and
-constants:
+Les variables statiques (variables de classes) font utiles pour class-wide state et
+constantes :
 
 <!-- ch02/color.dart -->
 {% prettify dart %}
-class Color {
-  static const red = const Color('red'); // A constant static variable.
-  final String name;                     // An instance variable.
-  const Color(this.name);                // A constant constructor.
+class Couleur {
+  static const rouge = const Couleur('rouge'); // Une variable statique constante.
+  final String nom;                     // Une variable d'instance.
+  const Couleur(this.nom);                // Une constructeur de constantes.
 }
 
 main() {
-  assert(Color.red.name == 'red');
+  assert(Couleur.rouge.name == 'rouge');
 }
 {% endprettify %}
 
-Static variables aren’t initialized until they’re used.
+Les variables statiques ne sont pas initialisées jusqu'à ce qu'elles soit utilisées.
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
-This chapter follows the [style guide
+Ce chapitre suit le guide de style recommandé [style guide–
 recommendation](/articles/style-guide/#prefer-using-lowercamelcase-for-constant-names)
-of preferring `lowerCamelCase` for constant names.
+qui préfère `lowerCamelCase` comme nom de constantes.
 </aside>
 
-#### Static methods {#static-methods}
+#### Méthodes statiques {#static-methods}
 {:.no_toc}
 
-Static methods (class methods) do not operate on an instance, and thus
-do not have access to `this`. For example:
+Les méthodes statiques (méthodes de classes) n'opèrent pas sur une instance, et ainsi
+n'ont pas accès à `this`. Par exemple :
 
 <!-- ch02/point.dart -->
 {% prettify dart %}
@@ -2517,7 +2517,7 @@ class Point {
   num y;
   Point(this.x, this.y);
 
-  static num distanceBetween(Point a, Point b) {
+  static num distanceEntre(Point a, Point b) {
     var dx = a.x - b.x;
     var dy = a.y - b.y;
     return sqrt(dx * dx + dy * dy);
@@ -2527,19 +2527,19 @@ class Point {
 main() {
   var a = new Point(2, 2);
   var b = new Point(4, 4);
-  var distance = Point.distanceBetween(a, b);
+  var distance = Point.distanceEntre(a, b);
   assert(distance < 2.9 && distance > 2.8);
 }
 {% endprettify %}
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
-Consider using top-level functions, instead of static methods, for
-common or widely used utilities and functionality.
+Préférez l'utilisation de méthodes de haut niveau à des méthodes statiques, pour des fonctionnalités 
+communes et largement utilisées.
 </aside>
 
-You can use static methods as compile-time constants. For example, you
-can pass a static method as a parameter to a constant constructor.
+Vous pouvez utiliser des méthodes statiques comme constantes de compilation. Par exemple, vous pouvez 
+passer une méthode statique comme un paramètre à un constructeur constant.
 
 
 ## Génériques {#generics}
