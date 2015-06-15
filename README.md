@@ -9,6 +9,7 @@ http://www.dartlang.org/docs/dart-up-and-running/
 
 ## Configuring your system
 
+* Ensure you have Python 2.7.
 * Follow [Installing Jekyll](https://help.github.com/articles/using-jekyll-with-pages/#installing-jekyll)
 
 ### Tips for Windows
