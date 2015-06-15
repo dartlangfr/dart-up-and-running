@@ -2696,26 +2696,26 @@ For more information about generics, see [Optional Types in
 Dart.](/articles/optional-types/)
 
 
-## Librairies et visibilité {#libraries-and-visibility}
+## Bibliothèques et visibilité {#libraries-and-visibility}
 
-Les directives `import`, `part`, et `library` peuvent vous aider à créer
-une base de code modulaire et partageable. Les libraries fournissent non seulement
+Les instructions `import`, `part`, et `library` peuvent vous aider à créer
+une base de code modulaire et partageable. Les bibliothèques fournissent non seulement
 des APIs, mais sont une unité de cloisonement : les identifiants qui commencent
-par un underscore (\_) ne sont visibles qu'au sein de la librairie.
-*Toute application Dart est une librairie*, même si elle n'utilise pas une directive library.
+par un underscore (\_) ne sont visibles qu'au sein de la bibliothèque.
+*Toute application Dart est une bibliothèque*, même si elle n'utilise pas une directive library.
 
-Les librairies peuvent être distribuées comme packages.
+Les bibliothèques peuvent être distribuées comme paquet.
 Voir [Pub Package and Asset Manager](/tools/pub/)
-pour davantage d'informations sur pub, un gestionnaire de package inclu dans le SDK.
+pour davantage d'informations sur pub, un gestionnaire de paquets inclu dans le SDK.
 
 
-### Utiliser les librairies {#using-libraries}
+### Utiliser les bibliothèques {#using-libraries}
 {:.no_toc}
 
-Utilisez `import` pour spécifier comment un espace de nommage d'une librairie est utilisé
-dans le cadre d'une autre librairie.
+Utilisez `import` pour spécifier comment un espace de nommage d'une bibliothèque est utilisé
+dans le cadre d'une autre bibliothèque.
 
-Par exemple, les applications Web Dart utilisent généralement la librairie
+Par exemple, les applications Web Dart utilisent généralement la bibliothèque
 [dart:html](http://api.dartlang.org/html.html), qu'elles peuvent importer ainsi :
 
 <!-- ch02/libraries/using_libraries.dart -->
@@ -2723,11 +2723,11 @@ Par exemple, les applications Web Dart utilisent généralement la librairie
 import 'dart:html';
 {% endprettify %}
 
-Le seul argument nécessaire à `import` est une URI spécifiant la librairie.
-Pour les librairies natives, les URI ont le préfixe spécial `dart:`.
-Pour les autres librairies, vous pouvez utilisez un chemin de votre système
-de fichier ou le préfixe `package:`. Le préfixe `package:` désigne les librairies 
-fournies par un gestionnaire de package tel que l'outil pub. Par exemple :
+Le seul argument nécessaire à `import` est une URI spécifiant la bibliothèque.
+Pour les bibliothèques natives, les URI ont le préfixe spécial `dart:`.
+Pour les autres bibliothèques, vous pouvez utilisez un chemin de votre système
+de fichier ou le préfixe `package:`. Le préfixe `package:` désigne les bibliothèques 
+fournies par un gestionnaire de paquets tel que l'outil pub. Par exemple :
 
 <!-- ch02/libraries/using_schemes.dart, mylib, utils -->
 {% prettify dart %}
@@ -2743,12 +2743,12 @@ import 'package:utils/utils.dart';
 </aside>
 
 
-#### Spécifier un préfixe de librairie {#specifying-a-library-prefix}
+#### Spécifier un préfixe de bibliothèque {#specifying-a-library-prefix}
 {:.no_toc}
 
-Si vous importez deux librairies qui ont des identifiants en conflit, vous
-avez la possibilité de spécifier un préfixe pour l'une ou les deux de ces librairies.
-Par exemple, si librairie1 et librairie2 possèdent toutes deux une classe Element, 
+Si vous importez deux bibliothèques qui ont des identifiants en conflit, vous
+avez la possibilité de spécifier un préfixe pour l'une ou les deux de ces bibliothèques.
+Par exemple, si bibliothèque1 et bibliothèque2 possèdent toutes deux une classe Element, 
 vous pouvez avoir le code suivant :
 
 <!-- ch02/libraries/library_prefix.dart, lib1, lib2 -->
@@ -2760,10 +2760,10 @@ var element1 = new Element();      // Utilise Element de lib1.
 var element2 = new lib2.Element(); // Utilise Element de lib2.
 {% endprettify %}
 
-#### Importer une partie d'une librairie {#importing-only-part-of-a-library}
+#### Importer une partie d'une bibliothèque {#importing-only-part-of-a-library}
 {:.no_toc}
 
-Si vous ne désirez utiliser qu'une partie d'une librairie, vous avez la possibilité
+Si vous ne désirez utiliser qu'une partie d'une bibliothèque, vous avez la possibilité
 de choisir quoi importer de celle-ci. Par exemple :
 
 <!-- ch02/libraries/library_partil.dart, lib1, lib2 -->
@@ -2773,11 +2773,11 @@ import 'package:lib2/lib2.dart' hide foo; // Importe tout SAUF foo.
 {% endprettify %}
 
 
-### Créer une librairie {#implementing-libraries}
+### Créer une bibliothèque {#implementing-libraries}
 {:.no_toc}
 
-Utilisez `library` pour nommer une librairie, et `part` pour spécifier des fichiers additionnels
-dans la librairie.
+Utilisez `library` pour nommer une bibliothèque, et `part` pour spécifier des fichiers additionnels
+dans la bibliothèque.
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
@@ -2785,21 +2785,21 @@ Il n'est pas nécessaire d'utiliser `library` dans une application (une fichier 
 main()), mais le faire vous permet d'implémenter votre application dans plusieurs fichiers.
 </aside>
 
-#### Déclarer une librairie {#declaring-a-library}
+#### Déclarer une bibliothèque {#declaring-a-library}
 {:.no_toc}
 
 Utilisez <code><em>l'identifiant</em> library</code>
-pour spécifier le nom de la librairie courante :
+pour spécifier le nom de la bibliothèque courante :
 
 <!-- ch02/ballgame.dart -->
 {% prettify dart %}
-library jeudeballe;   // Déclare qu'il s'agit d'une librairie nommée jeudeballe.
+library jeudeballe;   // Déclare qu'il s'agit d'une bibliothèque nommée jeudeballe.
 
-import 'dart:html'; // Cette application utilise la librairie HTML.
+import 'dart:html'; // Cette application utilise la bibliothèque HTML.
 // ... Le code va ici ...
 {% endprettify %}
 
-#### Associer un fichier à une librairie {#associating-a-file-with-a-library}
+#### Associer un fichier à une bibliothèque {#associating-a-file-with-a-library}
 {:.no_toc}
 
 Pour ajouter un fichier d'implémentation, ajoutez
@@ -2807,12 +2807,12 @@ Pour ajouter un fichier d'implémentation, ajoutez
 dans le fichier qui a la déclaration `library`, où *uriDuFichier*
 est le chemin vers le fichier d'implémentation. Indiquez alors
 <code>part of <em>identifiant</em></code>,
-où *identifiant* est le nom de la librairie. L'exemple suivant
-utilise `part` et `part of` pour implémenter une librairie de trois fichiers.
+où *identifiant* est le nom de la bibliothèque. L'exemple suivant
+utilise `part` et `part of` pour implémenter une bibliothèque de trois fichiers.
 
-Le premier fichier `jeudeballe.dart`, déclare la librairie jeudeballe, importe 
-les librairies qui lui sont nécessaires, et indique que `balle.dart` et `util.dart`
-font partie de la librairie :
+Le premier fichier `jeudeballe.dart`, déclare la bibliothèque jeudeballe, importe 
+les bibliothèques qui lui sont nécessaires, et indique que `balle.dart` et `util.dart`
+font partie de la bibliothèque :
 
 <!-- ch02/ballgame.dart -->
 {% prettify dart %}
@@ -2827,7 +2827,7 @@ part 'util.dart';
 // ... Le code peut venir ici ...
 {% endprettify %}
 
-Le deuxième fichier, `balle.dart`, implémente une partie de la librairie jeudeballe :
+Le deuxième fichier, `balle.dart`, implémente une partie de la bibliothèque jeudeballe :
 
 <!-- ch02/ball.dart -->
 {% prettify dart %}
@@ -2836,7 +2836,7 @@ part of jeudeballe;
 // ... Le code vient ici ...
 {% endprettify %}
 
-Le troisième fichier `util.dart`, implémente le reste de la librairie jeudeballe :
+Le troisième fichier `util.dart`, implémente le reste de la bibliothèque jeudeballe :
 
 <!-- ch02/util.dart -->
 {% prettify dart %}
@@ -2845,12 +2845,12 @@ part of jeudeballe;
 // ... Le code vient ici ...
 {% endprettify %}
 
-#### Ré-exporter des librairies {#re-exporting-libraries}
+#### Ré-exporter des bibliothèques {#re-exporting-libraries}
 {:.no_toc}
 
-Vous pouvez combiner et repackager des librairies en ré-exportant tout ou partie de celles-ci.
-Par exemple, vous pouvez avec une énorme librairie que vous implémentez sous forme de plus petites librairies.
-Ou alors vous pouvez créer un librairie qui fournit un sous ensemble de méthodes d'une autre librairie.
+Vous pouvez combiner et ré-empaqueter des bibliothèques en ré-exportant tout ou partie de celles-ci.
+Par exemple, vous pouvez avec une énorme bibliothèque que vous implémentez sous forme de plus petites bibliothèques.
+Ou alors vous pouvez créer un bibliothèque qui fournit un sous ensemble de méthodes d'une autre bibliothèque.
 
 <!-- ch02/french.dart, togo.dart, french_togo.dart -->
 {% prettify dart %}
