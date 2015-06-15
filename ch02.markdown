@@ -1859,7 +1859,7 @@ execute.
 Déclarez un constructeur en créant une fonction de même nom que sa classe (plus,
   éventuellement, un identifiant comme décrit dans
 [Constructeurs nommés](#named-constructors)).
-La forme la plus commune de constructor, le constructeur générateur, créé
+La forme la plus commune de constructeur, le constructeur générateur, créé
 une nouvelle instance d'une classe :
 
 <!-- ch02/constructor_long_way.dart -->
@@ -1940,7 +1940,7 @@ qu'un constructeur nommé d'une classe parente n'est pas hérité par
 sa sous classe. Si vous désirez qu'une sous classe soit créé avec un constructeur nommé
 défini par une super classe, vous devez implémenter ce constructeur dans la sous classe.
 
-#### Invoquer un constructeur pas par défaut d'une superclasse {#invoking-a-non-default-superclass-constructor}
+#### Invoquer un constructeur non par défaut d'une superclasse {#invoking-a-non-default-superclass-constructor}
 {:.no_toc}
 
 Par défaut, un constructeur d'une sous classe appelle le constructeur non nommé et à
@@ -1997,7 +1997,7 @@ des méthodes d'instance.
 #### Liste de paramètres d'initialisation {#initializer-list}
 {:.no_toc}
 
-Hormis l'invocation du constructeur de la class parente, vous pouvez
+Hormis l'invocation du constructeur de la classe parente, vous pouvez
 également initialiser les variables d'instance avant que le corps du constructeur
 ne soit exécuté. Séparez les paramètres d'initialisation par des virgules.
 
@@ -2043,10 +2043,10 @@ class Point {
 }
 {% endprettify %}
 
-#### Constructeurs constants {#constant-constructors}
+#### Constructeurs de constantes {#constant-constructors}
 {:.no_toc}
 
-Si votre classe produit des objets qui ne changent jamais, vous faire de
+Si votre classe produit des objets qui ne changent jamais, vous faites de
 ces objets des constantes de compilation. Pour ce faire, définissez un constructeur
 `const` et assurez vous que toutes les variables d'instance sont `final`.
 
@@ -2060,7 +2060,7 @@ class ImmutablePoint {
 }
 {% endprettify %}
 
-#### Constructeurs de type Fabrique {#factory-constructors}
+#### Constructeurs de type fabrique {#factory-constructors}
 {:.no_toc}
 
 Utilisez le mot clé `factory` lorsque vous implémentez un constructeur
