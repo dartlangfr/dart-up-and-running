@@ -1848,14 +1848,14 @@ définie quand l'instance est créée, c'est-à-dire, avant l'exécution du
 constructeur et de sa liste d'initialisation.
 
 
-### Constructors {#constructors}
+### Constructeurs {#constructors}
 {:.no_toc}
 
-Declare a constructor by creating a function with the same name as its
-class (plus, optionally, an additional identifier as described in
-[Named constructors](#named-constructors)).
-The most common form of constructor, the generative constructor, creates
-a new instance of a class:
+Déclarez un constructeur en créant une fonction de même nom que sa classe (plus,
+  éventuellement, un identifiant comme décrit dans
+[Constructeurs nommés](#named-constructors)).
+La forme la plus commune de constructeur, le constructeur générateur, créé
+une nouvelle instance d'une classe :
 
 <!-- ch02/constructor_long_way.dart -->
 {% prettify dart %}
@@ -1864,23 +1864,24 @@ class Point {
   num y;
 
   Point(num x, num y) {
-    // There's a better way to do this, stay tuned.
+    // Il y a une meilleure façon de faire ça, restez à l'écoute.
     this.x = x;
     this.y = y;
   }
 }
 {% endprettify %}
 
-The `this` keyword refers to the current instance.
+Le mot clé `this` réfère à l'instance courante.
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
-Use `this` only when there is a name conflict. Otherwise, Dart style
-omits the `this`.
+Utilisez `this` seulement lorsqu'il y a un conflit de nom. Autrement,
+le style Dart néglige le `this`.
 </aside>
 
-The pattern of assigning a constructor argument to an instance variable
-is so common, Dart has syntactic sugar to make it easy:
+Le modèle consistant à assigner un argument du constructeur à une variable
+d'instance est tellement commun, Dart possède un sucre syntaxique pour le
+rendre facile :
 
 <!-- ch02/object_classes.dart -->
 {% prettify dart %}
@@ -1888,30 +1889,30 @@ class Point {
   num x;
   num y;
 
-  // Syntactic sugar for setting x and y before the constructor body runs.
+  // Sucre syntaxique pour assigner x et y avant que le contenu du constructeur s'éxécute.
   Point(this.x, this.y);
 }
 {% endprettify %}
 
-#### Default constructors {#default-constructors}
+#### Constructeurs par défaut {#default-constructors}
 {:.no_toc}
 
-If you don’t declare a constructor, a default constructor is provided
-for you. The default constructor has no arguments and invokes the
-no-argument constructor in the superclass.
+Si vous ne déclarez pas de constructeur, un constructeur par défaut est
+fourni pour vous. Le constructeur par défaut n'a pas d'argument et invoque
+le constructeur sans arguement de la classe parente.
 
-#### Constructors aren’t inherited {#constructors-arent-inherited}
+#### Les constructeurs ne sont pas hérités {#constructors-arent-inherited}
 {:.no_toc}
 
-Subclasses don’t inherit constructors from their superclass. A subclass
-that declares no constructors has only the default (no argument, no
-name) constructor.
+Les sous classes n'héritent pas des constructeurs de leur classes parentes.
+Une sous classe qui ne déclare pas de constructeur possède seulement le constructeur par défaut
+(pas d'argument, pas de nom).
 
-#### Named constructors {#named-constructors}
+#### Constructeurs nommés {#named-constructors}
 {:.no_toc}
 
-Use a named constructor to implement multiple constructors for a class
-or to provide extra clarity:
+Utilisez un constructeur nommé pour implémenter plusieurs constructeurs pour une classe
+ou pour plus de clareté :
 
 <!-- ch02/named_constructor.dart -->
 {% prettify dart %}
@@ -1921,7 +1922,7 @@ class Point {
 
   Point(this.x, this.y);
 
-  // Named constructor
+  // Constructeur nommé
   Point.fromJson(Map json) {
     x = json['x'];
     y = json['y'];
@@ -1929,71 +1930,71 @@ class Point {
 }
 {% endprettify %}
 
-Remember that constructors are not inherited, which means that a
-superclass’s named constructor is not inherited by a subclass. If you
-want a subclass to be created with a named constructor defined in the
-superclass, you must implement that constructor in the subclass.
+Souvenez vous que les constructeurs ne sont pas hérités, ce qui sigifie
+qu'un constructeur nommé d'une classe parente n'est pas hérité par
+sa sous classe. Si vous désirez qu'une sous classe soit créé avec un constructeur nommé
+défini par une super classe, vous devez implémenter ce constructeur dans la sous classe.
 
-#### Invoking a non-default superclass constructor {#invoking-a-non-default-superclass-constructor}
+#### Invoquer un constructeur non par défaut d'une superclasse {#invoking-a-non-default-superclass-constructor}
 {:.no_toc}
 
-By default, a constructor in a subclass calls the superclass’s unnamed,
-no-argument constructor. If the superclass doesn’t have such a
-constructor, then you must manually call one of the constructors in the
-superclass. Specify the superclass constructor after a colon (`:`), just
-before the constructor body (if any).
+Par défaut, un constructeur d'une sous classe appelle le constructeur non nommé et à
+zéro paramètre de la superclasse.
+Si la superclasse n'a pas ce type de constructeur, alors, vous devez appeler manuellement un des constructeur
+de la superclasse. Indiquez le constructeur de la superclasse après le symbole deux points (`:`), juste
+avant le corps du constructeur (s'il y en a un).
 
 <!-- ch02/op_as.dart -->
 {% prettify dart %}
-class Person {
-  Person.fromJson(Map data) {
-    print('in Person');
+class Personne {
+  Personne.fromJson(Map info) {
+    print('dans Personne');
   }
 }
 
-class Employee extends Person {
-  // Person does not have a default constructor;
-  // you must call super.fromJson(data).
-  Employee.fromJson(Map data) : super.fromJson(data) {
-    print('in Employee');
+class Employe extends Personne {
+  // Personne n'a pas de constructeur par défaut;
+  // vous devez appeler super.fromJson(info).
+  Employe.fromJson(Map info) : super.fromJson(info) {
+    print('dans Employe');
   }
 }
 
 main() {
-  var emp = new Employee.fromJson({});
+  var emp = new Employe.fromJson({});
 
-  // Prints:
-  // in Person
-  // in Employee
+  // Affiche:
+  // dans Personne
+  // dans Employe
 }
 {% endprettify %}
 
-Because the arguments to the superclass constructor are evaluated before
-invoking the constructor, an argument can be an expression such as a
-function call:
+Du fait que les paramètres du constructeur de la superclasse sont évalués avant
+d'invoquer le constructeur, un paramètre peut être une expression telle qu'un appel
+de fonction :
 
 <!-- ch02/method_then_constructor.dart -->
 {% prettify dart %}
-class Employee extends Person {
+class Employe extends Personne {
   // ...
-  Employee() : super.fromJson(findDefaultData());
+  Employe() : super.fromJson(trouveInfoParDefaut());
 }
 {% endprettify %}
 
 <aside class="alert alert-warning" markdown="1">
-**Warning:**
-Arguments to the superclass constructor do not have access to `this`.
-For example, arguments can call static methods but not instance
-methods.
+**Attention:**
+Les paramètres pour le constructeur de la superclasse n'ont pas accès à `this`.
+Par exemple, les arguments peuvent appeler des méthodes statiques mais pas
+des méthodes d'instance.
 </aside>
 
 
-#### Initializer list {#initializer-list}
+#### Liste de paramètres d'initialisation {#initializer-list}
 {:.no_toc}
 
-Besides invoking a superclass constructor, you can also initialize
-instance variables before the constructor body runs. Separate
-initializers with commas.
+Hormis l'invocation du constructeur de la classe parente, vous pouvez
+également initialiser les variables d'instance avant que le corps du constructeur
+ne soit exécuté. Séparez les paramètres d'initialisation par des virgules.
 
 <!-- ch02/initializer_list.dart -->
 {% prettify dart %}
@@ -2003,27 +2004,28 @@ class Point {
 
   Point(this.x, this.y);
 
-  // Initializer list sets instance variables before the constructor body runs.
+  // La liste de paramètres d'initialisation renseigne les variables d'instance avant que le corps du
+  // constructeur ne s'exécute.
   Point.fromJson(Map jsonMap)
       : x = jsonMap['x'],
         y = jsonMap['y'] {
-    print('In Point.fromJson(): ($x, $y)');
+    print('Dans Point.fromJson(): ($x, $y)');
   }
 }
 {% endprettify %}
 
 <aside class="alert alert-warning" markdown="1">
-**Warning:**
-The right-hand side of an initializer does not have access to `this`.
+**Attention:**
+La valeur de l'assignation n'a pas accès à `this`.
 </aside>
 
 
-#### Redirecting constructors {#redirecting-constructors}
+#### Redirection de constructeur {#redirecting-constructors}
 {:.no_toc}
 
-Sometimes a constructor’s only purpose is to redirect to another
-constructor in the same class. A redirecting constructor’s body is
-empty, with the constructor call appearing after a colon (:).
+Parfois, un constructeur a pour seul objectif de rediriger vers un autre constructeur
+de la même classe. Le corps d'un constructeur de redirection est vide avec
+l'appel de constructeur cible apparaissant après le symbole (:).
 
 <!-- ch02/along_x_axis.dart -->
 {% prettify dart %}
@@ -2031,62 +2033,62 @@ class Point {
   num x;
   num y;
 
-  Point(this.x, this.y);                // The main constructor for this class.
-  Point.alongXAxis(num x) : this(x, 0); // Delegates to the main constructor.
+  Point(this.x, this.y);                 // Le constructeur principal de cette classe.
+  Point.surLaxeDesX(num x) : this(x, 0); // Délègue au constructeur principal de la classe.
 }
 {% endprettify %}
 
-#### Constant constructors {#constant-constructors}
+#### Constructeurs de constantes {#constant-constructors}
 {:.no_toc}
 
-If your class produces objects that never change, you can make these
-objects compile-time constants. To do this, define a `const` constructor
-and make sure that all instance variables are `final`.
+Si votre classe produit des objets qui ne changent jamais, vous faites de
+ces objets des constantes de compilation. Pour ce faire, définissez un constructeur
+`const` et assurez vous que toutes les variables d'instance sont `final`.
 
 <!-- ch02/immutable_point.dart -->
 {% prettify dart %}
 class ImmutablePoint {
   final num x;
   final num y;
-  const ImmutablePoint(this.x, this.y);
-  static final ImmutablePoint origin = const ImmutablePoint(0, 0);
+  const PointImmutable(this.x, this.y);
+  static final PointImmutable origine = const PointImmutable(0, 0);
 }
 {% endprettify %}
 
-#### Factory constructors {#factory-constructors}
+#### Constructeurs de type fabrique {#factory-constructors}
 {:.no_toc}
 
-Use the `factory` keyword when implementing a constructor that doesn’t
-always create a new instance of its class. For example, a factory
-constructor might return an instance from a cache, or it might return an
-instance of a subtype.
+Utilisez le mot clé `factory` lorsque vous implémentez un constructeur
+qui ne créé pas toujours une nouvelle instance de sa classe.
+Par exemple, un constructeur de type fabrique peut retourner une instance à partir
+d'un cache, ou il pourrait encore retourner une instance d'un sous-type.
 
-The following example demonstrates a factory constructor returning
-objects from a cache:
+L'exemple suivant présente un constructeur de type fabrique qui retourne
+un objet depuis un cache :
 
 <!-- ch02/factory_constructor.dart -->
 {% prettify dart %}
 class Logger {
-  final String name;
-  bool mute = false;
+  final String nom;
+  bool silencieux = false;
 
-  // _cache is library-private, thanks to the _ in front of its name.
+  // _cache est privé à la librairie gràce au _ qui précède son nom.
   static final Map<String, Logger> _cache = <String, Logger>{};
 
-  factory Logger(String name) {
-    if (_cache.containsKey(name)) {
-      return _cache[name];
+  factory Logger(String nom) {
+    if (_cache.containsKey(nom)) {
+      return _cache[nom];
     } else {
-      final logger = new Logger._internal(name);
-      _cache[name] = logger;
+      final logger = new Logger._internal(nom);
+      _cache[nom] = logger;
       return logger;
     }
   }
 
-  Logger._internal(this.name);
+  Logger._internal(this.nom);
 
   void log(String msg) {
-    if (!mute) {
+    if (!silencieux) {
       print(msg);
     }
   }
@@ -2095,15 +2097,15 @@ class Logger {
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
-Factory constructors have no access to `this`.
+Les constructeurs de type fabrique n'ont pas accès à `this`.
 </aside>
 
-To invoke a factory constructor, you use the `new` keyword:
+Pour invoquer un constructeur de type fabrique, utilisez le mot clé `new` :
 
 <!-- ch02/factory_constructor.dart -->
 {% prettify dart %}
-var logger = new Logger('UI');
-logger.log('Button clicked');
+var logger = new Logger('IHM');
+logger.log('Bouton cliqué');
 {% endprettify %}
 
 
