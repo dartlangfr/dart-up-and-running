@@ -313,16 +313,16 @@ Les types suivants sont nativement supportés par le langage Dart :
 
 -   les symboles
 
-Vous pouvez initialiser un objet de n'importe quel de ces types en 
-utisant une valeur littérale. Par exemple, `'ceci est une chaîne de 
-caractères'` est une chaîne de caractères littérale, et `true` est un 
+Vous pouvez initialiser un objet de n'importe quel de ces types en
+utisant une valeur littérale. Par exemple, `'ceci est une chaîne de
+caractères'` est une chaîne de caractères littérale, et `true` est un
 booléen littéral.
 
 Comme toute variable en Dart fait référence à un objet, c'est-à-dire,
 à une instance d'une *classe*, vous pouvez utiliser des *constructeurs*
-pour initialiser ces variables. Certains de ces types natifs ont leurs 
+pour initialiser ces variables. Certains de ces types natifs ont leurs
 propres constructeurs. Par exemple, vous pouvez utiliser le constructeur
-`Map()` pour créer un dictionnaire, en utilisant le code tel que 
+`Map()` pour créer un dictionnaire, en utilisant le code tel que
 `new Map()`.
 
 
@@ -341,26 +341,26 @@ Il existe deux types de nombre en Dart :
 :   Les nombres à virgule flottante 64-bit (double précision), tel que
     spécifié dans le standart IEEE 754
 
-Les deux types `int` et `double` sont des sous-types de 
-[`num`.](http://api.dartlang.org/dart_core/num.html) Le type num 
-inclut des opérateurs de base tel que +, -, /, et \*, mais aussi les 
-opérateurs bit à bit tel que \>\>. Vous trouverez aussi dans le type 
-num, `abs()`,` ceil()`, et `floor()`, parmi d'autres méthodes. Si num 
+Les deux types `int` et `double` sont des sous-types de
+[`num`.](http://api.dartlang.org/dart_core/num.html) Le type num
+inclut des opérateurs de base tel que +, -, /, et \*, mais aussi les
+opérateurs bit à bit tel que \>\>. Vous trouverez aussi dans le type
+num, `abs()`,` ceil()`, et `floor()`, parmi d'autres méthodes. Si num
 et ses sous-types n'ont pas ce que vous recherchez, la librairie
 [Math](http://api.dartlang.org/dart_math.html) peut vous aider.
 
 <aside class="alert alert-warning" markdown="1">
 **Attention :**
 Actuellement, les nombres entiers en dehors de l'intervalle
--2<sup>53</sup> et 2<sup>53</sup> se comporte différement dans le 
-JavaScript généré à partir du code Dart comparé au même code Dart 
-tournant sous la machine virtuelle Dart. La raison est que Dart a été 
-spécifié pour avoir des entiers multiprécisions, ce qui n'est pas le 
+-2<sup>53</sup> et 2<sup>53</sup> se comporte différement dans le
+JavaScript généré à partir du code Dart comparé au même code Dart
+tournant sous la machine virtuelle Dart. La raison est que Dart a été
+spécifié pour avoir des entiers multiprécisions, ce qui n'est pas le
 cas de JavaScript.
 Voir [issue 1533](http://dartbug.com/1533) pour plus de détails.
 </aside>
 
-Les entiers sont des nombres sans décimale. Voici quelques exemples 
+Les entiers sont des nombres sans décimale. Voici quelques exemples
 de nombres entiers littéraux :
 
 <!-- ch02/integer_literals.dart -->
@@ -370,7 +370,7 @@ var hex = 0xDEADBEEF;
 var grosEntier = 346534658346524376592384765923749587398457294759347029438709349347;
 {% endprettify %}
 
-Si un nombre inclut une décimale, c'est un double. Voici quelques exemples 
+Si un nombre inclut une décimale, c'est un double. Voici quelques exemples
 de nombres réels littéraux :
 
 <!-- ch02/double_literals.dart -->
@@ -379,7 +379,7 @@ var y = 1.1;
 var dixPuissance = 1.42e5;
 {% endprettify %}
 
-Voici comment transformer une chaîne de caractères en nombre, ou vice 
+Voici comment transformer une chaîne de caractères en nombre, ou vice
 versa :
 
 <!-- ch02/number_conversion.dart -->
@@ -401,7 +401,7 @@ String piEnString = 3.14159.toStringAsFixed(2);
 assert(piEnString == '3.14');
 {% endprettify %}
 
-Le type int définit le traditionnel décalage de bit (\<\<, \>\>), les 
+Le type int définit le traditionnel décalage de bit (\<\<, \>\>), les
 opérateurs ET (&), et OU (|). Par exemple :
 
 <!-- ch02/bit_shifting.dart -->
@@ -415,8 +415,8 @@ assert((3 | 4)  == 7);  // 0011 | 0100 == 0111
 ### Chaînes de caractères {#strings}
 {:.no_toc}
 
-Une chaîne de caractères en Dart est une suite de codes UTF-16. Vous 
-pouvez utiliser des guillemets simples ou des guillemets doubles pour 
+Une chaîne de caractères en Dart est une suite de codes UTF-16. Vous
+pouvez utiliser des guillemets simples ou des guillemets doubles pour
 créer une chaîne de caractères :
 
 <!-- ch02/quoting.dart -->
@@ -427,9 +427,9 @@ var s3 = 'C\'est facile d\'échapper les délimiteurs d\'une chaîne de caractè
 var s4 = "C'est encore plus facile d'utiliser l'autre délimiteur.";
 {% endprettify %}
 
-Vous pouvez mettre la valeur d'une expression à l'intérieur d'une 
-chaine de caractères en utilisant `${`*`expression`*`}`. Si 
-l'expression est un identifiant, vous pouvez omettre les {}. Pour 
+Vous pouvez mettre la valeur d'une expression à l'intérieur d'une
+chaine de caractères en utilisant `${`*`expression`*`}`. Si
+l'expression est un identifiant, vous pouvez omettre les {}. Pour
 obtenir la chaîne de caractères correspondant à un objet, Dart appelle
 la méthode `toString()` de l'objet.
 
@@ -446,11 +446,11 @@ assert("Le même en majuscule. L'${s.toUpperCase()} est très pratique !" ==
 <aside class="alert alert-info" markdown="1">
 **Note:**
 L'opérateur `==` teste si deux objets sont équivalents. Deux
-chaînes de caractères sont équivalentes s'elles contiennent la même 
+chaînes de caractères sont équivalentes s'elles contiennent la même
 suite de codes de caractère.
 </aside>
 
-Vous pouvez concatener des chaînes de caractères en utilisant des 
+Vous pouvez concatener des chaînes de caractères en utilisant des
 chaînes littérales adjacentes ou l'opérateur `+` :
 
 <!-- adjacent_string_literals.dart -->
@@ -464,7 +464,7 @@ var s2 = "L'opérateur plus "
 assert(s2 == "L'opérateur plus fonctionne également.");
 {% endprettify %}
 
-Une autre façon de créer des chaînes de caractères multiligne est 
+Une autre façon de créer des chaînes de caractères multiligne est
 d'utiliser un triplet de guillements qu'ils soient simple ou double :
 
 <!-- ch02/triple_quotes.dart -->
@@ -478,7 +478,7 @@ var s2 = """Celle-là est aussi une
 chaîne de caractères multiligne.""";
 {% endprettify %}
 
-Vous pouvez créer une chaîne de caractères “brute” en la préfixant 
+Vous pouvez créer une chaîne de caractères “brute” en la préfixant
 avec `r` :
 
 <!-- ch02/raw_strings.dart -->
@@ -500,14 +500,14 @@ Pour plus d'information sur comment utiliser les chaînes de caractères, voir
 ### Booléens {#booleans}
 {:.no_toc}
 
-Pour représenter les valeurs booléennes, Dart a un type nommé `bool`. 
-Seulement deux objets ont le type booléen: les valeurs littérales 
+Pour représenter les valeurs booléennes, Dart a un type nommé `bool`.
+Seulement deux objets ont le type booléen: les valeurs littérales
 `true` et `false`, respectivement vrai et faux.
 
 Lorsque Dart s'attend à une valeur booléenne, seulement la valeur `true`
 est considérée comme vraie. Toutes les autres valeurs sont considérées
-comme fausses. Contrairement à JavaScript, les valeurs telles que `1`, 
-`"uneChaineDeCaractères"`, et `unObjet` sont toutes considérées comme 
+comme fausses. Contrairement à JavaScript, les valeurs telles que `1`,
+`"uneChaineDeCaractères"`, et `unObjet` sont toutes considérées comme
 fausses.
 
 Par exemple, considérons le code suivant qui est valide en JavaScript et
@@ -521,14 +521,14 @@ if (nom) {
 }
 {% endprettify %}
 
-Si vous lancez ce code en JavaScript, il affiche “Tu as un nom !” car 
-`nom` est un objet non null. Par contre, en Dart tournant dans un mode 
-production, le code précédent n'affiche rien car `nom` est converti 
-en `false` (car `nom != true`). En Dart tournant dans un mode de 
+Si vous lancez ce code en JavaScript, il affiche “Tu as un nom !” car
+`nom` est un objet non null. Par contre, en Dart tournant dans un mode
+production, le code précédent n'affiche rien car `nom` est converti
+en `false` (car `nom != true`). En Dart tournant dans un mode de
 vérification le code précédent lance une exception car la variable `nom`
 n'est pas un booléen.
 
-Voici un autre exemple de code qui se comporte différement entre 
+Voici un autre exemple de code qui se comporte différement entre
 JavaScript et Dart :
 
 <!-- ch02/if_one.dart -->
@@ -543,16 +543,16 @@ if (1) {
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
-Les deux examples précédents fonctionnent seulement en mode production, 
+Les deux examples précédents fonctionnent seulement en mode production,
 pas en mode vérification. En mode vérification, une exception est lancée
 si un non-booléen est utilisé alors qu'une valeur booléenne est attendue.
 </aside>
 
-Le traitement des booléens en Dart a été conçu de façon à éviter des 
+Le traitement des booléens en Dart a été conçu de façon à éviter des
 comportements étranges qui peuvent arriver lorsque de nombreuses valeurs
-sont considérées comme vraie. Ce qui signifie pour vous c'est que, 
-au lieu d'utiliser du code comme 
-<code>if (<em>valeurNonBooleene</em>)</code>, il faut plutôt 
+sont considérées comme vraie. Ce qui signifie pour vous c'est que,
+au lieu d'utiliser du code comme
+<code>if (<em>valeurNonBooleene</em>)</code>, il faut plutôt
 vérifier explicitement les valeurs. Par exemple :
 
 <!-- ch02/empty_string.dart -->
@@ -580,11 +580,11 @@ assert(jeVoulaisLeFaire.isNaN);
 
 Peut-être la collection la plus commune dans presque tous les langages
 de programmation est le *tableau*, ou un groupe ordonné d'objets. Dans
-Dart, les tableaux sont des objets 
-[List](http://api.dartlang.org/dart_core/List.html), donc nous les 
+Dart, les tableaux sont des objets
+[List](http://api.dartlang.org/dart_core/List.html), donc nous les
 appelons juste *listes*.
 
-Les listes littérales Dart ressemblent aux tableaux littéraux de 
+Les listes littérales Dart ressemblent aux tableaux littéraux de
 JavaScript. Voici un exemple d'une liste Dart :
 
 <!-- ch02/list_literal.dart -->
@@ -593,9 +593,9 @@ var liste = [1, 2, 3];
 {% endprettify %}
 
 Les listes utilisent une indexation à partir de zero, c'est-à-dire que
-l'index 0 est l'index du premier élément et `list.length - 1` est 
+l'index 0 est l'index du premier élément et `list.length - 1` est
 l'index du dernier élément. Vous pouvez obtenir la longueur de la liste
-et faire référence aux éléments de la liste comme vous le feriez en 
+et faire référence aux éléments de la liste comme vous le feriez en
 JavaScript :
 
 <!-- ch02/list_indexing.dart -->
@@ -613,14 +613,14 @@ Pour plus d'information sur les listes, voir [Generiques](#generics) et
 ### Dictionnaires {#maps}
 {:.no_toc}
 
-En général, un dictionnaire est un objet qui associe des clés et des 
+En général, un dictionnaire est un objet qui associe des clés et des
 valeurs. Clés et valeurs peuvent être de n'importe quel type d'objet.
-Chaque *clé* n'apparait qu'une seule fois, mais vous pouvez utiliser 
+Chaque *clé* n'apparait qu'une seule fois, mais vous pouvez utiliser
 une même *valeur* plusieurs fois. Le support des dictionnaires par Dart
-est fait grâce aux dictionnaires en valeurs littérales et au type 
+est fait grâce aux dictionnaires en valeurs littérales et au type
 [Map](http://api.dartlang.org/dart_core/Map.html).
 
-Voici quelques exemples simples de dictionnaire en Dart, crées en 
+Voici quelques exemples simples de dictionnaire en Dart, crées en
 utilisant des valeurs littérales :
 
 <!-- ch02/map_literal.dart -->
@@ -664,7 +664,7 @@ var cadeaux = {'premier': 'perdrix'};
 cadeaux['quatrième'] = 'merles noirs'; // Ajoute une paire clé-valeur
 {% endprettify %}
 
-Récupérez une valeur d'un dictionnaire de la même façon que vous le 
+Récupérez une valeur d'un dictionnaire de la même façon que vous le
 feriez en JavaScript :
 
 <!-- ch02/map_retrieve_item.dart -->
@@ -673,7 +673,7 @@ var cadeaux = {'premier': 'perdrix'};
 assert(cadeaux['premier'] == 'perdrix');
 {% endprettify %}
 
-Si vous cherchez une clé qui n'est pas dans le dictionnaire, vous 
+Si vous cherchez une clé qui n'est pas dans le dictionnaire, vous
 obtenez un null en retour :
 
 <!-- ch02/map_missing_key.dart -->
@@ -682,7 +682,7 @@ var cadeaux = {'premier': 'perdrix'};
 assert(cadeaux['cinquième'] == null);
 {% endprettify %}
 
-Utilisez `.length` pour obtenir le nombre de paires clé-valeur dans le 
+Utilisez `.length` pour obtenir le nombre de paires clé-valeur dans le
 dictionnaire :
 
 <!-- ch02/map_length.dart -->
@@ -700,14 +700,14 @@ Pour plus d'information sur les dictionnaires, voir
 ### Symboles {#symbols}
 {:.no_toc}
 
-Un objet [Symbol](http://api.dartlang.org/dart_core/Symbol.html) 
-représente un opérateur ou un identifiant déclaré dans un programme 
+Un objet [Symbol](http://api.dartlang.org/dart_core/Symbol.html)
+représente un opérateur ou un identifiant déclaré dans un programme
 Dart. Vous n'aurait peut être jamais le besoin d'utiliser les symboles,
-mais ils sont indispensables pour les APIs qui font référence à un 
-identifiant par son nom, car la minification change les noms des 
+mais ils sont indispensables pour les APIs qui font référence à un
+identifiant par son nom, car la minification change les noms des
 identifiants mais pas ceux des symboles.
 
-Pour obtenir le symbole pour un identifiant, utilisez un symbole 
+Pour obtenir le symbole pour un identifiant, utilisez un symbole
 littéral, qui est juste un `#` suivi de l'identifiant :
 
 <!-- ch02/symbols.dart -->
@@ -2405,8 +2405,8 @@ class A {
 }
 {% endprettify %}
 
-Si vous utilisez `noSuchMethod()` pour implémenter tous les getter, setters, méthodes
-pour une classen alors vous pouvez utiliser l'annotation `@proxy` pour éviter les avertissements:
+Si vous utilisez `noSuchMethod()` pour implémenter tous les getters, setters, méthodes
+pour une classe alors vous pouvez utiliser l'annotation `@proxy` pour éviter les avertissements :
 
 <!-- ch02/ch02_meta/bin/ch02_proxy.dart -->
 {% prettify dart %}
@@ -2546,10 +2546,10 @@ can pass a static method as a parameter to a constant constructor.
 
 ## Génériques {#generics}
 
-Si vous regardez sur la documentation de l'API pour le type tableau de 
+Si vous regardez sur la documentation de l'API pour le type tableau de
 base, [List](http://api.dartlang.org/dart_core/List.html), vous verrez
-que le type est en fait `List<E>`. La notation \<...\> marque la liste 
-comme un type *générique* (ou *paramétré*), c'est-à-dire, un type qui 
+que le type est en fait `List<E>`. La notation \<...\> marque la liste
+comme un type *générique* (ou *paramétré*), c'est-à-dire, un type qui
 prend des types en paramètre. Par convention, les variables de type ont
 des noms d'une seule lettre, tels que E, T, S, K, et V.
 
@@ -2557,18 +2557,18 @@ des noms d'une seule lettre, tels que E, T, S, K, et V.
 ### Pourquoi utiliser les génériques ? {#why-use-generics}
 {:.no_toc}
 
-Etant donné que les types sont optionnels en Dart, vous n'êtes *jamais 
-obligé* d'utiliser les génériques. Il se peut que vous vouliez 
-l'utiliser, pour la même raison que vous voudriez utiliser d'autres 
-types dans votre code : les types (génériques ou non) vous permettent 
-de documenter et d'annoter votre code, rendant votre intention plus 
+Etant donné que les types sont optionnels en Dart, vous n'êtes *jamais
+obligé* d'utiliser les génériques. Il se peut que vous vouliez
+l'utiliser, pour la même raison que vous voudriez utiliser d'autres
+types dans votre code : les types (génériques ou non) vous permettent
+de documenter et d'annoter votre code, rendant votre intention plus
 claire.
 
 Par exemple, si votre intention est qu'une liste ne contienne que des
-chaînes de caractères, vous pouvez la déclarer comme `List<String>` (le 
+chaînes de caractères, vous pouvez la déclarer comme `List<String>` (le
 lire comme “liste de string”). De cette façon, vous, vos co-programmeurs,
-et vos outils (comme Dart Editor et la VM Dart en mode vérification) 
-peuvent détecter qu'assigner autre chose qu'une chaîne de caractères à 
+et vos outils (comme Dart Editor et la VM Dart en mode vérification)
+peuvent détecter qu'assigner autre chose qu'une chaîne de caractères à
 la liste est probablement une erreur. Voici un exemple :
 
 <!-- ch02/generics.dart -->
@@ -2579,10 +2579,10 @@ noms.addAll(['Seth', 'Kathy', 'Lars']);
 noms.add(42); // Échoue en mode vérification (passe en mode production).
 {% endprettify %}
 
-Une autre raison pour utiliser les génériques est de réduire la 
-duplication de code. Les génériques vous permettent de partager une 
-seule interface et implémentation entre de nombreux types, tout en 
-tirant avantage du mode vérification et des alertes préventives de 
+Une autre raison pour utiliser les génériques est de réduire la
+duplication de code. Les génériques vous permettent de partager une
+seule interface et implémentation entre de nombreux types, tout en
+tirant avantage du mode vérification et des alertes préventives de
 l'analyse statique. Par exemple, disons que vous créez une interface
 pour mettre en cache un objet :
 
@@ -2605,11 +2605,11 @@ abstract class StringCache {
 }
 {% endprettify %}
 
-Plus tard, vous décidez que vous voulez une version spécifique de cette 
+Plus tard, vous décidez que vous voulez une version spécifique de cette
 interface pour les nombres... et ainsi de suite.
 
 Les types génériques peuvent vous sauver de la difficulté de créer toutes
-ces interfaces. A la place, vous pouvez créer une interface unique qui 
+ces interfaces. A la place, vous pouvez créer une interface unique qui
 prend un type en paramètre :
 
 <!-- ch02/generics.dart -->
@@ -2630,12 +2630,12 @@ que vous pensez comme un type qu'un développeur définira plus tard.
 Les listes et les dictionnaires peut être paramétrés. Les valeurs
 littérales paramétrées sont comme les valeurs littérales que vous avez
 déjà vues, excepté que vous ajoutez
-<code>&lt;<em>type</em>></code> pour les listes avant le crochet 
+<code>&lt;<em>type</em>></code> pour les listes avant le crochet
 ouvrant ou
-<code>&lt;<em>typeClé</em>, <em>typeValeur</em>></code> pour les 
-dictionnaires avant l'accolade ouvrante. Vous pouvez utiliser les 
+<code>&lt;<em>typeClé</em>, <em>typeValeur</em>></code> pour les
+dictionnaires avant l'accolade ouvrante. Vous pouvez utiliser les
 valeurs littérales paramétrées lorsque vous voulez des alertes de type
-en mode vérification. Voici un exemple d'utilisation de valeurs 
+en mode vérification. Voici un exemple d'utilisation de valeurs
 littérales typées :
 
 <!-- ch02/generics.dart -->
@@ -2652,8 +2652,8 @@ var pages = <String, String>{
 ### En utilisant les types paramétrés avec les constructeurs {#using-parameterized-types-with-constructors}
 {:.no_toc}
 
-Pour spécifier un ou plusieurs types en utilisant un constructeur, 
-mettre les types entre chevrons (`<...>`) juste après le nom de la 
+Pour spécifier un ou plusieurs types en utilisant un constructeur,
+mettre les types entre chevrons (`<...>`) juste après le nom de la
 classe. Par exemple :
 
 <!-- ch02/generics.dart -->
@@ -2663,7 +2663,7 @@ noms.addAll(['Seth', 'Kathy', 'Lars']);
 var ensembleNoms = new Set<String>.from(noms);
 {% endprettify %}
 
-Le code suivant crée un dictionnaire qui a des entiers pour clé et des 
+Le code suivant crée un dictionnaire qui a des entiers pour clé et des
 types Vue pour valeur :
 
 <!-- ch02/generics.dart -->
@@ -2676,7 +2676,7 @@ var vues = new Map<int, Vue>();
 {:.no_toc}
 
 Les types génériques Dart sont *réifiés*, c'est-à-dire qu'ils portent
-l'information de leur type à l'exécution. Par exemple, vous pouvez 
+l'information de leur type à l'exécution. Par exemple, vous pouvez
 tester le type d'une collection, même en mode production :
 
 <!-- ch02/generics.dart -->
@@ -2686,17 +2686,17 @@ noms.addAll(['Seth', 'Kathy', 'Lars']);
 print(noms is List<String>); // true
 {% endprettify %}
 
-Cependant, l'expression `is` vérifie le type de la *collection* 
+Cependant, l'expression `is` vérifie le type de la *collection*
 seulement, pas ceux des objets à l'intérieur. En mode production, une
-`List<String>` peut avoir des éléments autres que des chaînes de 
+`List<String>` peut avoir des éléments autres que des chaînes de
 caractères. La solution est de, soit vérifier le type de chaque élément
-ou soit d'entourer le code manipulant les éléments dans un gestionnaire 
+ou soit d'entourer le code manipulant les éléments dans un gestionnaire
 d'exception (voir [Exceptions](#exceptions)).
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
-En comparaison, les génériques en Java utilisent l'*effacement*, 
-c'est-à-dire, que les paramètres d'un type générique sont enlevés à 
+En comparaison, les génériques en Java utilisent l'*effacement*,
+c'est-à-dire, que les paramètres d'un type générique sont enlevés à
 l'exécution. En Java, vous pouvez tester si un objet est une List, mais
 vous ne pouvez pas tester si c'est une `List<String>`.
 </aside>
@@ -3124,13 +3124,12 @@ Pour des conseils sur la struturation des commentaire, voir [Guide pour les comm
 ## Résumé {#summary}
 
 Ce chapitre résume les fonctionnalités les plus communes dans le langage
-Dart. D'autres fonctionnalités sont en train d'être implémentées, et nous 
-espérons qu'elles ne casseront pas le code existant. Pour plus 
-d'information, voir la [Spécification du Langage Dart](/docs/spec/) et 
-les [articles](/articles/) tel que [Idiomatic 
+Dart. D'autres fonctionnalités sont en train d'être implémentées, et nous
+espérons qu'elles ne casseront pas le code existant. Pour plus
+d'information, voir la [Spécification du Langage Dart](/docs/spec/) et
+les [articles](/articles/) tel que [Idiomatic
 Dart.](/articles/idiomatic-dart/)
 
 
 <hr>
 {% include book-nav.html %}
-
