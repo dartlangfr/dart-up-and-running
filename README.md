@@ -23,5 +23,5 @@ http://www.dartlang.org/docs/dart-up-and-running/
 
 * Open a terminal to the root of this project.
 * Run the server with `bundle exec jekyll serve`, and leave it running while you edit files.
-* Open your browser to http://localhost:4000.
+* Open your browser to http://localhost:4000/dart-up-and-running.
 * Edit, create docs as normal.
