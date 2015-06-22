@@ -16,6 +16,17 @@ This chapter points out some of the useful and fun features of the Dart
 language and libraries that are used in Dartiverse Search, a
 client-server app.
 
+<aside class="alert alert-warning" markdown="1">
+  **Note:**
+  This chapter should be updated or deleted.
+  It describes an
+  [old version of Dartiverse Search](https://github.com/dart-lang/sample-dartiverse-search/tree/eff1219dad03e61bc6d0849995fe990fd75760e7)
+  that doesn't use Dart's new `async` and `await` keywords,
+  and it depends on Dart Editor,
+  which is [retired as of 1.11](http://news.dartlang.org/2015/04/the-present-and-future-of-editors-and.html).
+  Pull requests [welcome!](https://github.com/dart-lang/www.dartlang.org/issues/1286)
+</aside>
+
 As the screenshot shows, Dartiverse Search looks for a
 user-entered string in GitHub and StackOverflow. The app is
 asynchronous, adding results as they're found, so the UI is always
@@ -24,7 +35,6 @@ responsive.
 <img src="images/daur_0501.png"
      alt="The client app UI"
      class="thinborder">
-
 
 ## How to run Dartiverse Search {#how-to-run-dartiverse-search}
 
@@ -390,7 +400,7 @@ the stream doesn't include WebSocket connection requests.
 {:.no_toc}
 
 The search server uses the Router class from the [route
-package](http://pub.dartlang.org/packages/route) to serve dynamic
+package](https://pub.dartlang.org/packages/route) to serve dynamic
 content. In this app, the main purpose of the router is to filter out
 upgrade HTTP requests for /ws and to handle them as WebSocket
 connections. The code uses dart:io's WebSocketTransformer class to
@@ -591,7 +601,7 @@ The bulk of the code is in the SearchEngine subclasses.
 {:.no_toc}
 
 The search server uses the [logging
-package](http://pub.dartlang.org/packages/logging) to log messages at
+package](https://pub.dartlang.org/packages/logging) to log messages at
 varying levels of severity. Here's the code from `bin/server.dart` that
 imports API from the logging package and creates a log:
 

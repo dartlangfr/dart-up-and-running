@@ -137,6 +137,10 @@ Fixed a few bugs:
 Went through all the code samples and made them comply with the latest
 [Dart Style Guide](/articles/style-guide/) recommendations.
 
+For 1.9, went through all the code samples in chapters 2 & 3,
+changing `then()` to `await` almost everywhere.
+Also changed `listen()` to `await for` as appropriate.
+
 
 ### Changes in the third printing: February 19, 2014
 
@@ -215,7 +219,7 @@ Other API changes include:
     `querySelector()` and `querySelectorAll()`, respectively.
 
 -   The dart:crypto library moved out of the SDK (to
-    <http://pub.dartlang.org/packages/crypto>).
+    <https://pub.dartlang.org/packages/crypto>).
 
 -   The AsyncError class was removed (from dart:async).
 
