@@ -785,10 +785,10 @@ Les deux peuvent avoir une valeur par défaut. Elle doit être une constante de
 compilation telle qu'une valeur littérale. Si aucune valeur par défaut n'est
 fournie, la valeur est `null`.
 
-#### Paramètres nommés optionnels {#optional-named-parameters}
+#### Paramètres positionnés ou nommés {#optional-named-parameters}
 {:.no_toc}
 
-Lors de l'appel à une fonction, vous pouvez spécifier un paramètre nommé par
+Lors de l'appel à une fonction, vous pouvez spécifier un paramètre positionnés ou nommés par
 <code><em>nomParametre</em>: <em>valeur</em></code>. Par exemple:
 
 <!-- ch02/use_named_parameters.dart -->
@@ -823,7 +823,7 @@ activerFlags({bool bold: false, bool hidden: false}) {
 activerFlags(bold: true);
 {% endhighlight %}
 
-#### Parmètres optionnels positionnés {#optional-positional-parameters}
+#### Paramètres optionnels positionnés {#optional-positional-parameters}
 {:.no_toc}
 
 Placer un ensemble de paramètres de fonctions entre des `[]` les indiquent
@@ -831,10 +831,10 @@ comme des paramètres optionnels positionnés :
 
 <!-- ch02/optional_positional_parameters.dart -->
 {% highlight dart %}
-String dire(String de, String message, [String moyen]) {
+String dire(String de, String message, [String support]) {
   var resultat = '$de dit $message';
-  if (moyen != null) {
-    resultat = '$resultat avec un $moyen';
+  if (support != null) {
+    resultat = '$resultat avec un $support';
   }
   return resultat;
 }
@@ -844,14 +844,14 @@ Voici un exemple d'appel à cette fonction sans paramètre optionnel :
 
 <!-- ch02/optional_positional_parameters.dart -->
 {% highlight dart %}
-assert(say('Bob', 'Salut') == 'Bob dit Salut');
+assert(dire('Bob', 'Salut') == 'Bob dit Salut');
 {% endhighlight %}
 
 Et ici, un exemple d'appel à cette fonction avec un troisième paramètre:
 
 <!-- ch02/optional_positional_parameters.dart -->
 {% highlight dart %}
-assert(say('Bob', 'Salut', 'signal de fumée') ==
+assert(dire('Bob', 'Salut', 'signal de fumée') ==
     'Bob dit Salut avec un signal de fumée');
 {% endhighlight %}
 
@@ -860,18 +860,18 @@ Utilisez `=` pour indiquer la valeur par défaut :
 <!-- ch02/optional_positional_parameter_default.dart -->
 {% highlight dart %}
 String dire(String de, String message,
-    [String moyen = 'pigeon voyageur', String humeur]) {
+    [String support = 'pigeon voyageur', String humeur]) {
   var resultat = '$de dit $message';
-  if (moyen != null) {
-    resultat = '$resultat avec un $moyen';
+  if (support != null) {
+    resultat = '$resultat avec un $support';
   }
   if (mood != null) {
     resultat = '$resultat (dans une humeur $humeur)';
   }
-  return result;
+  return resultat;
 }
 
-assert(say('Bob', 'Salut') == 
+assert(dire('Bob', 'Salut') == 
     'Bob dit Salut avec un pigeon voyageur');
 {% endhighlight %}
 
@@ -879,7 +879,7 @@ assert(say('Bob', 'Salut') ==
 ### La fonction main() {#the-main-function}
 {:.no_toc}
 
-Toutes applications doit avoir une fonction de premier niveau `main()` qui
+Toute application doit avoir une fonction de premier niveau `main()` qui
 sert de point d'entrée. Elle retourne `void` et a un paramètre optionnel
 `List<String>` comme argument.
 
@@ -897,7 +897,7 @@ void main() {
 <aside class="alert alert-info" markdown="1">
 **Note:**
 L'opérateur `..` dans le code précédent est un opérateur en cascade qui permet
-d'effectuer des opérations multiples sur le un même objet. Vous en saurez plus
+d'effectuer des opérations multiples sur le même objet. Vous en saurez plus
 avec les [Classes](#classes).
 </aside>
 
@@ -991,23 +991,23 @@ Une *closure* est un objet fonction qui a un accès aux variables de sa portée
 lexicale, même si la fonction est utilisée en dehors de sa portée d'origine.
 
 Les fonctions peuvent se refermer sur les variables définies dans des portées 
-environnantes. Dans l'exemple suivant, `makeAdder()` capture la variable `addBy`.
-Partout où la fonction retounée est utilisée, il rapelle `addBy`.
+environnantes. Dans l'exemple suivant, `creeAdditionneur()` capture la variable `ajouterPar`.
+Partout où la fonction retounée est utilisée, il rapelle `ajouterPar`.
 
 <!-- ch02/function_closure.dart -->
 {% highlight dart %}
 /// Retourne une fonction qui ajoute [ajouterPar] 
 /// à l'argument de la fonction.
-Function makeAdder(num ajouterPar) {
+Function creeAdditionneur(num ajouterPar) {
   return (num i) => ajouterPar + i;
 }
 
 main() {
   // Crée une méthode qui ajoute 2.
-  var add2 = makeAdder(2);
+  var add2 = creeAdditionneur(2);
   
   // Crée une méthode qui ajoute 2.
-  var add4 = makeAdder(4);
+  var add4 = creeAdditionneur(4);
 
   // Create a function that adds 4.
   var add4 = makeAdder(4);
@@ -1021,8 +1021,8 @@ main() {
 ### Tests d'égalité de méthodes {#testing-functions-for-equality}
 {:.no_toc}
 
-Voici un exemple de test de fonctions de premier niveau, de méthodes
-statiques, et d'égalité d'instances de méthodes.
+Voici un exemple de test d'égalité de fonctions de premier niveau, 
+de méthodes statiques et de méthodes d'instance.
 
 <!-- ch02/function_equality_2.dart -->
 {% highlight dart %}
@@ -1044,7 +1044,7 @@ main() {
   x = A.bar;
   assert(A.bar == x);
 
-  // Comparaison d'instance de méthodes.
+  // Comparaison de méthodes d'instance.
   var v = new A(); // Instance #1 de A
   var w = new A(); // Instance #2 de A
   var y = w;
@@ -1065,7 +1065,7 @@ main() {
 {:.no_toc}
 
 Toutes les fonctions retournent une valeur. Si aucune valeur n'est retournée,
-l'instruction `return nul;` est implicitement ajoutée au corps de la fonction.
+l'instruction `return null;` est implicitement ajoutée au corps de la fonction.
 
 
 ## Opérateurs {#operators}
