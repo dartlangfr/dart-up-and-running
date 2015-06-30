@@ -2601,15 +2601,15 @@ Utilisez le mot clé `static` pour implémenter des variables et méthodes de cl
 #### Variables statiques {#static-variables}
 {:.no_toc}
 
-Les variables statiques (variables de classes) font utiles pour class-wide state et
-constantes :
+Les variables statiques (variables de classes) sont utiles  un état et des constantes 
+communs à la classe :
 
 <!-- ch02/color.dart -->
 {% highlight dart %}
 class Couleur {
   static const rouge = const Couleur('rouge'); // Une variable statique constante.
-  final String nom;                     // Une variable d'instance.
-  const Couleur(this.nom);                // Une constructeur de constantes.
+  final String nom;                            // Une variable d'instance.
+  const Couleur(this.nom);                     // Un constructeur de constante.
 }
 
 main() {
@@ -2617,11 +2617,11 @@ main() {
 }
 {% endhighlight %}
 
-Les variables statiques ne sont pas initialisées jusqu'à ce qu'elles soit utilisées.
+Les variables statiques sont initialisées lorsqu'elles sont utilisées.
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
-Ce chapitre suit le guide de style recommandé [style guide–
+Ce chapitre suit la recommandation du guide de style[style guide–
 recommendation](/articles/style-guide/#prefer-using-lowercamelcase-for-constant-names)
 qui préfère `lowerCamelCase` comme nom de constantes.
 </aside>
@@ -2658,8 +2658,8 @@ main() {
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
-Préférez l'utilisation de méthodes de haut niveau à des méthodes statiques, pour des fonctionnalités 
-communes et largement utilisées.
+Préférez l'utilisation de fonctions de premier niveau à des méthodes statiques, pour des fonctionnalités 
+communes ou largement utilisées
 </aside>
 
 Vous pouvez utiliser des méthodes statiques comme constantes de compilation. Par exemple, vous pouvez 
