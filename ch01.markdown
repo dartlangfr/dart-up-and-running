@@ -81,7 +81,7 @@ We expect Dart to help in two main ways:
 It’s hard to talk about a language without seeing it. Here’s a peek at a
 small Dart program:
 
-{% highlight dart %}
+{% prettify dart %}
 import 'dart:math';
 
 class Point {
@@ -99,12 +99,12 @@ main() {
   var q = new Point(3, 4);
   print('distance from p to q = ${p.distanceTo(q)}');
 }
-{% endhighlight %}
+{% endprettify %}
 
 Of course, Dart’s main use case is building modern web apps. Programming
 the browser is easy:
 
-{% highlight dart %}
+{% prettify dart %}
 import 'dart:html';
 
 main() {
@@ -115,7 +115,7 @@ main() {
         ..onClick.listen((e) => window.alert('Confirmed!'));
   querySelector('#registration').children.add(button);
 }
-{% endhighlight %}
+{% endprettify %}
 
 You’ll learn about the Dart language and libraries in Chapters 2 and 3.
 
