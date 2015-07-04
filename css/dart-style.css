@@ -618,8 +618,7 @@ pre.prettyprint {
   height: 450px;
 }
 
-.lang-dart, .lang-html, .lang-js, .lang-bash, .lang-cpp, .lang-csharp,
-.lang-none, .lang-python, .lang-javascript, .lang-yaml {
+.prettyprint {
   max-width: 800px;
   text-align: left;
   margin-right: auto;
@@ -628,22 +627,22 @@ pre.prettyprint {
 }
 
 @media (max-width: 500px) {
-  .lang-dart, .lang-html {
+  .language-dart, .language-html {
     font-size: 12px;
   }
 }
 
-.lang-dart a, .lang-html a {
+.language-dart a, .language-html a {
   text-decoration: none;
   background: #2fbcb2;
   padding:2px 3px;
 }
 
-.lang-dart .com, .lang-html .com, .lang-java .com {
+.language-dart .com, .language-html .com, .language-java .com {
   color: #757575;
 }
 
-.lang-none * {
+.language-none * {
   color: #4D4D4D !important; /* color of .pln */
 }
 
@@ -654,11 +653,11 @@ pre.prettyprint {
   }
 }
 
-.lang-dart a span, .lang-html a span {
+.language-dart a span, .language-html a span {
   color:#fff !important;
 }
 
-.lang-huge {
+.language-huge {
   display: table;
   font-size: 17px;   /* font-size of btn-lg */
   line-height: 24px; /* line-height of btn-lg */
@@ -668,7 +667,7 @@ pre.prettyprint {
   white-space: pre-wrap;
 }
 
-.lang-huge span.kwd {
+.language-huge span.kwd {
   color: #4d4d4d !important /* avoid kwd colors in huge blocks */;
 }
 
