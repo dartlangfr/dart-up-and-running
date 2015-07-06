@@ -131,7 +131,7 @@ concepts en mémoire :
 -   Contrairement à Java, Dart n'a pas les mots-clés `public`,
     `protected` et `private`. Si un identifiant commence avec un
     souligner (\_), il est privé à sa librairie. Pour plus de détails,
-    voir [Librairies et visibilité](#libraries-and-visibility).
+    voir [Bibliothèques et visibilité](#libraries-and-visibility).
 
 -   Les *identifiants* peuvent commencer par une lettre ou \_, suivi de
     n'importe quelle combinaison de ces caractères ou chiffres.
@@ -197,7 +197,7 @@ qui a été ajouté après la  sortie de la version 1.0 de Dart.
 Vous ne pouvez pas utiliser async, await, ou yield en tant
 qu’identifiant dans le corps d’une fonction marquée avec `async`, `async*`, or `sync*`.
 Pour plus d’information, voir
-[Asynchrony support](#asynchrony).
+[Support de l'asynchronisme](#asynchrony).
 
 Tous les autres mots de ce tableau sont des <em>mots réservés</em>.
 Vous ne pouvez pas utiliser les mots réservés en tant qu’identifiant.
@@ -608,8 +608,8 @@ assert(liste[1] == 2);
 {% endhighlight %}
 
 Le type List a plein de méthodes pratiques pour manipuler les listes.
-Pour plus d'information sur les listes, voir [Generiques](#generics) et
-[Collections](ch03.html#collections).
+Pour plus d'information sur les listes, voir les [Génériques](#generics) et
+les [Collections](ch03.html#collections).
 
 
 ### Dictionnaires {#maps}
@@ -694,8 +694,8 @@ cadeaux['quatrième'] = 'merles noirs';
 assert(cadeaux.length == 2);
 {% endhighlight %}
 
-Pour plus d'information sur les dictionnaires, voir
-[Generics](#generics) et
+Pour plus d'information sur les dictionnaires, voir les
+[Génériques](#generics) et
 [Maps](ch03.html#maps).
 
 
@@ -2474,7 +2474,7 @@ are a special kind of class used to represent
 a fixed number of constant values.
 
 
-#### Using enums {#using-enums}
+#### Utiliser les enums {#using-enums}
 {:.no_toc}
 
 Declare an enumerated type using the `enum` keyword:
@@ -2909,7 +2909,7 @@ import 'package:lib1/lib1.dart' show foo;
 import 'package:lib2/lib2.dart' hide foo;
 {% endhighlight %}
 
-#### Lazily loading a library {#deferred-loading}
+#### Chargement différé d'une bibliothèque {#deferred-loading}
 {:.no_toc}
 
 _Deferred loading_ (also called _lazy loading_)
@@ -2953,7 +2953,7 @@ greet() async {
 In the preceding code,
 the `await` keyword pauses execution until the library is loaded.
 For more information about `async` and `await`,
-see [asynchrony support](#asynchrony).
+see [Support de l'asynchronisme](#asynchrony).
 
 You can invoke `loadLibrary()` multiple times on a library without problems.
 The library is loaded only once.
@@ -3139,7 +3139,7 @@ try {
 {% endhighlight %}
 
 
-### Declaring async functions {#async}
+### Déclaration de fonctions asynchrone {#async}
 {:.no_toc}
 
 An _async function_ is a function whose body is marked with
@@ -3179,7 +3179,7 @@ Note that the function's body doesn't need to use the Future API.
 Dart creates the Future object if necessary.
 
 
-### Using await expressions with Futures {#await}
+### Utilisation d'expressions await avec les Futures {#await}
 {:.no_toc}
 
 An await expression has the following form:
@@ -3218,7 +3218,7 @@ main() async {
 }
 {% endhighlight %}
 
-### Using asynchronous for loops with Streams {#await}
+### Utilisation de boucles asynchrones avec les Streams {#await}
 {:.no_toc}
 
 An asynchronous for loop has the following form:
