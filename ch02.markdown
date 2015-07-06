@@ -2466,7 +2466,7 @@ Pour plus d'information sur les annotations, jetez un oeil à
 [Metadata](#metadata).
 
 
-### Enumerated types {#enums}
+### Types énumerés {#enums}
 {:.no_toc}
 
 Enumerated types, often called _enumerations_ or _enums_,
