@@ -1,6 +1,6 @@
 ---
 layout: book
-title: "A Tour of the Dart Language"
+title: "Découverte du Langage Dart"
 subsite: "Dart Up and Running"
 description: "Read Chapter 2, A Tour of the Dart Language of Dart (from Dart: Up and Running, published by O'Reilly)."
 prev-chapter: ch01.html
@@ -30,7 +30,7 @@ Consultez les [spécifications Dart](/docs/spec/) lorsque vous souhaitez en
 savoir plus sur une des fonctionnalités du langages.
 
 
-## Un programme Dart simple {#a-basic-dart-program}
+## Un simple programme Dart {#a-basic-dart-program}
 
 Le programme suivant utilise quelques unes des fonctionnalités de base de Dart :
 
@@ -96,7 +96,7 @@ Par exemple, nous utilisons une indentation à deux espaces.
 </aside>
 
 
-## Concepts important {#important-concepts}
+## Concepts importants {#important-concepts}
 
 Pendant que vous apprenez le langage Dart, gardez ces principes et
 concepts en mémoire :
@@ -3075,7 +3075,7 @@ void main() {
 {% endhighlight %}
 
 
-## Asynchrony support {#asynchrony}
+## Support de l'asynchronisme {#asynchrony}
 
 Dart has added new language features
 to support asynchronous programming.
