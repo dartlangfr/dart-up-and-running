@@ -2151,8 +2151,8 @@ Les méthodes sont des fonctions qui fournissent un comportement pour un objet.
 #### Méthodes d'instance {#instance-methods}
 {:.no_toc}
 
-Les méthodes d'instance sur un des objets peuvent accéder aux variables d'intance et `this`.
-La méthode 'distanceA()' dans l'example suivant est un exemple de méthode d'instance.
+Les méthodes d'instance sur des objets peuvent accéder aux variables d'instance et `this`.
+La méthode 'distanceA()' dans le code suivant suivant est un exemple de méthode d'instance.
 
 <!-- ch02/distance_to.dart -->
 {% highlight dart %}
@@ -2176,7 +2176,7 @@ class Point {
 
 Les getters et setters sont des méthodes spéciales qui fournissent des accès
 en lecture et écriture aux propriétés d'un objet. Rappelons que chaque
-variable d'instance a un getter implicite, plus un setter le cas échéant.
+variable d'instance a un getter implicite, et un setter si elle est affectable.
 Vous pouvez créer des propriétés additionelles en implémentant des getters 
 et setters, en utilisant les mots clés `get` et `set` :
 
@@ -2190,7 +2190,7 @@ class Rectangle {
 
   Rectangle(this.gauche, this.haut, this.largeur, this.hauteur);
 
-  // Définie deux propriétés calculées : droite and bas.
+  // Définie deux propriétés calculées : droite et bas.
   num get droite             => gauche + largeur;
       set droite(num valeur)  => gauche = valeur - largeur;
   num get bas            => haut + hauteur;
@@ -2211,14 +2211,14 @@ et plus tard les encapsuler avec des méthodes, tout cela sans changer le code c
 <aside class="alert alert-info" markdown="1">
 **Note:**
 Les opérateurs comme l'incrémentation (++) fonctionnent de la façon prévue, même si un 
-getter est explicitement défini. Pour éviter des effets imprévus, l'opérateur appelle le 
+getter est explicitement défini ou non. Pour éviter des effets imprévus, l'opérateur appelle le 
 getter exactement une fois, sauvant la valeur dans une variable temporaire.
 </aside>
 
-#### Méthods abstraites {#abstract-methods}
+#### Méthodes abstraites {#abstract-methods}
 {:.no_toc}
 
-Les méthodes d'instance, getters et setters peuvent être abstrait, définissant une
+Les méthodes d'instance, de getters et setters peuvent être abstrait, définissant une
 interface mais laissant l'implémentation à d'autres classes. Pour rendre une méthode
 abstraite, utiliser le point virgule (;) au lieu d'un corps de méthode :
 
@@ -2227,12 +2227,12 @@ abstraite, utiliser le point virgule (;) au lieu d'un corps de méthode :
 abstract class Actif {
   // ... Définie des variables et méthodes d'instances...
 
-  void faireQuelqueChose(); // Défine une méthode abstraite.
+  void faireQuelqueChose(); // Définie une méthode abstraite.
 }
 
-class ActifEfficace extends Actif {
+class ActionneurVeritable extends Actif {
   void faireQuelqueChose() {
-    // ... Founit une implémentation, donc la méthode ici n'est pas abstraite...
+    // ... Fournit une implémentation, donc la méthode ici n'est pas abstraite...
   }
 }
 {% endhighlight %}
@@ -2258,34 +2258,18 @@ une méthode `+` pour additionner deux vecteurs.
 Voici un exemple d'une classe qui surcharge les opérateurs `+` et `-` :
 
 <!-- ch02/vector.dart -->
-<<<<<<< HEAD
 {% highlight dart %}
-class Vector {
-=======
-{% prettify dart %}
 class Vecteur {
->>>>>>> Classes - Méthodes
   final int x;
   final int y;
-  const Vector(this.x, this.y);
+  const Vecteur(this.x, this.y);
 
-<<<<<<< HEAD
-  /// Overrides + (a + b).
-  Vector operator +(Vector v) {
-    return new Vector(x + v.x, y + v.y);
-  }
-
-  /// Overrides - (a - b).
-  Vector operator -(Vector v) {
-    return new Vector(x - v.x, y - v.y);
-=======
   Vecteur operator +(Vecteur v) { // Surcharge + (a + b).
     return new Vecteur(x + v.x, y + v.y);
   }
 
   Vecteur operator -(Vecteur v) { // Surcharge - (a - b).
     return new Vecteur(x - v.x, y - v.y);
->>>>>>> Classes - Méthodes
   }
 }
 
@@ -2304,7 +2288,7 @@ main() {
 }
 {% endhighlight %}
 
-Si vous surcharger `==`, vous devriez surcharger le getter `hashCode` de Object.
+Si vous surchargez `==`, vous devriez aussi surcharger le getter `hashCode` de Object.
 Pour un exemple de surcharge de `==` et `hashCode`, voir 
 [Implémentation des clés d'un dictionnaire](ch03.html#implementing-map-keys).
 
