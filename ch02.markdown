@@ -722,192 +722,191 @@ Pour plus d'information sur les symboles, voir
 [dart:mirrors - reflection](ch03.html#dartmirrors---reflection).
 
 
-## Functions {#functions}
+## Fonctions {#functions}
 
-Here’s an example of implementing a function:
+Voici un exemple d'implémentation d'une fonction:
 
-<!-- ch02/function_example.dart -->
+<!-- ch02/function_types.dart -->
 {% highlight dart %}
-void printNumber(num number) {
-  print('The number is $number.');
+void afficherNombre(num nombre) {
+  print('Le nombre est $nombre.');
 }
 {% endhighlight %}
 
-Although the style guide recommends specifying the parameter and return
-types, you don’t have to:
+Bien que les conventions recommandent de spécifier les types de paramètre et de
+retour, ce n'est pas obligatoire :
 
 <!-- ch02/function_omitting_types.dart -->
 {% highlight dart %}
-printNumber(number) { // Omitting types is OK.
-  print('The number is $number.');
+afficherNombre(nombre) { // Ne pas mettre le type est accepté
+  print('Le nombre est $nombre.');
 }
 {% endhighlight %}
 
-For functions that contain just one expression, you can use a shorthand
-syntax:
+Pour les fonctions qui contiennent seulement une expression, vous pouvez
+utiliser la syntaxe abrégée:
 
 <!-- ch02/function_shorthand.dart -->
 {% highlight dart %}
-void printNumber(num number) =>
-    print('The number is $number.');
+afficherNombre(nombre) => 
+    print('Le nombre est $nombre.');
 {% endhighlight %}
 
-The <code>=> <em>expr</em>;</code> syntax is a shorthand for
-<code>{ return <em>expr</em>;}</code>. In the `printNumber()` function, the expression is the
-call to the top-level `print()` function.
+
+La syntaxe <code>=> <em>expr</em>;</code> est un raccourci pour
+<code>{ return <em>expr</em>;}</code>. Dans la fonction `afficherNombre()`,
+l'expression est l'appel à la fonction de premier niveau `print()`.
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
-Only an *expression*—not a *statement*—can appear between the arrow
-(=\>) and the semicolon (;). For example, you can’t put an [if
-statement](#if-and-else) there, but you can use a [conditional (`?:`)
-expression](#other-operators).
+Seul une *expression* et non pas une *instruction* peut être placée entre la
+fléche (=\>) et le point virgule (;). Par exemple, vous ne pouvez pas y mettre
+une [instruction if](#if-and-else), mais vous pouvez utiliser une [expression
+conditionnelle (`?:`)](#other-operators).
 </aside>
 
-Here’s an example of calling a function:
+Voici un exemple d'appel à une fonction:
 
 <!-- ch02/function_calling.dart -->
 {% highlight dart %}
-printNumber(123);
+afficherNombre(123);
 {% endhighlight %}
 
-A function can have two types of parameters: required and optional. The
-required parameters are listed first, followed by any optional
-parameters.
+Une fonction peut avoir deux types de paramètres: requis ou optionnel. Les
+paramètres requis sont placés en premier, suivi par les paramètres optionnels.
 
-
-### Optional parameters {#optional-parameters}
+### Paramètres optionnels {#optional-parameters}
 {:.no_toc}
 
-Optional parameters can be either positional or named, but not both.
+Les paramètres optionnels peuvent être soit positionné ou nommé, mais pas les
+deux en même temps.
 
-Both kinds of optional parameter can have default values. The default
-values must be compile-time constants such as literals. If no default
-value is provided, the value is `null`.
+Les deux peuvent avoir une valeur par défaut. Elle doit être une constante de
+compilation telle qu'une valeur littérale. Si aucune valeur par défaut n'est
+fournie, la valeur est `null`.
 
-#### Optional named parameters {#optional-named-parameters}
+#### Paramètres positionnés ou nommés {#optional-named-parameters}
 {:.no_toc}
 
-When calling a function, you can specify named parameters using
-<code><em>paramName</em>: <em>value</em></code>. For example:
+Lors de l'appel à une fonction, vous pouvez spécifier un paramètre positionnés ou nommés par
+<code><em>nomParametre</em>: <em>valeur</em></code>. Par exemple:
 
 <!-- ch02/use_named_parameters.dart -->
 {% highlight dart %}
-enableFlags(bold: true, hidden: false);
+activerFlag(bold: true, hidden: false);
 {% endhighlight %}
 
-When defining a function, use
+Lors de la définition d'une fonction:
 <code>{<em>param1</em>, <em>param2</em>, …}</code>
-to specify named parameters:
+Pour spéficier les paramètres nommés:
 
 <!-- ch02/specify_named_parameters.dart -->
 {% highlight dart %}
-/// Sets the [bold] and [hidden] flags to the values
-/// you specify.
-enableFlags({bool bold, bool hidden}) {
+/// Affecte les flags [bold] et [hidden] aux valeurs 
+/// indiquées.
+activerFlags({bool bold, bool hidden}) {
   // ...
 }
 {% endhighlight %}
 
-Use a colon (`:`) to specify default values:
+Utilisez deux points (`:`) pour indiquer la valeur par défaut:
 
 <!-- ch02/specify_default_values.dart -->
 {% highlight dart %}
-/// Sets the [bold] and [hidden] flags to the values you
-/// specify, defaulting to false.
-enableFlags({bool bold: false, bool hidden: false}) {
+/// Affecte les flags [bold] et [hidden] aux valeurs
+/// indiquées, par défaut à false
+activerFlags({bool bold: false, bool hidden: false}) {
   // ...
 }
 
-// bold will be true; hidden will be false.
-enableFlags(bold: true);
+// bold sera à true, hidden à faux.
+activerFlags(bold: true);
 {% endhighlight %}
 
-#### Optional positional parameters {#optional-positional-parameters}
+#### Paramètres optionnels positionnés {#optional-positional-parameters}
 {:.no_toc}
 
-Wrapping a set of function parameters in `[]` marks them as optional
-positional parameters:
+Placer un ensemble de paramètres de fonctions entre des `[]` les indiquent
+comme des paramètres optionnels positionnés :
 
 <!-- ch02/optional_positional_parameters.dart -->
 {% highlight dart %}
-String say(String from, String msg, [String device]) {
-  var result = '$from says $msg';
-  if (device != null) {
-    result = '$result with a $device';
+String dire(String de, String message, [String support]) {
+  var resultat = '$de dit $message';
+  if (support != null) {
+    resultat = '$resultat avec un $support';
   }
-  return result;
+  return resultat;
 }
 {% endhighlight %}
 
-Here’s an example of calling this function without the optional
-parameter:
+Voici un exemple d'appel à cette fonction sans paramètre optionnel :
 
 <!-- ch02/optional_positional_parameters.dart -->
 {% highlight dart %}
-assert(say('Bob', 'Howdy') == 'Bob says Howdy');
+assert(dire('Bob', 'Salut') == 'Bob dit Salut');
 {% endhighlight %}
 
-And here’s an example of calling this function with the third parameter:
+Et ici, un exemple d'appel à cette fonction avec un troisième paramètre:
 
 <!-- ch02/optional_positional_parameters.dart -->
 {% highlight dart %}
-assert(say('Bob', 'Howdy', 'smoke signal') ==
-    'Bob says Howdy with a smoke signal');
+assert(dire('Bob', 'Salut', 'signal de fumée') ==
+    'Bob dit Salut avec un signal de fumée');
 {% endhighlight %}
 
-Use `=` to specify default values:
+Utilisez `=` pour indiquer la valeur par défaut :
 
 <!-- ch02/optional_positional_parameter_default.dart -->
 {% highlight dart %}
-String say(String from, String msg,
-    [String device = 'carrier pigeon', String mood]) {
-  var result = '$from says $msg';
-  if (device != null) {
-    result = '$result with a $device';
+String dire(String de, String message,
+    [String support = 'pigeon voyageur', String humeur]) {
+  var resultat = '$de dit $message';
+  if (support != null) {
+    resultat = '$resultat avec un $support';
   }
   if (mood != null) {
-    result = '$result (in a $mood mood)';
+    resultat = '$resultat (dans une humeur $humeur)';
   }
-  return result;
+  return resultat;
 }
 
-assert(say('Bob', 'Howdy') ==
-    'Bob says Howdy with a carrier pigeon');
+assert(dire('Bob', 'Salut') == 
+    'Bob dit Salut avec un pigeon voyageur');
 {% endhighlight %}
 
 
-### The main() function {#the-main-function}
+### La fonction main() {#the-main-function}
 {:.no_toc}
 
-Every app must have a top-level `main()` function, which serves as the
-entrypoint to the app. The `main()` function returns `void` and has an
-optional `List<String>` parameter for arguments.
+Toute application doit avoir une fonction de premier niveau `main()` qui
+sert de point d'entrée. Elle retourne `void` et a un paramètre optionnel
+`List<String>` comme argument.
 
-Here's an example of the `main()` function for a web app:
+Voici un exemple de la fonction `main()` pour une application web:
 
 <!-- from Dart Editor's default web app -->
 {% highlight dart %}
 void main() {
   querySelector("#sample_text_id")
-    ..text = "Click me!"
-    ..onClick.listen(reverseText);
+    ..text = "Clique moi!"
+    ..onClick.listen(inverserTexte);
 }
 {% endhighlight %}
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
-The `..` operator in the preceding code is a cascade operator, which
-allows you to perform multiple operations on the members of a single
-object. You'll find out more in [Classes](#classes).
+L'opérateur `..` dans le code précédent est un opérateur en cascade qui permet
+d'effectuer des opérations multiples sur le même objet. Vous en saurez plus
+avec les [Classes](#classes).
 </aside>
 
-Here's an example of the `main()` function for a command-line app that
-takes arguments:
+Voici un exemple de la fonction `main()` pour une application en ligne de
+commandes qui prend des arguments :
 
 <!-- ch02/args.dart -->
 {% highlight dart %}
-// Run the app like this: dart args.dart 1 test
+// Lancer le code comme cela: dart args.dart 1 test
 void main(List<String> arguments) {
   print(arguments);
 
@@ -917,95 +916,98 @@ void main(List<String> arguments) {
 }
 {% endhighlight %}
 
-You can use the [args library](https://pub.dartlang.org/packages/args) to
-define and parse command-line arguments.
+Vous pouvez utiliser la [bibliothèque args] (https://pub.dartlang.org/packages/args)
+pour définir et analyser des lignes de commandes
 
 
-### Functions as first-class objects {#functions-as-first-class-objects}
+### Fonctions comme des objets {#functions-as-first-class-objects}
 {:.no_toc}
 
-You can pass a function as a parameter to another function. For example:
+Vous pouvez passer une fonction comme paramètre à une autre fonction. Par
+exemple :
 
 <!-- from ch02/function_as_parameter.dart -->
 {% highlight dart %}
-printElement(element) {
+afficherElement(element) {
   print(element);
 }
 
-var list = [1, 2, 3];
+var liste = [1, 2, 3];
 
-// Pass printElement as a parameter.
-list.forEach(printElement);
+// Passe afficherElement comme un paramètre.
+liste.forEach(afficherElement);
 {% endhighlight %}
 
-You can also assign a function to a variable, such as:
+Vous pouvez aussi affecter une fonction à une variable comme ceci :
 
 <!-- from ch02/function_as_variable.dart -->
 {% highlight dart %}
-var loudify = (msg) => '!!! ${msg.toUpperCase()} !!!';
-assert(loudify('hello') == '!!! HELLO !!!');
+var masjusculer = (msg) => '!!! ${msg.toUpperCase()} !!!';
+assert(masjusculer('hello') == '!!! HELLO !!!');
 {% endhighlight %}
 
 
-### Lexical scope {#lexical-scope}
+### Portée lexicale {#lexical-scope}
 {:.no_toc}
 
-Dart is a lexically scoped language, which means that the scope of
-variables is determined statically, simply by the layout of the code.
-You can “follow the curly braces outwards” to see if a variable is in
-scope.
+Dart est un langage à portée lexicale, ce qui signifie que la portée d'une
+variable est déterminée statiquement, simplement par la mise en page du code.
+Vous pouvez "scruter les accolades limitrophes" pour voir si une variable est 
+dans la portée.
 
-Here is an example of nested functions with variables at each scope
-level:
+Voici un exemple de test d'égalité sur des fonctions de premier niveau, des méthodes
+statiques, et des méthodes d'instance :
 
 <!-- ch02/nested_functions.dart -->
 {% highlight dart %}
-var topLevel = true;
+var premierNiveau = true;
 
 main() {
-  var insideMain = true;
+  var dansLeMain = true;
 
-  myFunction() {
-    var insideFunction = true;
+  maFonction() {
+    var dansLaFonction = true;
 
-    nestedFunction() {
-      var insideNestedFunction = true;
+    fonctionImbriquee() {
+      var dansLaFonctionImbriquee = true;
 
-      assert(topLevel);
-      assert(insideMain);
-      assert(insideFunction);
-      assert(insideNestedFunction);
+      assert(premierNiveau);
+      assert(dansLeMain);
+      assert(dansLaFonction);
+      assert(dansLaFonctionImbriquee);
     }
   }
 }
 {% endhighlight %}
 
-Notice how `nestedFunction()` can use variables from every level, all
-the way up to the top level.
+Notez comment `fonctionImbriquee()` peut utiliser des variables de chaque niveau,
+, en remontant jusqu'au premier niveau.
 
 
-### Lexical closures {#lexical-closures}
+### Closures lexicales {#lexical-closures}
 {:.no_toc}
 
-A *closure* is a function object that has access to variables in its
-lexical scope, even when the function is used outside of its original
-scope.
+Une *closure* est un objet fonction qui a un accès aux variables de sa portée
+lexicale, même si la fonction est utilisée en dehors de sa portée d'origine.
 
-Functions can close over variables defined in surrounding scopes. In the
-following example, `makeAdder()` captures the variable `addBy`. Wherever the
-returned function goes, it remembers `addBy`.
+Les fonctions peuvent se refermer sur les variables définies dans des portées 
+environnantes. Dans l'exemple suivant, `creeAdditionneur()` capture la variable `ajouterPar`.
+Partout où la fonction retounée est utilisée, il rapelle `ajouterPar`.
 
 <!-- ch02/function_closure.dart -->
 {% highlight dart %}
-/// Returns a function that adds [addBy] to the
-/// function's argument.
-Function makeAdder(num addBy) {
-  return (num i) => addBy + i;
+/// Retourne une fonction qui ajoute [ajouterPar] 
+/// à l'argument de la fonction.
+Function creeAdditionneur(num ajouterPar) {
+  return (num i) => ajouterPar + i;
 }
 
 main() {
-  // Create a function that adds 2.
-  var add2 = makeAdder(2);
+  // Crée une méthode qui ajoute 2.
+  var add2 = creeAdditionneur(2);
+  
+  // Crée une méthode qui ajoute 2.
+  var add4 = creeAdditionneur(4);
 
   // Create a function that adds 4.
   var add4 = makeAdder(4);
@@ -1016,35 +1018,35 @@ main() {
 {% endhighlight %}
 
 
-### Testing functions for equality {#testing-functions-for-equality}
+### Tests d'égalité de méthodes {#testing-functions-for-equality}
 {:.no_toc}
 
-Here's an example of testing top-level functions, static methods, and
-instance methods for equality:
+Voici un exemple de test d'égalité de fonctions de premier niveau, 
+de méthodes statiques et de méthodes d'instance.
 
 <!-- ch02/function_equality_2.dart -->
 {% highlight dart %}
-foo() {}               // A top-level function
+foo() {}               // Une fonction de premier niveau
 
 class SomeClass {
-  static void bar() {} // A static method
-  void baz() {}        // An instance method
+  static void bar() {} // Une méthode statique
+  void baz() {}        // Une méthode d'instance
 }
 
 main() {
   var x;
 
-  // Comparing top-level functions.
+  // Comparaison de fonctions de premier niveau.
   x = foo;
   assert(foo == x);
 
-  // Comparing static methods.
+  // Comparaison de méthodes statiques.
   x = A.bar;
   assert(A.bar == x);
 
-  // Comparing instance methods.
-  var v = new A(); // Instance #1 of A
-  var w = new A(); // Instance #2 of A
+  // Comparaison de méthodes d'instance.
+  var v = new A(); // Instance #1 de A
+  var w = new A(); // Instance #2 de A
   var y = w;
   x = w.baz;
 
@@ -1059,11 +1061,11 @@ main() {
 {% endhighlight %}
 
 
-### Return values {#return-values}
+### Valeurs de retour {#return-values}
 {:.no_toc}
 
-All functions return a value. If no return value is specified, the
-statement `return null;` is implicitly appended to the function body.
+Toutes les fonctions retournent une valeur. Si aucune valeur n'est retournée,
+l'instruction `return null;` est implicitement ajoutée au corps de la fonction.
 
 
 ## Opérateurs {#operators}
