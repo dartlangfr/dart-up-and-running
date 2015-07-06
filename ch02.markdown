@@ -26,7 +26,7 @@ tel que décris dans
 [Up and running](ch01.html#up-and-running).
 </aside>
 
-Consultez les [spécifications Dart](/docs/spec/) lorsque vous souhaitez en
+Consultez les [spécifications Dart](https://www.dartlang.org/docs/spec/) lorsque vous souhaitez en
 savoir plus sur une des fonctionnalités du langages.
 
 
