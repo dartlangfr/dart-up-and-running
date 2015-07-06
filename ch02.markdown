@@ -2623,7 +2623,7 @@ Les variables statiques sont initialisées lorsqu'elles sont utilisées.
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
-Ce chapitre suit la recommandation du guide de style[style guide–
+Ce chapitre suit la recommandation du guide de style [style guide–
 recommendation](/articles/style-guide/#prefer-using-lowercamelcase-for-constant-names)
 qui préfère `lowerCamelCase` comme nom de constantes.
 </aside>
