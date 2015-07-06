@@ -82,7 +82,7 @@ Voici ce qu’utilise ce programme et qu’utilisent toutes (ou presque toutes) 
 
 :   La fonction spéciale, nécessaire et de premier niveau où l’application démarre.
     Pour plus d’information, Voir
-    [The main() function](#the-main-function).
+    [La fonction main()](#the-main-function).
 
 `var`
 
