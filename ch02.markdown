@@ -91,7 +91,7 @@ Voici ce qu’utilise ce programme et qu’utilisent toutes (ou presque toutes) 
 <aside class="alert alert-info" markdown="1">
 **Note:**
 Notre code suite la convention décrite dans le [Dart Style
-Guide.](/articles/style-guide/).
+Guide.](https://www.dartlang.org/articles/style-guide/).
 Par exemple, nous utilisons une indentation à deux espaces.
 </aside>
 
@@ -255,7 +255,7 @@ bugs.
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
-Ce chapitre suit la [convention de code](/articles/style-guide/#type-annotations)
+Ce chapitre suit la [convention de code](https://www.dartlang.org/articles/style-guide/#type-annotations)
 d'utiliser `var` plutôt que des statiques pour des variables locales.
 </aside>
 
@@ -2540,7 +2540,7 @@ Enumerated types have the following limits:
 * You can't explicitly instantiate an enum.
 
 For more information, see the
-[Dart Language Specification](/docs/spec/).
+[Dart Language Specification](https://www.dartlang.org/docs/spec/).
 
 
 ### Ajout de fonctionnalités à une classe: mixins {#adding-features-to-a-class-mixins}
@@ -2592,7 +2592,7 @@ abstract class Musical {
 {% endhighlight %}
 
 Pour plus d'information, voir l'article [Mixins dans
-Dart.](/articles/mixins/)
+Dart.](https://www.dartlang.org/articles/mixins/)
 
 
 ### Variables de classes et méthodes {#class-variables-and-methods}
@@ -2624,7 +2624,7 @@ Les variables statiques sont initialisées lorsqu'elles sont utilisées.
 <aside class="alert alert-info" markdown="1">
 **Note:**
 Ce chapitre suit la recommandation du guide de style [style guide–
-recommendation](/articles/style-guide/#prefer-using-lowercamelcase-for-constant-names)
+recommendation](https://www.dartlang.org/articles/style-guide/#prefer-using-lowercamelcase-for-constant-names)
 qui préfère `lowerCamelCase` comme nom de constantes.
 </aside>
 
@@ -2826,7 +2826,7 @@ vous ne pouvez pas tester si c'est une `List<String>`.
 </aside>
 
 Pour plus d'information sur les génériques, voir [Optional Types in
-Dart.](/articles/optional-types/)
+Dart.](https://www.dartlang.org/articles/optional-types/)
 
 
 ## Bibliothèques et visibilité {#libraries-and-visibility}
@@ -2838,7 +2838,7 @@ par un underscore (\_) ne sont visibles qu'au sein de la bibliothèque.
 *Toute application Dart est une bibliothèque*, même si elle n'utilise pas une directive `library`.
 
 Les bibliothèques peuvent être distribuées comme paquet.
-Voir [Pub Package and Asset Manager](/tools/pub/)
+Voir [Pub Package and Asset Manager](https://www.dartlang.org/tools/pub/)
 pour davantage d'informations sur pub, un gestionnaire de paquets inclu dans le SDK.
 
 
@@ -3262,9 +3262,9 @@ For more information about asynchronous programming, see the
 [dart:async](ch03.html#dartasync---asynchronous-programming)
 section of the library tour.
 Also see the articles
-[Dart Language Asynchrony Support: Phase 1](/articles/await-async/) and
-[Dart Language Asynchrony Support: Phase 2](/articles/beyond-async/),
-and the [Dart language specification](/docs/spec/).
+[Dart Language Asynchrony Support: Phase 1](https://www.dartlang.org/articles/await-async/) and
+[Dart Language Asynchrony Support: Phase 2](https://www.dartlang.org/articles/beyond-async/),
+and the [Dart language specification](https://www.dartlang.org/docs/spec/).
 
 
 ## Isolates {#isolates}
@@ -3500,11 +3500,11 @@ Dans la documentation générée, `[Nourriture]` devient un lien pour la documen
 
 Pour parser du code Dart et générer de la documentation HTML, vous pouvez utiliser
 l'[outil de génération de 
-documentation.](/tools/dartdocgen/) du SDK. Pour un exemple de 
+documentation.](https://www.dartlang.org/tools/dartdocgen/) du SDK. Pour un exemple de 
 documentation générée, voir la [Documentation de l'API 
 Dart.](http://api.dartlang.org). Pour des conseils sur la struturation 
 des commentaire, voir le [Guide pour les commentaires de documentation 
-Dart.](/articles/doc-comment-guidelines/)
+Dart.](https://www.dartlang.org/articles/doc-comment-guidelines/)
 
 
 ## Résumé {#summary}
@@ -3512,9 +3512,9 @@ Dart.](/articles/doc-comment-guidelines/)
 Ce chapitre résume les fonctionnalités les plus communes dans le langage
 Dart. D'autres fonctionnalités sont en train d'être implémentées, et nous
 espérons qu'elles ne casseront pas le code existant. Pour plus
-d'information, voir la [Spécification du Langage Dart](/docs/spec/) et
-les [articles](/articles/) tel que [Idiomatic
-Dart.](/articles/idiomatic-dart/)
+d'information, voir la [Spécification du Langage Dart](https://www.dartlang.org/docs/spec/) et
+les [articles](https://www.dartlang.org/articles/) tel que [Idiomatic
+Dart.](https://www.dartlang.org/articles/idiomatic-dart/)
 
 
 <hr>
