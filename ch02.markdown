@@ -1520,7 +1520,7 @@ candidats.where((c) => c.anneeExperience >= 5)
 {:.no_toc}
 
 Les instructions switch en Dart comparent les entiers, chaines de caractères, 
-ou constantes de compilations en utilisant `==. Les objets comparés doivent 
+ou constantes de compilations en utilisant `==`. Les objets comparés doivent 
 tous être des instances de la même classe (et non pas l'un de ses sous types), 
 et la classe doit surcharger `==`.
 [Les types énumérés](#enums) fonctionnent également dans les instructions `switch`.
