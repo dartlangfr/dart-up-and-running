@@ -2305,7 +2305,7 @@ Utilisez le modificateur `abstract` pour définir une *classe abstraite*,
 c'est-à-dire, une classe qui ne peut pas être instanciée. Les classes 
 abstraites sont utiles pour définir des interfaces, souvent avec quelques
 implémentations. Si vous voulez que votre classe abstraite apparaisse 
-comme instanciable, définissez un [constructeur factory](#factory-constructors).
+comme instanciable, définissez un [Constructeur de type fabrique](#factory-constructors).
 
 Les classes abstraites ont souvent des [méthodes abstraites](#abstract-methods).
 Voici un exemple de déclaration d'une classe abstraite qui a une méthode 
