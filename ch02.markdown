@@ -20,10 +20,8 @@ déjà programmer dans une autre langage.
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
-Vous pouvez avec la plupart des fonctionnalités en utilisant
-<a href="https://dartpad.dartlang.org" target="_blank">DartPad</a>,
-tel que décris dans
-[Up and running](ch01.html#up-and-running).
+Vous pouvez essayer la plupart des fonctionnalités présentées dans [Up and running](ch01.html#up-and-running) en utilisant 
+<a href="https://dartpad.dartlang.org" target="_blank">DartPad</a>.
 </aside>
 
 Consultez les [spécifications Dart](https://www.dartlang.org/docs/spec/) lorsque vous souhaitez en
