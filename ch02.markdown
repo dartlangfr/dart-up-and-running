@@ -16,7 +16,7 @@ next-chapter-title: "Library Tour"
 
 Ce chapitre vous montre comment utiliser les fonctionnalités majeures de Dart, des variables
 et opérateurs jusqu'aux classes et bibliothèques, en supposant que vous savez
-déjà programmer dans une autre langage.
+déjà programmer dans un autre langage.
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
@@ -66,7 +66,7 @@ Voici ce qu’utilise ce programme et qu’utilisent toutes (ou presque toutes) 
 
 :   Un moyen pratique d’afficher dans la sortie.
 
-`'...'` (or `"..."`)
+`'...'` (ou `"..."`)
 
 :   Une chaine de caratère.
 
@@ -88,7 +88,7 @@ Voici ce qu’utilise ce programme et qu’utilisent toutes (ou presque toutes) 
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
-Notre code suite la convention décrite dans le [Dart Style
+Notre code suit la convention décrite dans le [Dart Style
 Guide.](https://www.dartlang.org/articles/style-guide/).
 Par exemple, nous utilisons une indentation à deux espaces.
 </aside>
@@ -183,9 +183,9 @@ Le tableau suivant liste les mots clés que le langage Dart traite spécialement
 {:.table .table-striped .nowrap}
 
 <sup>1</sup>  Les mots annotés **1** sont des *identifiants primitifs*.
-Evitez d’utiliser les identifants inclus en tant qu’identifiant,
+Evitez d’utiliser les identifants primitifs en tant qu’identifiant,
 et ne les utilisez jamais en nom de classe ou de type.
-Les identifiants inclus existent pour faciliter le portage de JavaScript à Dart.
+Les identifiants primitifs existent pour faciliter le portage de JavaScript à Dart.
 Par exemple, si du code JavaScript a une variable nommée `factory`,
 il n’est pas nécessaire de la renommer lorsque vous portez le code en Dart.
 
@@ -285,7 +285,7 @@ Utilisez `const` pour les variables que vous souhaitez utiliser comme constantes
 compilation. Si la variable const est au niveau de la classe, mettez la en
 `static const` (les variables d'instances ne peuvent pas être const). Là où vous
 déclarez la variable, mettez la valeur en constante de compilation comme
-litérale, une variable const, ou le résultat d'une opération arithmétique sur
+un litéral, une variable const, ou le résultat d'une opération arithmétique sur
 une constante numérique.
 
 <!-- ch02/const.dart -->
@@ -620,7 +620,7 @@ une même *valeur* plusieurs fois. Le support des dictionnaires par Dart
 est fait grâce aux dictionnaires en valeurs littérales et au type
 [Map](http://api.dartlang.org/dart_core/Map.html).
 
-Voici quelques exemples simples de dictionnaire en Dart, crées en
+Voici quelques exemples simples de dictionnaire en Dart, créés en
 utilisant des valeurs littérales :
 
 <!-- ch02/map_literal.dart -->
@@ -914,8 +914,8 @@ void main(List<String> arguments) {
 }
 {% endhighlight %}
 
-Vous pouvez utiliser la [bibliothèque args] (https://pub.dartlang.org/packages/args)
-pour définir et analyser des lignes de commandes
+Vous pouvez utiliser la [bibliothèque args](https://pub.dartlang.org/packages/args)
+pour définir et analyser des lignes de commandes.
 
 
 ### Fonctions comme des objets {#functions-as-first-class-objects}
@@ -1533,7 +1533,7 @@ Chaque `case` non vide prend fin avec une instruction `break`, c'est une règle.
 Une autre façon possible de fermer un `case` non vide et une instruction `continue`, 
 `throw` ou `return`.
 
-Utiliser une clause `default` pour exécuter du code lorsque aucune clause ne correspond :
+Utilisez une clause `default` pour exécuter du code lorsque aucune clause ne correspond :
 
 <!-- ch02/flow_switch_case.dart -->
 {% highlight dart %}
@@ -2091,7 +2091,7 @@ class ImmutablePoint {
 {:.no_toc}
 
 Utilisez le mot clé `factory` lorsque vous implémentez un constructeur
-qui ne créé pas toujours une nouvelle instance de sa classe.
+qui ne crée pas toujours une nouvelle instance de sa classe.
 Par exemple, un constructeur de type fabrique peut retourner une instance à partir
 d'un cache, ou il pourrait encore retourner une instance d'un sous-type.
 
@@ -2152,7 +2152,7 @@ Les méthodes sont des fonctions qui fournissent un comportement pour un objet.
 {:.no_toc}
 
 Les méthodes d'instance sur des objets peuvent accéder aux variables d'instance et `this`.
-La méthode 'distanceA()' dans le code suivant suivant est un exemple de méthode d'instance.
+La méthode `distanceA()` dans le code suivant suivant est un exemple de méthode d'instance.
 
 <!-- ch02/distance_to.dart -->
 {% highlight dart %}
@@ -2566,7 +2566,7 @@ class Maestro extends Personne
 }
 {% endhighlight %}
 
-Pour implémenter un mixin, créez une classe qui étend d'Object, ne 
+Pour implémenter un mixin, créez une classe qui étend Object, ne 
 déclare pas de constructeurs, et n'a aucun appels à `super`. Par 
 exemple:
 
@@ -2659,7 +2659,7 @@ main() {
 <aside class="alert alert-info" markdown="1">
 **Note:**
 Préférez l'utilisation de fonctions de premier niveau à des méthodes statiques, pour des fonctionnalités 
-communes ou largement utilisées
+communes ou largement utilisées.
 </aside>
 
 Vous pouvez utiliser des méthodes statiques comme constantes de compilation. Par exemple, vous pouvez 
@@ -2975,7 +2975,7 @@ dans la bibliothèque.
 
 <aside class="alert alert-info" markdown="1">
 **Note:**
-Il n'est pas nécessaire d'utiliser `library` dans une application (une fichier qui a une fonction de haut niveau
+Il n'est pas nécessaire d'utiliser `library` dans une application (un fichier qui a une fonction de haut niveau
 main()), mais le faire vous permet d'implémenter votre application dans plusieurs fichiers.
 </aside>
 
@@ -3392,15 +3392,15 @@ définition de l'annotation @todo qui prend deux arguments :
 {% highlight dart %}
 library todo;
 
-class aFaire {
+class todo {
   final String qui;
   final String quoi;
 
-  const aFaire(this.qui, this.quoi);
+  const todo(this.qui, this.quoi);
 }
 {% endhighlight %}
 
-Et voici un exemple d'utilisation de cette annotation @aFaire :
+Et voici un exemple d'utilisation de cette annotation @todo :
 
 <!-- ch02/ch02_meta_create/metadata_user.dart -->
 {% highlight dart %}
@@ -3500,8 +3500,8 @@ Pour parser du code Dart et générer de la documentation HTML, vous pouvez util
 l'[outil de génération de 
 documentation.](https://www.dartlang.org/tools/dartdocgen/) du SDK. Pour un exemple de 
 documentation générée, voir la [Documentation de l'API 
-Dart.](http://api.dartlang.org). Pour des conseils sur la struturation 
-des commentaire, voir le [Guide pour les commentaires de documentation 
+Dart.](http://api.dartlang.org). Pour des conseils sur la structuration 
+des commentaires, voir le [Guide pour les commentaires de documentation 
 Dart.](https://www.dartlang.org/articles/doc-comment-guidelines/)
 
 
