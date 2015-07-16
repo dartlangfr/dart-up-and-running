@@ -78,7 +78,7 @@ Voici ce qu’utilise ce programme et qu’utilisent toutes (ou presque toutes) 
 
 `main()`
 
-:   La fonction spéciale de premier niveau, nécessaire, par où l’application démarre.
+:   La fonction spéciale, nécessaire et de premier niveau où l’application démarre.
     Pour plus d’information, Voir
     [La fonction main()](#the-main-function).
 
